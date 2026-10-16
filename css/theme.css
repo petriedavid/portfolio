@@ -1,0 +1,119 @@
+/**
+ * GEIST MONOCHROME // LIQUID GLASS (VERCEL / NEXT.JS VIBE)
+ * Ultra-clean stark contrast, zero color distraction.
+ * - Canvas: #000000
+ * - Glass Surfaces & Cards: #111111 (Translucent Glass)
+ * - Borders: 1px solid #222222
+ * - Primary Text: #EDEDED
+ * - Secondary Text: #888888
+ * - Signal Blue: #3B82F6 (Hyperlinks, active indicator, focus rings only)
+ */
+
+:root {
+  /* Foundations */
+  --bg-canvas: #060709;
+  --bg-surface: #0E1015;
+  --bg-card: #12141A;
+  --bg-card-glass: rgba(16, 18, 24, 0.64);
+  --bg-card-hover: rgba(22, 26, 36, 0.78);
+  --bg-pill: rgba(255, 255, 255, 0.05);
+  --bg-glass-nav: rgba(6, 7, 10, 0.78);
+
+  /* Liquid Glass Borders & Specular Highlights */
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-hover: rgba(59, 130, 246, 0.45);
+  --border-light: rgba(255, 255, 255, 0.16);
+  --glass-specular-top: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+
+  /* Shadows with Colored Liquid Refraction */
+  --glass-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8);
+  --glass-shadow-hover: 0 24px 60px -10px rgba(0, 0, 0, 0.9), 0 0 35px -5px rgba(59, 130, 246, 0.22);
+
+  /* Typographic Hierarchy */
+  --text-primary: #EDEDED;
+  --text-secondary: #8E96A4;
+  --text-tertiary: #5A6270;
+
+  /* Signal Blue Accent */
+  --signal-blue: #3B82F6;
+  --signal-blue-hover: #60A5FA;
+  --signal-blue-glow: rgba(59, 130, 246, 0.35);
+  --signal-blue-badge-bg: rgba(59, 130, 246, 0.12);
+  --signal-blue-badge-border: rgba(59, 130, 246, 0.32);
+
+  /* Liquid Glass Palette */
+  --liquid-blue: #3B82F6;
+  --liquid-mint: #00FFC2;
+  --liquid-indigo: #6366F1;
+  --liquid-cyan: #38BDF8;
+  --liquid-violet: #8B5CF6;
+
+  /* Typography */
+  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", "JetBrains Mono", monospace;
+
+  /* Dimensions */
+  --max-width: 880px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-pill: 9999px;
+
+  --transition-fast: 0.12s ease;
+  --transition-normal: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--signal-blue);
+}
+
+::selection {
+  background-color: var(--signal-blue);
+  color: #FFFFFF;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}

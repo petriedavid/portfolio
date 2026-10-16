@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%">
+  <defs>
+    <pattern id="dotGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#222222"/>
+    </pattern>
+  </defs>
+
+  <!-- Background: Pure Black #000000 with subtle dot grid -->
+  <rect width="1600" height="900" fill="#000000"/>
+  <rect width="1600" height="900" fill="url(#dotGrid)"/>
+
+  <!-- Outer Glass Frame: #111111 with 1px #222222 border -->
+  <rect x="40" y="40" width="1520" height="820" fill="#111111" stroke="#222222" stroke-width="1.5" rx="8"/>
+
+  <!-- Top Terminal Bar -->
+  <rect x="40" y="40" width="1520" height="50" fill="#0C0C0C" stroke="#222222" stroke-width="1" rx="8"/>
+  <circle cx="72" cy="65" r="5.5" fill="#222222"/>
+  <circle cx="94" cy="65" r="5.5" fill="#222222"/>
+  <circle cx="116" cy="65" r="5.5" fill="#222222"/>
+  
+  <text x="150" y="70" font-family="'Geist Mono', monospace" font-size="13" fill="#EDEDED" font-weight="600">sync // KXBTC15M — INSTITUTIONAL QUANTITATIVE TELEMETRY</text>
+  <text x="1500" y="70" font-family="'Geist Mono', monospace" font-size="12" fill="#3B82F6" text-anchor="end">AZURE PTP &lt; 5μs // FASTAPI 100ms</text>
+
+  <!-- Center Placeholder Box (Ready for screenshot) -->
+  <g transform="translate(160, 160)">
+    <rect width="1280" height="570" fill="#0A0A0A" stroke="#222222" stroke-width="1.5" stroke-dasharray="6,6" rx="6"/>
+
+    <!-- Crosshair & Placeholder Text -->
+    <g transform="translate(640, 255)">
+      <circle cx="0" cy="0" r="44" fill="none" stroke="#3B82F6" stroke-width="1.5"/>
+      <line x1="-54" y1="0" x2="54" y2="0" stroke="#3B82F6" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="0" y1="-54" x2="0" y2="54" stroke="#3B82F6" stroke-width="1" stroke-dasharray="4,4"/>
+
+      <!-- Camera Icon -->
+      <path d="M -16 -8 L -10 -16 L 10 -16 L 16 -8 L 22 -8 C 24 -8 26 -6 26 -4 L 26 16 C 26 18 24 20 22 20 L -22 20 C -24 20 -26 18 -26 16 L -26 -4 C -26 -6 -24 -8 -22 -8 Z" fill="none" stroke="#EDEDED" stroke-width="1.5"/>
+      <circle cx="0" cy="6" r="7" fill="none" stroke="#3B82F6" stroke-width="1.5"/>
+
+      <text x="0" y="85" font-family="'Geist Mono', monospace" font-size="15" fill="#EDEDED" text-anchor="middle" font-weight="600">
+        sync // SCREENSHOT PENDING
+      </text>
+      <text x="0" y="112" font-family="'Geist', sans-serif" font-size="13" fill="#888888" text-anchor="middle">
+        Drop your terminal capture into assets/screenshots/lattice-preview.png (or swap img src)
+      </text>
+    </g>
+
+    <!-- Corner Dimensions -->
+    <text x="24" y="32" font-family="'Geist Mono', monospace" font-size="11" fill="#555555">DIMENSIONS: 16:9 / 1600×900</text>
+    <text x="1256" y="32" font-family="'Geist Mono', monospace" font-size="11" fill="#555555" text-anchor="end">STATUS: READY FOR ASSET</text>
+    <text x="24" y="540" font-family="'Geist Mono', monospace" font-size="12" fill="#3B82F6">15,000-SEGMENT AUDIT // WIN RATE: 92.09% // SHARPE: 11.42</text>
+    <text x="1256" y="540" font-family="'Geist Mono', monospace" font-size="11" fill="#888888" text-anchor="end">REACT 18 + VITE + TAILWIND</text>
+  </g>
+</svg>

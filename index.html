@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Petrie — Systems &amp; Quantitative Engineering</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  
+  <!-- Geist & Geist Mono Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Ambient Liquid Glass Background (Luminous Apple/Linear Refraction)
+       ========================================================================= -->
+  <div class="ambient-background" aria-hidden="true">
+    <div class="ambient-orb orb-signal"></div>
+    <div class="ambient-orb orb-mint"></div>
+    <div class="ambient-orb orb-indigo"></div>
+    <div class="ambient-orb orb-cyan"></div>
+    <div id="cursor-glow"></div>
+  </div>
+
+  <!-- Sticky Minimal Navigation Bar -->
+  <nav class="top-nav" aria-label="Quick Controls">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <span class="brand-name">David Petrie</span>
+        <span class="brand-sub">// systems &amp; quant engineering</span>
+      </div>
+
+      <div class="nav-right">
+        <div class="status-tag">
+          <span style="color: var(--signal-blue);">●</span>
+          <span>Available for Roles // 2026</span>
+        </div>
+        <button onclick="window.print()" class="btn-print" title="Print or export as PDF">Print / PDF ⎙</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Resume Document -->
+  <main class="app-container">
+
+    <!-- Profile Hero Section -->
+    <header class="profile-hero">
+      <h1 class="hero-name">David Petrie</h1>
+
+      <div class="hero-subhead">
+        Former Director of Community Relations @ PixelLabz RPC · Former InfoSec Intern @ NodeStop LLC
+      </div>
+      <div class="hero-subhead">
+      The Pennsylvania State University - Enterprise Technology Integration
+      </div>
+
+      <p class="hero-summary">
+        Systems developer and quantitative infrastructure builder at Penn State. Hands-on experience engineering <strong>low-latency market-microstructure trading systems</strong> for prediction markets, co-founding <strong>multi-region blockchain RPC infrastructure across 15+ bare-metal nodes</strong, and applying active inference models for cybersecurity.
+      </p>
+
+      <!-- Contact Links -->
+      <div class="hero-contacts">
+        <a href="mailto:dvp5702@psu.edu" class="contact-pill contact-pill-primary">
+          <span>Email (dvp5702@psu.edu)</span> ↗
+        </a>
+        <a href="https://linkedin.com/in/gender" target="_blank" rel="noopener noreferrer" class="contact-pill">
+          <span>LinkedIn (/in/gender)</span> ↗
+        </a>
+        <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer" class="contact-pill">
+          <span>GitHub (/petriedavid)</span> ↗
+        </a>
+      </div>
+    </header>
+
+    <!-- 01 // Work Experience -->
+    <section class="resume-section">
+      <div class="section-label">01 // TRACK RECORD</div>
+
+      <div class="experience-stack">
+        <!-- Role 01: PixelLabz RPC -->
+        <article class="exp-box">
+          <div class="exp-top">
+            <div class="exp-title-company">
+              <h2 class="exp-title">Co-Founder &amp; Director of Community Relations</h2>
+              <span class="exp-company">@ PixelLabz / PixelPilotz RPC</span>
+            </div>
+            <span class="exp-date">APR 2022 — MARCH 2025 // REMOTE (Ashburn, VA)</span>
+          </div>
+
+          <ul class="exp-points">
+            <li>Co-architected a high-throughput, non-consensus RPC network on <strong>Solana and Aptos</strong> deployed across 15+ bare-metal servers in the U.S., Germany, and Singapore, validated with <strong>8M+ live transactions</strong>.</li>
+            <li>Generated <strong>~$180,000 in revenue</strong> through token sales and web3 platform access launches, directing community growth to <strong>4,000+ active users</strong>.</li>
+            <li>Developed automated health audit, telemetry monitoring, and technical onboarding systems to maintain <strong>99.99% service uptime</strong> under peak blockchain traffic.</li>
+          </ul>
+
+          <div class="exp-chips">
+            <span class="chip">Solana</span>
+            <span class="chip">Aptos</span>
+            <span class="chip">RPC Mesh Architecture</span>
+            <span class="chip">Node Deployment</span>
+            <span class="chip">Linux</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Server Orchestration</span>
+          </div>
+        </article>
+
+        <!-- Role 02: NodeStop LLC -->
+        <article class="exp-box">
+          <div class="exp-top">
+            <div class="exp-title-company">
+              <h2 class="exp-title">Information Security Analyst, Jr. (Internship)</h2>
+              <span class="exp-company">@ NodeStop LLC</span>
+            </div>
+            <span class="exp-date">JAN 2023 — MARCH 2024 // REMOTE</span>
+          </div>
+
+          <ul class="exp-points">
+            <li>Conducted enterprise vulnerability assessments, risk analyses, and real-time network traffic monitoring using <strong>Snort IDS and Wireshark</strong>.</li>
+            <li>Executed structured penetration testing and credential fuzzing exercises with <strong>Nmap, Nessus, Hydra, and Medusa</strong>, authoring risk remediation plans for senior analysts.</li>
+            <li>Supported compliance readiness, monitored incident response drills, and documented mitigation steps across cross-functional engineering teams.</li>
+          </ul>
+
+          <div class="exp-chips">
+            <span class="chip">Snort IDS</span>
+            <span class="chip">Wireshark</span>
+            <span class="chip">Penetration Testing</span>
+            <span class="chip">Nmap</span>
+            <span class="chip">Nessus</span>
+            <span class="chip">Threat Hunting</span>
+            <span class="chip">SIEM</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 02 // Featured Engineering Projects -->
+    <section class="resume-section">
+      <div class="section-label">02 // VERIFIED SYSTEMS &amp; ARCHITECTURE</div>
+
+      <div class="project-stack">
+        
+        <!-- Project 01: sync // KXBTC15M (Kalshi Prediction Market Trading & Telemetry Engine) -->
+        <article class="project-card" data-project-id="sync">
+          <!-- Image slot with cropped screenshot of sync interface -->
+          <div class="project-image-slot" title="Click to inspect architecture and backtest telemetry">
+            <img src="assets/screenshots/sync.png" alt="sync KXBTC15M Quantitative Trading & Telemetry Architecture" loading="lazy">
+            <div class="slot-tag">KXBTC15M // LIVE TELEMETRY</div>
+          </div>
+
+          <div class="project-body">
+            <div class="project-header-row">
+              <div>
+                <h3 class="project-title">sync // KXBTC15M</h3>
+                <span class="project-subtitle">Institutional Kalshi 15-Minute Bitcoin Binary Quantitative Trading &amp; Telemetry Architecture</span>
+              </div>
+            </div>
+
+            <p class="project-desc">
+              A deterministic, low-latency market-microstructure trading bot and telemetry dashboard purpose-built for Kalshi's 15-minute Bitcoin binary prediction markets (<code>KXBTC15M</code>). Rejects curve-fit multi-strategy ensembles in favor of closed-form microstructure pricing: <strong>Synthetic BRTI Lead-Lag Replication</strong> across Coinbase, Kraken, and Bitstamp with <strong>60-Second Settlement TWAP Pinning Arbitrage</strong>, sub-millisecond execution routing, and SHA-256 tamper-evident cryptographic trade logging.
+            </p>
+
+            <!-- Quantitative Backtest & Audit Telemetry Bar -->
+            <div class="stat-pill-row">
+              <div class="stat-item">
+                <span class="stat-lbl">Live Win Rate // Factor</span>
+                <span class="stat-val accent">81.8% // 2.14 PF</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-lbl">Realized Session PnL</span>
+                <span class="stat-val accent">+$110.52 (Kalshi)</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-lbl">Exchange Telemetry</span>
+                <span class="stat-val">11ms API Latency</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-lbl">Audit Integrity</span>
+                <span class="stat-val">SHA-256 Hash Chain</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <div class="project-chips">
+                <span class="chip">Python 3.11</span>
+                <span class="chip">FastAPI (100ms)</span>
+                <span class="chip">React 18 + TypeScript</span>
+                <span class="chip">TimescaleDB</span>
+                <span class="chip">Azure SR-IOV (&lt;15μs)</span>
+                <span class="chip">RSA-PSS Signatures</span>
+                <span class="chip">Quarter-Kelly Risk</span>
+              </div>
+              <div class="project-actions">
+                <button class="project-action-link btn-inspect" style="background:none; border:none; cursor:pointer;">Inspect Specs ↗</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 02: PixelLabz Global RPC Mesh -->
+        <article class="project-card" data-project-id="pixellabz">
+          <div class="project-image-slot" title="Click to inspect network architecture">
+            <img src="assets/screenshots/pixellabz.png" alt="PixelLabz High-Performance Solana RPC Infrastructure" loading="lazy">
+            <div class="slot-tag">SOLANA RPC // HIGH PERFORMANCE</div>
+          </div>
+
+          <div class="project-body">
+            <div class="project-header-row">
+              <div>
+                <h3 class="project-title">PixelLabz Global RPC Mesh</h3>
+                <span class="project-subtitle">High-Throughput Non-Consensus Node Mesh on Solana &amp; Aptos</span>
+              </div>
+            </div>
+
+            <p class="project-desc">
+              Co-architected a decentralized, non-consensus RPC network spanning 15+ bare-metal servers across the United States, Germany, and Singapore. Purpose-built for Solana developers and high-frequency traders with <strong>1,000 RPS throughput</strong>, <strong>0s landing time</strong> (sub-second same-block transaction inclusion), full <strong>Geyser / Yellowstone</strong> real-time streaming plugins, and IP-whitelisted endpoint isolation. Validated across <strong>8M+ transactions</strong> with <strong>~$180,000</strong> in platform revenue.
+            </p>
+
+            <div class="stat-pill-row">
+              <div class="stat-item">
+                <span class="stat-lbl">Verified Transactions</span>
+                <span class="stat-val accent">8M+ Transactions</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-lbl">Throughput Peak</span>
+                <span class="stat-val accent">1,000 RPS / Node</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-lbl">Transaction Landing</span>
+                <span class="stat-val">0s (Same Block)</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-lbl">Active Users &amp; Mesh</span>
+                <span class="stat-val">4k+ Users · 15+ Bare-Metal</span>
+              </div>
+            </div>
+
+            <div class="project-footer">
+              <div class="project-chips">
+                <span class="chip">Solana</span>
+                <span class="chip">Aptos</span>
+                <span class="chip">Geyser / Yellowstone</span>
+                <span class="chip">1,000 RPS</span>
+                <span class="chip">0s Landing Time</span>
+                <span class="chip">IP Whitelisting</span>
+                <span class="chip">Bare-Metal Linux</span>
+              </div>
+              <div class="project-actions">
+                <button class="project-action-link btn-inspect" style="background:none; border:none; cursor:pointer;">Inspect Mesh ↗</button>
+                <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer" class="project-action-link">GitHub ↗</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 03 // Core Capabilities Matrix -->
+    <section class="resume-section">
+      <div class="section-label">03 // PROFICIENCIES</div>
+
+      <div class="skills-box-grid">
+        <div class="skill-tile">
+          <span class="skill-title">Programming Languages</span>
+          <p class="skill-list">Python 3.11, Rust, Java, JavaScript / TypeScript, SQL, PHP, C/C++, HTML5 / CSS3</p>
+        </div>
+
+        <div class="skill-tile">
+          <span class="skill-title">Quantitative &amp; Systems</span>
+          <p class="skill-list">Market Microstructure, Order Book Imbalance (OBI), 60s TWAP Pinning, Lead-Lag Replication, Solana/Aptos RPC, WebSockets</p>
+        </div>
+
+        <div class="skill-tile">
+          <span class="skill-title">Cybersecurity &amp; Risk</span>
+          <p class="skill-list">Quarter-Kelly Sizing, Snort IDS, Wireshark, Cryptographic RSA-PSS Signatures, SHA-256 Chained Audit WAL, Threat Hunting, SIEM</p>
+        </div>
+
+        <div class="skill-tile">
+          <span class="skill-title">Infrastructure &amp; Cloud</span>
+          <p class="skill-list">Azure Linux (SR-IOV, Hardware PTP &lt; 5μs), Docker, TimescaleDB / PostgreSQL, FastAPI, Nginx, CI/CD, Git</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 // Education -->
+    <section class="resume-section" style="border-bottom: none;">
+      <div class="section-label">04 // ACADEMIC FOUNDATION</div>
+
+      <div class="edu-card">
+        <div>
+          <div class="edu-main">The Pennsylvania State University — University Park, PA</div>
+          <div class="edu-sub">B.S. in Enterprise Technology Integration / Cybersecurity Operations &amp; Analytics · GPA: 3.4</div>
+          <div class="edu-sub" style="font-size: 12px; color: var(--text-tertiary); margin-top: 4px;">
+            Coursework: Systems Architecture, AI &amp; Machine Learning, Distributed Systems &amp; Blockchain, Cyber Threat Analytics, Network Security, Database Management
+          </div>
+        </div>
+        <div class="edu-meta">EXPECTED MAY 2027</div>
+      </div>
+    </section>
+
+    <!-- Footer & Colophon -->
+    <footer class="page-footer">
+      <div>
+        <span>© 2026 David Petrie. Built with brutalist restraint.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="mailto:dvp5702@psu.edu">dvp5702@psu.edu</a>
+        <a href="https://linkedin.com/in/gender" target="_blank" rel="noopener noreferrer">LinkedIn (/in/gender)</a>
+        <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span id="live-clock">23:25:00 EDT</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Minimalist Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-overlay" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+    <div class="lightbox-container">
+      <div class="lightbox-header">
+        <h4 id="lightbox-title" class="lightbox-title">System Architecture</h4>
+        <button id="lightbox-close-btn" class="lightbox-close-btn" aria-label="Close Lightbox">✕</button>
+      </div>
+
+      <div id="lightbox-media" class="lightbox-media-wrap"></div>
+
+      <p id="lightbox-desc" class="lightbox-desc"></p>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
