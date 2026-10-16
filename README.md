@@ -1,59 +1,75 @@
-# David Petrie // Liquid Glass Dark-Mode Resume
+# David Petrie // Systems Architecture & Quantitative Infrastructure
 
-An ultra-modern, high-end **Liquid Glass** digital resume and portfolio inspired by **Apple visionOS, Linear, and Raycast**.
-
----
-
-## 🫧 Liquid Glass Aesthetic Architecture
-
-1. **Obsidian Charcoal Foundation**:
-   - Deep, rich obsidian charcoal (`#0B0B0F`), avoiding flat pitch-black to create atmospheric depth.
-2. **Slow-Moving Ambient Light Orbs**:
-   - Softly blurred ambient light orbs in **electric mint green** (`#00FFC2`) and **deep indigo** (`#6366F1` / `#4F46E5`) floating dynamically in the background with unhurried 24–32s organic float animations.
-3. **Viscous Mouse Cursor Light Trail**:
-   - A subtle ambient spotlight with viscous inertial damping (`lerp: 0.085`) that smoothly trails behind the cursor. As you move around the page, the light **shines and refracts directly through the frosted glass panels** (`backdrop-filter: blur(28px) saturate(190%)`).
-4. **Frosted Translucent VisionOS Panels**:
-   - Translucent obsidian glass surfaces (`rgba(18, 18, 26, 0.62)`) with 1px translucent borders (`rgba(255, 255, 255, 0.08)`), top specular rim highlights, and ambient shadow depth.
+An ultra-modern, high-performance **Liquid Glass** digital portfolio and systems resume inspired by **Apple visionOS, Linear, and Vercel Geist**.
 
 ---
 
-## 🚀 Featured Engineering Projects
+## 🏛️ Systems Architecture & Invariants
+
+1. **Kernel Bypass & Hardware Clock Synchronization**:
+   - Virtualized network interface routing via **Azure SR-IOV** (`<15μs` packet latency), lock-free Single-Producer Single-Consumer (SPSC) ring buffers, and **IEEE 1588 PTP hardware clock synchronization** (`/dev/ptp0` drift `<5μs`).
+2. **Multi-Region Distributed RPC Mesh**:
+   - Geographically dispersed bare-metal node architecture across **Ashburn (US-East), Frankfurt (EU-Central), and Singapore (APAC)**, sustaining **1,000 RPS per node** with Yellowstone & Geyser gRPC real-time streaming.
+3. **Deterministic Quantitative Microstructure**:
+   - Purpose-built execution engine for Kalshi `KXBTC15M` prediction markets. Replaces curve-fit heuristics with **Synthetic CME CF BRTI Lead-Lag Replication** across Coinbase, Kraken, and Bitstamp with 60-second settlement TWAP pinning arbitrage and Quarter-Kelly risk sizing.
+4. **Cryptographic Auditing & Active Inference Defense**:
+   - Cryptographically verifiable trade journaling with **append-only SHA-256 hash chains** and RSA-PSS signatures in TimescaleDB, paired with raw packet inspection using **Snort IDS** and active inference anomaly detection models.
+
+---
+
+## 🫧 Visual Architecture & Scrolling Reveal
+
+- **Obsidian Liquid Glass Foundation**: Deep obsidian charcoal (`#060709`) and translucent glass cards (`rgba(16, 18, 24, 0.64)`) with top specular highlights and refractive shadow depths.
+- **Scrolling Reveal**: Smooth `IntersectionObserver` reveal animations with subtle blur-up and translation dynamics, micro-staggering child metrics, and full `prefers-reduced-motion` compliance.
+- **Viscous Cursor Spotlight**: Inertial damping (`lerp: 0.085`) trailing behind the cursor with automatic idle throttling (0% CPU when stationary).
+- **Interactive Systems Inspector**: 3-tab modal inspector displaying real-time system interface screenshots, end-to-end data-flow topologies, and complete hardware/system invariant specification tables.
+
+---
+
+## 🚀 Verified Systems & Engineering Projects
 
 ### 1. sync // KXBTC15M
 *Institutional Kalshi 15-Minute Bitcoin Binary Quantitative Trading & Telemetry Architecture*
-- **Mandate:** Closed-form microstructure pricing: Synthetic BRTI Lead-Lag Replication across Coinbase, Kraken, and Bitstamp with 60-Second Settlement TWAP Pinning Arbitrage for Kalshi prediction markets (`KXBTC15M`).
-- **Audit Performance:** 15,000-segment quantitative backtest audit:
-  - **Win Rate:** `92.09%` (3,678 / 3,994)
-  - **Sharpe Ratio:** `11.42` (Sortino: `5.12`)
-  - **Max Drawdown:** `0.46%` ($96.25 USD)
-  - **Hardware Clock Drift:** Azure Hyper-V Hardware PTP `/dev/ptp0` `<5μs`
-- **Stack:** Python 3.11, FastAPI (100ms Telemetry), React 18, TimescaleDB, Azure Linux (SR-IOV), RSA-PSS Signatures, Quarter-Kelly Risk Sizing.
-- **Image Slot:** Dedicated `16:9` visual frame at `assets/screenshots/lattice-preview.svg` with a drop-in slot for terminal captures once a picture is taken.
+- **Mandate:** Closed-form microstructure pricing: Synthetic BRTI Lead-Lag Replication across Coinbase, Kraken, and Bitstamp with 60-Second Settlement TWAP Pinning Arbitrage.
+- **Performance:**
+  - **Live Win Rate / Profit Factor:** `81.8%` // `2.14 PF`
+  - **Realized Session PnL:** `+$110.52 USD`
+  - **Gateway Latency:** `11ms End-to-End`
+  - **Clock Drift:** Azure Hyper-V Hardware PTP `/dev/ptp0` `<5μs`
+- **Stack:** Python 3.11, FastAPI (100ms Telemetry), React 18, TypeScript, TimescaleDB, Azure Linux (SR-IOV), RSA-PSS Signatures, Quarter-Kelly Sizing.
 
 ### 2. PixelLabz Global RPC Mesh
 *High-Throughput Non-Consensus Node Mesh on Solana & Aptos*
 - Co-architected non-consensus RPC network on Solana and Aptos across 15+ bare-metal servers in U.S., Germany, and Singapore.
-- Validated across 8M+ live transactions; generated ~$180,000 in revenue; 4,000+ active users; 99.99% service uptime.
+- Sustained 1,000 RPS per node with 0s landing time (same-block transaction inclusion) and Yellowstone gRPC streaming.
+- Validated across 8M+ live transactions; generated ~$180,000 in platform revenue; 4,000+ active users; 99.99% service uptime.
 
 ---
 
-## 💼 Work Experience
+## 💼 Systems Track Record
 
-- **PixelLabz / PixelPilotz RPC** (Co-Founder & Director of Community Relations | Apr 2022 — Present)
-- **NodeStop LLC** (Information Security Analyst, Jr. Intern | Jan 2023 — Present)
+- **PixelLabz / PixelPilotz RPC** (Co-Founder & Infrastructure Lead | Apr 2022 — March 2025 // Ashburn, VA)
+- **NodeStop LLC** (Information Security Analyst Intern | Jan 2023 — March 2024 // Remote)
 
 ---
 
 ## 🎓 Academic Foundation
 
 - **The Pennsylvania State University** — University Park, PA
-- B.S. in Enterprise Technology Integration / Cybersecurity Operations & Analytics (GPA: 3.4, Expected May 2027)
+- B.S. in Enterprise Technology Integration & Cybersecurity Operations & Analytics (GPA: 3.4, Expected May 2027)
+- Coursework: Systems Architecture, Distributed Systems & Blockchain, Operating Systems Principles, AI & Machine Learning, Cyber Threat Analytics, Network Security, Database Management.
 
 ---
 
-## 🚀 Running Locally
+## 🛠️ Running Locally & Deployment
 
 ```bash
+# Run local HTTP server
 python3 -m http.server 8080
 ```
 Open `http://localhost:8080` in your browser.
+
+Deploy directly to Vercel:
+```bash
+vercel --prod
+```

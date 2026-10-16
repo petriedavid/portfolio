@@ -3,16 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>David Petrie — Systems &amp; Quantitative Engineering</title>
-  
+  <title>David Petrie — Systems Architecture &amp; Quantitative Infrastructure</title>
+  <meta name="description" content="Systems engineer and quantitative infrastructure builder. Engineering low-latency prediction market microstructure engines, multi-region bare-metal Solana RPC networks, and active inference cybersecurity models.">
+  <meta name="author" content="David Petrie">
+  <meta name="theme-color" content="#060709">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="David Petrie — Systems Architecture &amp; Quantitative Infrastructure">
+  <meta property="og:description" content="Systems engineer &amp; quantitative infrastructure builder. Low-latency prediction market trading engines, multi-region bare-metal RPC networks (Solana/Aptos), and active inference cybersecurity models.">
+  <meta property="og:image" content="assets/screenshots/sync.png">
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="David Petrie — Systems Architecture &amp; Quantitative Infrastructure">
+  <meta name="twitter:description" content="Systems engineer &amp; quantitative infrastructure builder. Low-latency prediction market trading engines, multi-region bare-metal RPC networks (Solana/Aptos), and active inference cybersecurity models.">
+  <meta name="twitter:image" content="assets/screenshots/sync.png">
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  
+
   <!-- Geist & Geist Mono Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -36,35 +51,35 @@
       <div class="nav-brand">
         <span class="brand-dot" aria-hidden="true"></span>
         <span class="brand-name">David Petrie</span>
-        <span class="brand-sub">// systems &amp; quant engineering</span>
+        <span class="brand-sub">// systems architecture &amp; quant infrastructure</span>
       </div>
 
       <div class="nav-right">
         <div class="status-tag">
-          <span style="color: var(--signal-blue);">●</span>
+          <span style="color: var(--signal-blue);" aria-hidden="true">●</span>
           <span>Available for Roles // 2026</span>
         </div>
-        <button onclick="window.print()" class="btn-print" title="Print or export as PDF">Print / PDF ⎙</button>
+        <button onclick="window.print()" class="btn-print" title="Print or export as PDF" aria-label="Print or export page as PDF">Print / PDF ⎙</button>
       </div>
     </div>
   </nav>
 
-  <!-- Main Resume Document -->
+  <!-- Main Content Container -->
   <main class="app-container">
 
     <!-- Profile Hero Section -->
-    <header class="profile-hero">
+    <header class="profile-hero reveal-item">
       <h1 class="hero-name">David Petrie</h1>
 
       <div class="hero-subhead">
-        Former Director of Community Relations @ PixelLabz RPC · Former InfoSec Intern @ NodeStop LLC
+        Co-Founder &amp; Infrastructure Lead @ PixelLabz RPC · InfoSec Engineer Intern @ NodeStop LLC
       </div>
       <div class="hero-subhead">
-      The Pennsylvania State University - Enterprise Technology Integration
+        The Pennsylvania State University — Enterprise Technology Integration &amp; Cybersecurity
       </div>
 
       <p class="hero-summary">
-        Systems developer and quantitative infrastructure builder at Penn State. Hands-on experience engineering <strong>low-latency market-microstructure trading systems</strong> for prediction markets, co-founding <strong>multi-region blockchain RPC infrastructure across 15+ bare-metal nodes</strong, and applying active inference models for cybersecurity.
+        Systems engineer and distributed infrastructure builder at Penn State. Hands-on experience engineering <strong>deterministic, low-latency market-microstructure trading engines</strong> for prediction markets, co-founding <strong>multi-region blockchain RPC infrastructure across 15+ bare-metal nodes</strong>, and applying active inference telemetry models for enterprise security.
       </p>
 
       <!-- Contact Links -->
@@ -81,79 +96,93 @@
       </div>
     </header>
 
-    <!-- 01 // Work Experience -->
-    <section class="resume-section">
-      <div class="section-label">01 // TRACK RECORD</div>
+    <!-- 01 // Systems Architecture Taxonomy & Invariants -->
+    <section class="resume-section reveal-item" id="architecture">
+      <div class="section-label">01 // SYSTEMS ARCHITECTURE TAXONOMY &amp; INVARIANTS</div>
 
-      <div class="experience-stack">
-        <!-- Role 01: PixelLabz RPC -->
-        <article class="exp-box">
-          <div class="exp-top">
-            <div class="exp-title-company">
-              <h2 class="exp-title">Co-Founder &amp; Director of Community Relations</h2>
-              <span class="exp-company">@ PixelLabz / PixelPilotz RPC</span>
-            </div>
-            <span class="exp-date">APR 2022 — MARCH 2025 // REMOTE (Ashburn, VA)</span>
+      <div class="arch-grid stagger-group">
+        <!-- Invariant 01: Kernel Bypass & Ingress -->
+        <article class="arch-card">
+          <div class="arch-header">
+            <span class="arch-num">01 // LOW-LATENCY INGESTION</span>
+            <span class="arch-tag">SUB-15μs INGRESS</span>
           </div>
-
-          <ul class="exp-points">
-            <li>Co-architected a high-throughput, non-consensus RPC network on <strong>Solana and Aptos</strong> deployed across 15+ bare-metal servers in the U.S., Germany, and Singapore, validated with <strong>8M+ live transactions</strong>.</li>
-            <li>Generated <strong>~$180,000 in revenue</strong> through token sales and web3 platform access launches, directing community growth to <strong>4,000+ active users</strong>.</li>
-            <li>Developed automated health audit, telemetry monitoring, and technical onboarding systems to maintain <strong>99.99% service uptime</strong> under peak blockchain traffic.</li>
+          <h2 class="arch-title">Kernel Bypass &amp; Hardware Clock Synchronization</h2>
+          <p class="arch-desc">
+            Virtualized network interface routing via <strong>Azure SR-IOV</strong> bypassing kernel socket overhead, coupled with <strong>lock-free SPSC ring buffers</strong> and <strong>IEEE 1588 PTP hardware clock synchronization</strong> bound to &lt;5μs clock jitter via <code>/dev/ptp0</code>.
+          </p>
+          <ul class="arch-specs-list">
+            <li>Single-Producer Single-Consumer (SPSC) lock-free ring buffers</li>
+            <li>Zero-copy packet ingestion avoiding OS context switches</li>
+            <li>Hardware PTP timestamping aligned to exchange matching engines</li>
           </ul>
-
-          <div class="exp-chips">
-            <span class="chip">Solana</span>
-            <span class="chip">Aptos</span>
-            <span class="chip">RPC Mesh Architecture</span>
-            <span class="chip">Node Deployment</span>
-            <span class="chip">Linux</span>
-            <span class="chip">Docker</span>
-            <span class="chip">Server Orchestration</span>
-          </div>
         </article>
 
-        <!-- Role 02: NodeStop LLC -->
-        <article class="exp-box">
-          <div class="exp-top">
-            <div class="exp-title-company">
-              <h2 class="exp-title">Information Security Analyst, Jr. (Internship)</h2>
-              <span class="exp-company">@ NodeStop LLC</span>
-            </div>
-            <span class="exp-date">JAN 2023 — MARCH 2024 // REMOTE</span>
+        <!-- Invariant 02: Distributed RPC Mesh -->
+        <article class="arch-card">
+          <div class="arch-header">
+            <span class="arch-num">02 // DISTRIBUTED RPC MESH</span>
+            <span class="arch-tag">15+ BARE-METAL</span>
           </div>
-
-          <ul class="exp-points">
-            <li>Conducted enterprise vulnerability assessments, risk analyses, and real-time network traffic monitoring using <strong>Snort IDS and Wireshark</strong>.</li>
-            <li>Executed structured penetration testing and credential fuzzing exercises with <strong>Nmap, Nessus, Hydra, and Medusa</strong>, authoring risk remediation plans for senior analysts.</li>
-            <li>Supported compliance readiness, monitored incident response drills, and documented mitigation steps across cross-functional engineering teams.</li>
+          <h2 class="arch-title">Multi-Region Non-Consensus Node Mesh</h2>
+          <p class="arch-desc">
+            Geographically dispersed bare-metal node architecture across <strong>Ashburn (US-East), Frankfurt (EU-Central), and Singapore (APAC)</strong>. Handles <strong>1,000 RPS per node</strong> with sub-second same-block transaction inclusion.
+          </p>
+          <ul class="arch-specs-list">
+            <li>Anycast GeoDNS edge routing with automated BGP failover</li>
+            <li>Yellowstone &amp; Geyser real-time gRPC block streaming</li>
+            <li>99.99% service availability validated across 8M+ live transactions</li>
           </ul>
+        </article>
 
-          <div class="exp-chips">
-            <span class="chip">Snort IDS</span>
-            <span class="chip">Wireshark</span>
-            <span class="chip">Penetration Testing</span>
-            <span class="chip">Nmap</span>
-            <span class="chip">Nessus</span>
-            <span class="chip">Threat Hunting</span>
-            <span class="chip">SIEM</span>
+        <!-- Invariant 03: Deterministic Microstructure -->
+        <article class="arch-card">
+          <div class="arch-header">
+            <span class="arch-num">03 // DETERMINISTIC MICROSTRUCTURE</span>
+            <span class="arch-tag">CLOSED-FORM PRICING</span>
           </div>
+          <h2 class="arch-title">Deterministic State Machines &amp; Lead-Lag Arbitrage</h2>
+          <p class="arch-desc">
+            Purpose-built quantitative execution engine for Kalshi <code>KXBTC15M</code> binary markets. Replaces curve-fit ensembles with <strong>Synthetic BRTI Lead-Lag Replication</strong> across Coinbase, Kraken, and Bitstamp with <strong>60s settlement TWAP pinning</strong>.
+          </p>
+          <ul class="arch-specs-list">
+            <li>Synthetic CME CF BRTI index synthesis across 3 spot venues</li>
+            <li>Quarter-Kelly risk sizing with dynamic inventory throttling</li>
+            <li>81.8% live session win rate with 2.14 profit factor</li>
+          </ul>
+        </article>
+
+        <!-- Invariant 04: Cryptographic Audits & Threat Defense -->
+        <article class="arch-card">
+          <div class="arch-header">
+            <span class="arch-num">04 // CRYPTOGRAPHIC INTEGRITY</span>
+            <span class="arch-tag">SHA-256 TAMPER-EVIDENT</span>
+          </div>
+          <h2 class="arch-title">Chained Write-Ahead Logs &amp; Active Inference Defense</h2>
+          <p class="arch-desc">
+            Cryptographically verifiable trade logging via <strong>append-only SHA-256 hash chains</strong> and RSA-PSS signatures in TimescaleDB, paired with raw packet inspection using <strong>Snort IDS</strong> and active inference anomaly detection models.
+          </p>
+          <ul class="arch-specs-list">
+            <li>Append-only TimescaleDB Write-Ahead Logging (WAL)</li>
+            <li>Asymmetric RSA-PSS trade authorization and telemetry signing</li>
+            <li>Deep packet inspection with Snort IDS and automated mitigation</li>
+          </ul>
         </article>
       </div>
     </section>
 
     <!-- 02 // Featured Engineering Projects -->
-    <section class="resume-section">
-      <div class="section-label">02 // VERIFIED SYSTEMS &amp; ARCHITECTURE</div>
+    <section class="resume-section reveal-item" id="systems">
+      <div class="section-label">02 // VERIFIED SYSTEMS &amp; ARCHITECTURAL IMPLEMENTATIONS</div>
 
       <div class="project-stack">
         
-        <!-- Project 01: sync // KXBTC15M (Kalshi Prediction Market Trading & Telemetry Engine) -->
-        <article class="project-card" data-project-id="sync">
-          <!-- Image slot with cropped screenshot of sync interface -->
+        <!-- Project 01: sync // KXBTC15M -->
+        <article class="project-card reveal-item" data-project-id="sync">
+          <!-- Image slot with screenshot -->
           <div class="project-image-slot" title="Click to inspect architecture and backtest telemetry">
-            <img src="assets/screenshots/sync.png" alt="sync KXBTC15M Quantitative Trading & Telemetry Architecture" loading="lazy">
-            <div class="slot-tag">KXBTC15M // LIVE TELEMETRY</div>
+            <img src="assets/screenshots/sync.png" alt="sync KXBTC15M Quantitative Trading &amp; Telemetry Architecture" loading="lazy" decoding="async">
+            <div class="slot-tag">KXBTC15M // DETERMINISTIC MICROSTRUCTURE</div>
           </div>
 
           <div class="project-body">
@@ -168,8 +197,47 @@
               A deterministic, low-latency market-microstructure trading bot and telemetry dashboard purpose-built for Kalshi's 15-minute Bitcoin binary prediction markets (<code>KXBTC15M</code>). Rejects curve-fit multi-strategy ensembles in favor of closed-form microstructure pricing: <strong>Synthetic BRTI Lead-Lag Replication</strong> across Coinbase, Kraken, and Bitstamp with <strong>60-Second Settlement TWAP Pinning Arbitrage</strong>, sub-millisecond execution routing, and SHA-256 tamper-evident cryptographic trade logging.
             </p>
 
+            <!-- Architectural Data-Flow Pipeline -->
+            <div class="arch-pipeline">
+              <div class="arch-pipeline-label">
+                <span>SYSTEM ARCHITECTURE // DATA PLANE &amp; PIPELINE FLOW</span>
+                <span style="color: var(--signal-blue);">ACTIVE TELEMETRY</span>
+              </div>
+              <div class="arch-pipeline-flow">
+                <div class="pipeline-node">
+                  <span class="node-step">01 // INGRESS</span>
+                  <span class="node-name">Exchange Feeds</span>
+                  <span class="node-meta">SR-IOV &lt;15μs WS</span>
+                </div>
+                <div class="pipeline-connector">──▶</div>
+                <div class="pipeline-node">
+                  <span class="node-step">02 // SYNC</span>
+                  <span class="node-name">Hardware PTP</span>
+                  <span class="node-meta">IEEE 1588 &lt;5μs</span>
+                </div>
+                <div class="pipeline-connector">──▶</div>
+                <div class="pipeline-node">
+                  <span class="node-step">03 // PRICING</span>
+                  <span class="node-name">BRTI Arb Core</span>
+                  <span class="node-meta">60s TWAP Pinning</span>
+                </div>
+                <div class="pipeline-connector">──▶</div>
+                <div class="pipeline-node">
+                  <span class="node-step">04 // GATEWAY</span>
+                  <span class="node-name">Kalshi Dispatch</span>
+                  <span class="node-meta">Sub-ms Order Route</span>
+                </div>
+                <div class="pipeline-connector">──▶</div>
+                <div class="pipeline-node">
+                  <span class="node-step">05 // AUDIT</span>
+                  <span class="node-name">SHA-256 WAL</span>
+                  <span class="node-meta">TimescaleDB Chain</span>
+                </div>
+              </div>
+            </div>
+
             <!-- Quantitative Backtest & Audit Telemetry Bar -->
-            <div class="stat-pill-row">
+            <div class="stat-pill-row stagger-group">
               <div class="stat-item">
                 <span class="stat-lbl">Live Win Rate // Factor</span>
                 <span class="stat-val accent">81.8% // 2.14 PF</span>
@@ -179,12 +247,20 @@
                 <span class="stat-val accent">+$110.52 (Kalshi)</span>
               </div>
               <div class="stat-item">
-                <span class="stat-lbl">Exchange Telemetry</span>
-                <span class="stat-val">11ms API Latency</span>
+                <span class="stat-lbl">Gateway Latency</span>
+                <span class="stat-val">11ms End-to-End</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-lbl">Clock Synchronization</span>
+                <span class="stat-val">Azure PTP &lt; 5μs</span>
               </div>
               <div class="stat-item">
                 <span class="stat-lbl">Audit Integrity</span>
-                <span class="stat-val">SHA-256 Hash Chain</span>
+                <span class="stat-val">SHA-256 Chained WAL</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-lbl">Order Dispatch</span>
+                <span class="stat-val">&lt; 1ms Low-Latency</span>
               </div>
             </div>
 
@@ -199,17 +275,17 @@
                 <span class="chip">Quarter-Kelly Risk</span>
               </div>
               <div class="project-actions">
-                <button class="project-action-link btn-inspect" style="background:none; border:none; cursor:pointer;">Inspect Specs ↗</button>
+                <button class="project-action-link btn-inspect">Inspect Architecture Specs ↗</button>
               </div>
             </div>
           </div>
         </article>
 
         <!-- Project 02: PixelLabz Global RPC Mesh -->
-        <article class="project-card" data-project-id="pixellabz">
+        <article class="project-card reveal-item" data-project-id="pixellabz">
           <div class="project-image-slot" title="Click to inspect network architecture">
-            <img src="assets/screenshots/pixellabz.png" alt="PixelLabz High-Performance Solana RPC Infrastructure" loading="lazy">
-            <div class="slot-tag">SOLANA RPC // HIGH PERFORMANCE</div>
+            <img src="assets/screenshots/pixellabz.png" alt="PixelLabz High-Performance Solana RPC Infrastructure" loading="lazy" decoding="async">
+            <div class="slot-tag">SOLANA RPC // HIGH-THROUGHPUT MESH</div>
           </div>
 
           <div class="project-body">
@@ -221,16 +297,55 @@
             </div>
 
             <p class="project-desc">
-              Co-architected a decentralized, non-consensus RPC network spanning 15+ bare-metal servers across the United States, Germany, and Singapore. Purpose-built for Solana developers and high-frequency traders with <strong>1,000 RPS throughput</strong>, <strong>0s landing time</strong> (sub-second same-block transaction inclusion), full <strong>Geyser / Yellowstone</strong> real-time streaming plugins, and IP-whitelisted endpoint isolation. Validated across <strong>8M+ transactions</strong> with <strong>~$180,000</strong> in platform revenue.
+              Co-architected a decentralized, non-consensus RPC network spanning 15+ bare-metal servers across the United States, Germany, and Singapore. Purpose-built for Solana developers and high-frequency traders with <strong>1,000 RPS throughput ceiling</strong>, <strong>0s landing time</strong> (sub-second same-block transaction inclusion), full <strong>Geyser / Yellowstone</strong> real-time gRPC streaming plugins, and IP-whitelisted endpoint isolation. Validated across <strong>8M+ transactions</strong> with <strong>~$180,000</strong> in platform revenue.
             </p>
 
-            <div class="stat-pill-row">
+            <!-- Architectural Topology Pipeline -->
+            <div class="arch-pipeline">
+              <div class="arch-pipeline-label">
+                <span>SYSTEM ARCHITECTURE // MULTI-REGION TOPOLOGY &amp; STREAMING</span>
+                <span style="color: var(--signal-blue);">ACTIVE MESH</span>
+              </div>
+              <div class="arch-pipeline-flow">
+                <div class="pipeline-node">
+                  <span class="node-step">01 // CLIENT</span>
+                  <span class="node-name">Trading &amp; dApps</span>
+                  <span class="node-meta">4,000+ Active Users</span>
+                </div>
+                <div class="pipeline-connector">──▶</div>
+                <div class="pipeline-node">
+                  <span class="node-step">02 // EDGE</span>
+                  <span class="node-name">Anycast GeoDNS</span>
+                  <span class="node-meta">DDoS &amp; IP Filter</span>
+                </div>
+                <div class="pipeline-connector">──▶</div>
+                <div class="pipeline-node">
+                  <span class="node-step">03 // GATEWAY</span>
+                  <span class="node-name">Regional Fabric</span>
+                  <span class="node-meta">Ashburn · Frankfurt · SG</span>
+                </div>
+                <div class="pipeline-connector">──▶</div>
+                <div class="pipeline-node">
+                  <span class="node-step">04 // NODES</span>
+                  <span class="node-name">15+ Bare-Metal</span>
+                  <span class="node-meta">1,000 RPS / Node</span>
+                </div>
+                <div class="pipeline-connector">──▶</div>
+                <div class="pipeline-node">
+                  <span class="node-step">05 // STREAM</span>
+                  <span class="node-name">Yellowstone gRPC</span>
+                  <span class="node-meta">0s Same-Block Landing</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-pill-row stagger-group">
               <div class="stat-item">
                 <span class="stat-lbl">Verified Transactions</span>
                 <span class="stat-val accent">8M+ Transactions</span>
               </div>
               <div class="stat-item">
-                <span class="stat-lbl">Throughput Peak</span>
+                <span class="stat-lbl">Throughput Ceiling</span>
                 <span class="stat-val accent">1,000 RPS / Node</span>
               </div>
               <div class="stat-item">
@@ -240,6 +355,14 @@
               <div class="stat-item">
                 <span class="stat-lbl">Active Users &amp; Mesh</span>
                 <span class="stat-val">4k+ Users · 15+ Bare-Metal</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-lbl">Node Availability</span>
+                <span class="stat-val">99.99% Uptime</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-lbl">Platform Revenue</span>
+                <span class="stat-val">~$180,000 Verified</span>
               </div>
             </div>
 
@@ -252,9 +375,11 @@
                 <span class="chip">0s Landing Time</span>
                 <span class="chip">IP Whitelisting</span>
                 <span class="chip">Bare-Metal Linux</span>
+                <span class="chip">Docker</span>
+                <span class="chip">gRPC</span>
               </div>
               <div class="project-actions">
-                <button class="project-action-link btn-inspect" style="background:none; border:none; cursor:pointer;">Inspect Mesh ↗</button>
+                <button class="project-action-link btn-inspect">Inspect Mesh Architecture ↗</button>
                 <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer" class="project-action-link">GitHub ↗</a>
               </div>
             </div>
@@ -264,43 +389,106 @@
       </div>
     </section>
 
-    <!-- 03 // Core Capabilities Matrix -->
-    <section class="resume-section">
-      <div class="section-label">03 // PROFICIENCIES</div>
+    <!-- 03 // Systems Track Record & Experience -->
+    <section class="resume-section reveal-item" id="experience">
+      <div class="section-label">03 // SYSTEMS TRACK RECORD &amp; EXPERIENCE</div>
 
-      <div class="skills-box-grid">
+      <div class="experience-stack stagger-group">
+        <!-- Role 01: PixelLabz RPC -->
+        <article class="exp-box">
+          <div class="exp-top">
+            <div class="exp-title-company">
+              <h2 class="exp-title">Co-Founder &amp; Infrastructure Lead</h2>
+              <span class="exp-company">@ PixelLabz / PixelPilotz RPC</span>
+            </div>
+            <span class="exp-date">APR 2022 — MARCH 2025 // REMOTE (Ashburn, VA)</span>
+          </div>
+
+          <ul class="exp-points">
+            <li>Co-architected a high-throughput, non-consensus RPC network on <strong>Solana and Aptos</strong> deployed across 15+ bare-metal servers in the U.S., Germany, and Singapore, validated with <strong>8M+ live transactions</strong>.</li>
+            <li>Engineered low-latency gRPC block streaming using <strong>Yellowstone and Geyser plugins</strong>, delivering sub-second same-block transaction landing and handling sustained loads of <strong>1,000 RPS per node</strong>.</li>
+            <li>Generated <strong>~$180,000 in revenue</strong> through token sales and web3 platform access launches, directing community growth to <strong>4,000+ active users</strong>.</li>
+            <li>Developed automated health audit pipelines, telemetry monitoring, and Linux socket buffer tuning to maintain <strong>99.99% service uptime</strong> under peak blockchain traffic.</li>
+          </ul>
+
+          <div class="exp-chips">
+            <span class="chip">Solana</span>
+            <span class="chip">Aptos</span>
+            <span class="chip">RPC Mesh Architecture</span>
+            <span class="chip">Yellowstone gRPC</span>
+            <span class="chip">Linux Kernel Tuning</span>
+            <span class="chip">Docker</span>
+            <span class="chip">Bare-Metal Orchestration</span>
+          </div>
+        </article>
+
+        <!-- Role 02: NodeStop LLC -->
+        <article class="exp-box">
+          <div class="exp-top">
+            <div class="exp-title-company">
+              <h2 class="exp-title">Information Security Analyst Intern</h2>
+              <span class="exp-company">@ NodeStop LLC</span>
+            </div>
+            <span class="exp-date">JAN 2023 — MARCH 2024 // REMOTE</span>
+          </div>
+
+          <ul class="exp-points">
+            <li>Conducted enterprise vulnerability assessments, risk analyses, and real-time network traffic monitoring using <strong>Snort IDS and Wireshark</strong>, inspecting raw packet streams for intrusion signatures.</li>
+            <li>Executed structured penetration testing and credential fuzzing exercises with <strong>Nmap, Nessus, Hydra, and Medusa</strong>, authoring risk remediation plans for senior security engineers.</li>
+            <li>Supported compliance readiness, monitored incident response drills, and documented mitigation steps across cross-functional infrastructure teams.</li>
+          </ul>
+
+          <div class="exp-chips">
+            <span class="chip">Snort IDS</span>
+            <span class="chip">Wireshark</span>
+            <span class="chip">Deep Packet Inspection</span>
+            <span class="chip">Penetration Testing</span>
+            <span class="chip">Nmap</span>
+            <span class="chip">Nessus</span>
+            <span class="chip">Threat Hunting</span>
+            <span class="chip">SIEM</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 04 // Core Capabilities & Systems Stack -->
+    <section class="resume-section reveal-item" id="capabilities">
+      <div class="section-label">04 // CORE CAPABILITIES &amp; SYSTEMS STACK</div>
+
+      <div class="skills-box-grid stagger-group">
         <div class="skill-tile">
-          <span class="skill-title">Programming Languages</span>
-          <p class="skill-list">Python 3.11, Rust, Java, JavaScript / TypeScript, SQL, PHP, C/C++, HTML5 / CSS3</p>
+          <h3 class="skill-title">Systems &amp; Low-Latency</h3>
+          <p class="skill-list">Python 3.11, Rust, C/C++, Java, Lock-Free Concurrency, Azure SR-IOV Virtualization, Hardware PTP (&lt;5μs), Socket Buffer Tuning, Linux Kernel</p>
         </div>
 
         <div class="skill-tile">
-          <span class="skill-title">Quantitative &amp; Systems</span>
-          <p class="skill-list">Market Microstructure, Order Book Imbalance (OBI), 60s TWAP Pinning, Lead-Lag Replication, Solana/Aptos RPC, WebSockets</p>
+          <h3 class="skill-title">Distributed Systems &amp; Web3</h3>
+          <p class="skill-list">Solana &amp; Aptos RPC, Yellowstone / Geyser gRPC Streaming, Anycast BGP Routing, Multi-Region Meshes, WebSockets, Zero-Copy Pipelines</p>
         </div>
 
         <div class="skill-tile">
-          <span class="skill-title">Cybersecurity &amp; Risk</span>
-          <p class="skill-list">Quarter-Kelly Sizing, Snort IDS, Wireshark, Cryptographic RSA-PSS Signatures, SHA-256 Chained Audit WAL, Threat Hunting, SIEM</p>
+          <h3 class="skill-title">Quantitative Microstructure</h3>
+          <p class="skill-list">Order Book Imbalance (OBI), Synthetic CME CF BRTI Lead-Lag Replication, 60s Settlement TWAP Pinning Arbitrage, Quarter-Kelly Risk Sizing</p>
         </div>
 
         <div class="skill-tile">
-          <span class="skill-title">Infrastructure &amp; Cloud</span>
-          <p class="skill-list">Azure Linux (SR-IOV, Hardware PTP &lt; 5μs), Docker, TimescaleDB / PostgreSQL, FastAPI, Nginx, CI/CD, Git</p>
+          <h3 class="skill-title">Cybersecurity &amp; Cloud Infra</h3>
+          <p class="skill-list">Snort IDS, Wireshark, Cryptographic RSA-PSS Signatures, SHA-256 Chained WAL, TimescaleDB, Docker, Azure Linux, CI/CD, Git</p>
         </div>
       </div>
     </section>
 
-    <!-- 04 // Education -->
-    <section class="resume-section" style="border-bottom: none;">
-      <div class="section-label">04 // ACADEMIC FOUNDATION</div>
+    <!-- 05 // Academic Foundation -->
+    <section class="resume-section reveal-item" style="border-bottom: none;" id="education">
+      <div class="section-label">05 // ACADEMIC FOUNDATION</div>
 
       <div class="edu-card">
         <div>
-          <div class="edu-main">The Pennsylvania State University — University Park, PA</div>
-          <div class="edu-sub">B.S. in Enterprise Technology Integration / Cybersecurity Operations &amp; Analytics · GPA: 3.4</div>
-          <div class="edu-sub" style="font-size: 12px; color: var(--text-tertiary); margin-top: 4px;">
-            Coursework: Systems Architecture, AI &amp; Machine Learning, Distributed Systems &amp; Blockchain, Cyber Threat Analytics, Network Security, Database Management
+          <h3 class="edu-main">The Pennsylvania State University — University Park, PA</h3>
+          <div class="edu-sub">B.S. in Enterprise Technology Integration &amp; Cybersecurity Operations &amp; Analytics · GPA: 3.4</div>
+          <div class="edu-sub" style="font-size: 12px; color: var(--text-tertiary); margin-top: 6px;">
+            Coursework: Systems Architecture, Distributed Systems &amp; Blockchain, Operating Systems Principles, AI &amp; Machine Learning, Cyber Threat Analytics, Network Security, Database Management
           </div>
         </div>
         <div class="edu-meta">EXPECTED MAY 2027</div>
@@ -308,7 +496,7 @@
     </section>
 
     <!-- Footer & Colophon -->
-    <footer class="page-footer">
+    <footer class="page-footer reveal-item">
       <div>
         <span>© 2026 David Petrie. Built with brutalist restraint.</span>
       </div>
@@ -317,23 +505,40 @@
         <a href="mailto:dvp5702@psu.edu">dvp5702@psu.edu</a>
         <a href="https://linkedin.com/in/gender" target="_blank" rel="noopener noreferrer">LinkedIn (/in/gender)</a>
         <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <span id="live-clock">23:25:00 EDT</span>
+        <span id="live-clock" title="Eastern Time (New York)">--:--:-- EDT</span>
       </div>
     </footer>
 
   </main>
 
-  <!-- Minimalist Lightbox Modal -->
+  <!-- Systems Architecture & Telemetry Lightbox Modal -->
   <div id="lightbox-modal" class="lightbox-overlay" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
     <div class="lightbox-container">
       <div class="lightbox-header">
-        <h4 id="lightbox-title" class="lightbox-title">System Architecture</h4>
+        <h4 id="lightbox-title" class="lightbox-title">Systems Architecture Inspector</h4>
         <button id="lightbox-close-btn" class="lightbox-close-btn" aria-label="Close Lightbox">✕</button>
       </div>
 
-      <div id="lightbox-media" class="lightbox-media-wrap"></div>
+      <!-- Tab Navigator -->
+      <div class="lightbox-tabs" role="tablist">
+        <button class="lightbox-tab is-active" data-tab="preview" role="tab" aria-selected="true">01 // System Interface</button>
+        <button class="lightbox-tab" data-tab="architecture" role="tab" aria-selected="false">02 // Topology &amp; Data Flow</button>
+        <button class="lightbox-tab" data-tab="invariants" role="tab" aria-selected="false">03 // Telemetry &amp; Invariants</button>
+      </div>
 
-      <p id="lightbox-desc" class="lightbox-desc"></p>
+      <!-- Dynamic Tab Content Panels -->
+      <div id="lightbox-tab-preview" class="lightbox-tab-content">
+        <div id="lightbox-media" class="lightbox-media-wrap"></div>
+        <p id="lightbox-desc" class="lightbox-desc"></p>
+      </div>
+
+      <div id="lightbox-tab-architecture" class="lightbox-tab-content" style="display: none;">
+        <div id="lightbox-arch-details"></div>
+      </div>
+
+      <div id="lightbox-tab-invariants" class="lightbox-tab-content" style="display: none;">
+        <div id="lightbox-invariants-details"></div>
+      </div>
     </div>
   </div>
 
