@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menuDrawer.classList.add('is-open');
     menuDrawer.setAttribute('aria-hidden', 'false');
     if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+    menuDrawer.scrollTop = 0;
   }
 
   function closeMenu() {

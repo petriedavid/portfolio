@@ -21,7 +21,7 @@
   <!-- Geist & Geist Mono Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/theme.css">
@@ -41,7 +41,7 @@
 
     <!-- Top Corner Navigation Menu Button -->
     <header class="top-header">
-      <button id="menu-btn" class="corner-menu-btn" aria-label="Open Navigation Menu" aria-expanded="false">
+      <button id="menu-btn" class="corner-menu-btn" aria-label="Open Fullscreen Index" aria-expanded="false">
         <span class="menu-btn-label">Menu</span>
         <span class="menu-btn-icon" aria-hidden="true">
           <span class="menu-bar"></span>
@@ -74,71 +74,188 @@
   </div>
 
   <!-- =========================================================================
-       Minimalist Overlay Menu Drawer (Work, About, Contact)
+       Full-Screen Editorial Overlay (Takes up the entire screen when pressed)
        ========================================================================= -->
-  <div id="menu-drawer" class="menu-drawer-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="menu-drawer-panel">
+  <div id="menu-drawer" class="menu-fullscreen-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="menu-fullscreen-container">
 
-      <div class="drawer-header">
-        <span class="drawer-header-tag">// INDEX</span>
-        <button id="menu-close-btn" class="drawer-close-btn" aria-label="Close Menu">Close [×]</button>
-      </div>
+      <!-- Sticky Editorial Header -->
+      <header class="menu-fullscreen-header">
+        <div class="menu-header-brand">
+          <span class="brand-pulse-dot" aria-hidden="true"></span>
+          <span class="menu-header-name">David Petrie</span>
+          <span class="menu-header-meta">// Systems &amp; Security Architecture</span>
+        </div>
 
-      <div class="drawer-body">
+        <button id="menu-close-btn" class="menu-close-btn" aria-label="Close Fullscreen Index">
+          <span class="close-label">Close</span>
+          <span class="close-key">[×]</span>
+        </button>
+      </header>
+
+      <!-- Full-Screen Main Content Section -->
+      <main class="menu-fullscreen-content">
+
+        <!-- Intro Overview Section -->
+        <section class="fs-section fs-intro-section">
+          <div class="fs-section-tag">// 00 · PROFILE &amp; FOCUS</div>
+          <h2 class="fs-intro-heading">Systems architecture, market microstructure, and high-throughput distributed networks.</h2>
+          <p class="fs-intro-text">
+            Co-Founder @ PixelLabz RPC · Former InfoSec Intern @ NodeStop LLC · Penn State ETI &amp; Cybersecurity (GPA: 3.4). Designing and maintaining low-latency execution engines, non-consensus validator RPC fabrics, and threat hunting telemetry pipelines.
+          </p>
+        </section>
 
         <!-- Section 01: Selected Systems & Architecture -->
-        <section class="drawer-section">
-          <h2 class="drawer-section-heading">01 // Selected Work</h2>
-          <div class="drawer-items-list">
+        <section class="fs-section">
+          <div class="fs-section-tag">// 01 · VERIFIED SYSTEMS &amp; ARCHITECTURAL IMPLEMENTATIONS</div>
 
-            <!-- Project 1: sync // KXBTC15M -->
-            <article class="drawer-item">
-              <div class="drawer-item-header">
-                <span class="drawer-item-title">sync // KXBTC15M</span>
-                <span class="drawer-item-tag">Quantitative Architecture</span>
+          <div class="fs-projects-grid">
+
+            <!-- Project 01: sync // KXBTC15M -->
+            <article class="fs-project-card">
+              <div class="fs-card-top">
+                <div>
+                  <h3 class="fs-card-title">sync // KXBTC15M</h3>
+                  <span class="fs-card-subtitle">Institutional Kalshi 15-Minute Bitcoin Binary Quantitative Trading Architecture</span>
+                </div>
+                <span class="fs-tag-pill">QUANT &amp; MICROSTRUCTURE</span>
               </div>
-              <p class="drawer-item-desc">
-                Institutional Kalshi 15-Minute Bitcoin Binary Quantitative Trading Architecture. Closed-form microstructure pricing: Synthetic BRTI Lead-Lag Replication across Coinbase, Kraken, and Bitstamp with 60-Second Settlement TWAP Pinning Arbitrage.
+
+              <p class="fs-card-desc">
+                Closed-form microstructure pricing architecture rejecting curve-fit multi-strategy ensembles: Synthetic BRTI Lead-Lag Replication across Coinbase, Kraken, and Bitstamp with 60-Second Settlement TWAP Pinning Arbitrage, sub-millisecond execution routing, and SHA-256 tamper-evident cryptographic trade logging.
               </p>
-              <div class="drawer-item-meta">
-                <span>Win Rate: 81.8%</span>
-                <span>Profit Factor: 2.14 PF</span>
-                <span>Latency: 11ms Gateway</span>
-                <span>Clock: Azure PTP &lt; 5μs</span>
+
+              <!-- Real Telemetry Matrix -->
+              <div class="fs-telemetry-grid">
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Live Win Rate // PF</span>
+                  <span class="fs-tel-val">81.8% // 2.14 PF</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Realized Session PnL</span>
+                  <span class="fs-tel-val">+$110.52 USD (Kalshi)</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Gateway Latency</span>
+                  <span class="fs-tel-val">11ms End-to-End</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Hardware Clock Sync</span>
+                  <span class="fs-tel-val">Azure PTP &lt; 5μs</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Audit Integrity</span>
+                  <span class="fs-tel-val">SHA-256 Chained WAL</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Order Dispatch</span>
+                  <span class="fs-tel-val">&lt; 1ms Low-Latency</span>
+                </div>
+              </div>
+
+              <div class="fs-chips-wrap">
+                <span class="fs-chip">Python 3.11</span>
+                <span class="fs-chip">FastAPI (100ms)</span>
+                <span class="fs-chip">React 18</span>
+                <span class="fs-chip">TimescaleDB</span>
+                <span class="fs-chip">Azure SR-IOV</span>
+                <span class="fs-chip">Quarter-Kelly</span>
               </div>
             </article>
 
-            <!-- Project 2: PixelLabz Global RPC Mesh -->
-            <article class="drawer-item">
-              <div class="drawer-item-header">
-                <span class="drawer-item-title">PixelLabz Global RPC Mesh</span>
-                <span class="drawer-item-tag">Distributed Systems</span>
+            <!-- Project 02: PixelLabz Global RPC Mesh -->
+            <article class="fs-project-card">
+              <div class="fs-card-top">
+                <div>
+                  <h3 class="fs-card-title">PixelLabz Global RPC Mesh</h3>
+                  <span class="fs-card-subtitle">High-Throughput Non-Consensus Node Mesh on Solana &amp; Aptos</span>
+                </div>
+                <span class="fs-tag-pill">DISTRIBUTED INFRASTRUCTURE</span>
               </div>
-              <p class="drawer-item-desc">
-                High-throughput non-consensus bare-metal node fabric on Solana &amp; Aptos across 15+ nodes in the U.S., Germany, and Singapore with Yellowstone gRPC streaming.
+
+              <p class="fs-card-desc">
+                Co-architected non-consensus RPC network on Solana and Aptos across 15+ bare-metal servers in the U.S., Germany, and Singapore with Yellowstone gRPC streaming. Sustained 1,000 RPS per node with 0s landing time (same-block transaction inclusion) and 99.99% service uptime.
               </p>
-              <div class="drawer-item-meta">
-                <span>8M+ Transactions</span>
-                <span>1,000 RPS / Node</span>
-                <span>0s Same-Block Landing</span>
-                <span>99.99% Uptime</span>
+
+              <!-- Real Telemetry Matrix -->
+              <div class="fs-telemetry-grid">
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Verified Transactions</span>
+                  <span class="fs-tel-val">8M+ Transactions</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Throughput Ceiling</span>
+                  <span class="fs-tel-val">1,000 RPS / Node</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Transaction Landing</span>
+                  <span class="fs-tel-val">0s (Same Block)</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Active Users &amp; Mesh</span>
+                  <span class="fs-tel-val">4k+ Users · 15+ Nodes</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Node Availability</span>
+                  <span class="fs-tel-val">99.99% Uptime</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Platform Revenue</span>
+                  <span class="fs-tel-val">~$180,000 Verified</span>
+                </div>
+              </div>
+
+              <div class="fs-chips-wrap">
+                <span class="fs-chip">Solana</span>
+                <span class="fs-chip">Aptos</span>
+                <span class="fs-chip">Yellowstone gRPC</span>
+                <span class="fs-chip">1,000 RPS</span>
+                <span class="fs-chip">0s Landing</span>
+                <span class="fs-chip">Bare-Metal Linux</span>
               </div>
             </article>
 
-            <!-- Project 3: NodeStop Enterprise Security -->
-            <article class="drawer-item">
-              <div class="drawer-item-header">
-                <span class="drawer-item-title">NodeStop Security Infrastructure</span>
-                <span class="drawer-item-tag">Cyber Defense</span>
+            <!-- Project 03: NodeStop Enterprise Security -->
+            <article class="fs-project-card">
+              <div class="fs-card-top">
+                <div>
+                  <h3 class="fs-card-title">NodeStop Security Infrastructure</h3>
+                  <span class="fs-card-subtitle">Information Security Analyst Intern — Threat Hunting &amp; Deep Packet Telemetry</span>
+                </div>
+                <span class="fs-tag-pill">CYBER DEFENSE</span>
               </div>
-              <p class="drawer-item-desc">
-                Information Security Analyst Intern — Enterprise vulnerability mitigation, real-time threat detection, and deep packet telemetry using Snort IDS, Wireshark, Nmap, and Nessus.
+
+              <p class="fs-card-desc">
+                Real-time network traffic analysis and raw packet inspection using Snort IDS and Wireshark. Performed enterprise penetration testing, credential fuzzing exercises with Nmap, Nessus, and Hydra, and active threat mitigation across production endpoints.
               </p>
-              <div class="drawer-item-meta">
-                <span>Snort IDS</span>
-                <span>Wireshark</span>
-                <span>Threat Hunting</span>
-                <span>Fuzzing &amp; Recon</span>
+
+              <!-- Real Telemetry Matrix -->
+              <div class="fs-telemetry-grid">
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Intrusion Detection</span>
+                  <span class="fs-tel-val">Snort IDS &amp; Wireshark</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Recon &amp; Fuzzing</span>
+                  <span class="fs-tel-val">Nmap · Nessus · Hydra</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Traffic Analysis</span>
+                  <span class="fs-tel-val">Deep Packet Inspection</span>
+                </div>
+                <div class="fs-telemetry-item">
+                  <span class="fs-tel-label">Defense Playbook</span>
+                  <span class="fs-tel-val">Active Threat Mitigation</span>
+                </div>
+              </div>
+
+              <div class="fs-chips-wrap">
+                <span class="fs-chip">Snort IDS</span>
+                <span class="fs-chip">Wireshark</span>
+                <span class="fs-chip">Penetration Testing</span>
+                <span class="fs-chip">Nmap</span>
+                <span class="fs-chip">Nessus</span>
+                <span class="fs-chip">SIEM</span>
               </div>
             </article>
 
@@ -146,39 +263,52 @@
         </section>
 
         <!-- Section 02: Academic Foundation -->
-        <section class="drawer-section">
-          <h2 class="drawer-section-heading">02 // Foundation</h2>
-          <div class="drawer-item">
-            <div class="drawer-item-header">
-              <span class="drawer-item-title">The Pennsylvania State University</span>
-              <span class="drawer-item-tag">Expected May 2027</span>
+        <section class="fs-section">
+          <div class="fs-section-tag">// 02 · ACADEMIC FOUNDATION</div>
+
+          <div class="fs-project-card">
+            <div class="fs-card-top">
+              <div>
+                <h3 class="fs-card-title">The Pennsylvania State University — University Park, PA</h3>
+                <span class="fs-card-subtitle">B.S. in Enterprise Technology Integration &amp; Cybersecurity Operations &amp; Analytics</span>
+              </div>
+              <span class="fs-tag-pill">GPA: 3.4 // EXPECTED MAY 2027</span>
             </div>
-            <p class="drawer-item-desc">
-              B.S. in Enterprise Technology Integration &amp; Cybersecurity Operations &amp; Analytics (GPA: 3.4). Focus on systems architecture, distributed systems, operating system invariants, and cyber defense protocols.
+
+            <p class="fs-card-desc">
+              Focus on systems architecture, distributed systems &amp; blockchain invariants, operating systems principles, AI &amp; machine learning, cyber threat analytics, network security, and database management.
             </p>
           </div>
         </section>
 
         <!-- Section 03: Direct Contact & Links -->
-        <section class="drawer-section">
-          <h2 class="drawer-section-heading">03 // Connect</h2>
-          <div class="drawer-contact-links">
-            <a href="mailto:dvp5782@psu.edu" class="drawer-link-pill">
-              <span>Email</span>
-              <span class="drawer-link-val">dvp5782@psu.edu ↗</span>
+        <section class="fs-section">
+          <div class="fs-section-tag">// 03 · CONNECT &amp; CHANNELS</div>
+
+          <div class="fs-connect-grid">
+            <a href="mailto:dvp5782@psu.edu" class="fs-connect-card">
+              <span class="fs-connect-label">Direct Email</span>
+              <span class="fs-connect-val">dvp5782@psu.edu ↗</span>
             </a>
-            <a href="https://linkedin.com/in/gander" target="_blank" rel="noopener noreferrer" class="drawer-link-pill">
-              <span>LinkedIn</span>
-              <span class="drawer-link-val">/in/gander ↗</span>
+            <a href="https://linkedin.com/in/gander" target="_blank" rel="noopener noreferrer" class="fs-connect-card">
+              <span class="fs-connect-label">LinkedIn</span>
+              <span class="fs-connect-val">/in/gander ↗</span>
             </a>
-            <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer" class="drawer-link-pill">
-              <span>GitHub</span>
-              <span class="drawer-link-val">/petriedavid ↗</span>
+            <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer" class="fs-connect-card">
+              <span class="fs-connect-label">GitHub</span>
+              <span class="fs-connect-val">/petriedavid ↗</span>
             </a>
           </div>
         </section>
 
-      </div>
+      </main>
+
+      <!-- Full-Screen Footer -->
+      <footer class="fs-footer">
+        <span>© 2026 David Petrie. Editorial layout inspired by Shiyun Lu.</span>
+        <span>Built with Three.js &amp; Verlet 3D Physics</span>
+      </footer>
+
     </div>
   </div>
 
