@@ -1,38 +1,25 @@
-# David Petrie // The Celestial Playground of Big Data
+# David Petrie // Minimalist Liquid Glass Portfolio
 
-An interactive, whimsical **Celestial Playground** portfolio where big data and distributed systems come alive through playful fantasy metaphors, glowing neon hand-drawn doodles, and deep architectural rigor.
-
----
-
-## 🪐 The Creative Concept: Metaphors of the Cosmos
-
-Instead of scary cybersecurity terminal screens or strict finance charts, the portfolio explains complex technical disciplines through natural, celestial, and whimsical world-building:
-
-- **Quantitative Finance → "Catching the Waves of Market Oceans"**:
-  Not cold numbers, but sailing sturdy paper boats through the turbulent 15-minute Bitcoin tidal waves of prediction market order books (`sync // KXBTC15M`), using stars (Coinbase, Kraken, Bitstamp spot feeds) as navigational constellations.
-- **Cybersecurity → "Magic Digital Castle Defense"**:
-  Not sterile code, but building enchanted digital fortresses and weaving protective wards (Snort IDS, Wireshark, RSA-PSS cryptographic runes) that bounce away mischievous little pixel-ghost threats.
-- **Distributed RPC Networks → "The Galactic Starlight Beacon Network"**:
-  Not boring server clusters, but a 15-tower orbital beacon mesh across Ashburn, Frankfurt, and Singapore, beaming 8,000,000+ starlight packets at lightspeed with 0s landing time.
-- **AI & Systems Architecture → "Organic Pattern-Weaving"**:
-  An organic loom where threads of latency, synchronization, and active inference are woven into glowing celestial tapestry.
+An ultra-modern, high-end **Liquid Glass** interactive portfolio designed with optical physical realism, architectural glass beveling, visionOS specular refraction, and WebGL fluid caustics.
 
 ---
 
-## ✨ Interactive Playful Features
+## 💎 Design System & Aesthetic Architecture
 
-1. **Interactive Cosmic Vortex Canvas**:
-   - Real-time 2D HTML5 canvas featuring a swirling stardust vortex with gravitational mouse pull.
-   - Periodic shooting stars and comets crossing the midnight sky.
-   - Click anywhere to launch a burst of twinkling stardust sparkler confetti.
-2. **Interactive Cosmo-Kitten Mascot ("space-cat")**:
-   - A hand-drawn astronaut kitten floating in a starlight helmet. Click the cat to receive quirky quotes ("Purr-ing at 1,000 RPS! 🐾✨", "Sipping cosmic milk in the Azure cloud! 🥛🪐").
-3. **Floating Paper Boat & Wave Animations**:
-   - An animated origami paper boat bobbing on glowing multi-layer sine waves, braving the 60-second settlement tidal wave.
-4. **Mischievous Pixel-Ghosts & Magic Castle Shield**:
-   - Floating pixel-ghost cyber-threats that bounce off the castle's shimmering translucent ward bubble on hover with a cute "boop! blocked! 👻🛡️".
-5. **Celestial Systems Grimoire (Lightbox Modal)**:
-   - 3-tab technical inspector revealing full-resolution vessel screenshots, end-to-end data planes, and complete component latency specifications.
+1. **Pure Monochromatic Minimalism**:
+   - Deep Obsidian base canvas (`#08090C`), avoiding flat pitch black or muddy blur overlays.
+   - Variable alpha frosted glass substrates (`rgba(255, 255, 255, 0.03)` to `0.08`) with multi-stop inner borders (`inset 0 1px 1px rgba(255, 255, 255, 0.22)`) replicating physical glass beveling.
+   - Adaptive background blur: `backdrop-filter: blur(28px) saturate(180%)`.
+2. **The Liquid Glass Canvas (Hero Layer & Background)**:
+   - Full-viewport WebGL fluid background rendering real-time optical caustics, simplex noise waves, and chromatic aberration (prismatic RGB split on wave peaks).
+   - Inertial optical mercury spotlight trailing the cursor with smooth damping and automatic idle throttling (0% CPU when stationary).
+3. **The Floating Prism Project Dock**:
+   - Suspended glass crystalline panels with 3D perspective tilt (`perspective(1200px) rotateX(...) rotateY(...)`) reactive to mouse position.
+   - On hover, ambient light concentrates along the bevel edge with shifting specular rim light, while the high-resolution interface preview emerges smoothly from beneath the frosted surface.
+4. **Discipline Filters (The Liquid Toggle)**:
+   - Floating glass toggle bar with a smooth liquid highlight slider that physically stretches, snaps, and filters project categories (ALL, QUANT & MICROSTRUCTURE, DISTRIBUTED RPC, CYBER DEFENSE, CORE SYSTEMS).
+5. **Interactive Project Overlay ("The Magnifying Glass")**:
+   - Seamless elastic zoom expansion into edge-to-edge minimalist case study overlay with full telemetry matrices, hardware invariants, and data plane routing pipelines.
 
 ---
 
@@ -45,7 +32,7 @@ Instead of scary cybersecurity terminal screens or strict finance charts, the po
   - **Live Win Rate / Profit Factor:** `81.8%` // `2.14 PF` (15,000 backtest segments)
   - **Realized Session PnL:** `+$110.52 USD` (Live Kalshi markets)
   - **Gateway Latency:** `11ms End-to-End`
-  - **Cosmic Star-Clock Drift:** Azure Hyper-V Hardware PTP `/dev/ptp0` `<5μs`
+  - **Hardware Clock Drift:** Azure Hyper-V Hardware PTP `/dev/ptp0` `<5μs`
 - **Stack:** Python 3.11, FastAPI (100ms Telemetry), React 18, TypeScript, TimescaleDB, Azure Linux (SR-IOV <15μs), RSA-PSS Signatures, Quarter-Kelly Sizing.
 
 ### 2. PixelLabz Global RPC Mesh
@@ -53,6 +40,11 @@ Instead of scary cybersecurity terminal screens or strict finance charts, the po
 - Co-architected non-consensus RPC network on Solana and Aptos across 15+ bare-metal servers in U.S., Germany, and Singapore.
 - Sustained 1,000 RPS per node with 0s landing time (same-block transaction inclusion) and Yellowstone gRPC streaming.
 - Validated across 8M+ live transactions; generated ~$180,000 in platform revenue; 4,000+ active users; 99.99% service uptime.
+
+### 3. NodeStop Enterprise Security Infrastructure
+*Information Security Analyst Intern — Threat Hunting & Deep Packet Telemetry*
+- Real-time network traffic analysis and raw packet inspection with Snort IDS and Wireshark.
+- Penetration testing and credential fuzzing exercises with Nmap, Nessus, Hydra, Medusa.
 
 ---
 
