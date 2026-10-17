@@ -85,6 +85,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleMouseBtn = document.getElementById('toggle-mouse');
   const toggleSpheresBtn = document.getElementById('toggle-spheres');
 
+  // Both Camera and Mouse auto on by default
+  if (toggleCameraBtn && physics) {
+    toggleCameraBtn.classList.toggle('is-active', physics.cameraTilted);
+  }
+  if (toggleMouseBtn && physics) {
+    toggleMouseBtn.classList.toggle('is-active', physics.showMouseCollider);
+  }
+
   if (toggleCameraBtn && physics) {
     toggleCameraBtn.addEventListener('click', (e) => {
       e.stopPropagation();

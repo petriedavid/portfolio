@@ -37,11 +37,11 @@ export class PhysicsCanvas {
     this.isRunning = true;
     this.rafId = null;
 
-    // Debug / State Toggles
-    this.showMouseCollider = false;
-    this.cameraTilted = false;
-    this.targetCameraPos = new THREE.Vector3(0, 0, 20);
-    this.targetCameraLook = new THREE.Vector3(0, 0, 0);
+    // Debug / State Toggles (Auto ON by default)
+    this.showMouseCollider = true;
+    this.cameraTilted = true;
+    this.targetCameraPos = new THREE.Vector3(2.0, 3.2, 21.0);
+    this.targetCameraLook = new THREE.Vector3(0, -1.5, 0);
 
     this.initScene();
     this.initLighting();
@@ -61,6 +61,7 @@ export class PhysicsCanvas {
     const aspect = this.container.clientWidth / this.container.clientHeight;
     this.camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 100);
     this.camera.position.copy(this.targetCameraPos);
+    this.camera.lookAt(this.targetCameraLook);
     this.scene.add(this.camera);
 
     this.renderer = new THREE.WebGLRenderer({
@@ -159,16 +160,30 @@ export class PhysicsCanvas {
   }
 
   initMouseHelper() {
-    // Sleek wireframe ring indicator for // Mouse toggle
-    const ringGeo = new THREE.RingGeometry(this.options.mouseRadius - 0.05, this.options.mouseRadius, 48);
+    // Sleek reticle indicator for // Mouse toggle
+    const helperGroup = new THREE.Group();
+    const ringGeo = new THREE.RingGeometry(this.options.mouseRadius - 0.035, this.options.mouseRadius, 64);
     const ringMat = new THREE.MeshBasicMaterial({
-      color: 0x121214,
+      color: 0x111215,
       side: THREE.DoubleSide,
       transparent: true,
-      opacity: 0.35
+      opacity: 0.4
     });
-    this.mouseHelper = new THREE.Mesh(ringGeo, ringMat);
-    this.mouseHelper.visible = false;
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    helperGroup.add(ring);
+
+    const dotGeo = new THREE.CircleGeometry(0.12, 16);
+    const dotMat = new THREE.MeshBasicMaterial({
+      color: 0x111215,
+      transparent: true,
+      opacity: 0.45
+    });
+    const dot = new THREE.Mesh(dotGeo, dotMat);
+    helperGroup.add(dot);
+
+    this.mouseHelper = helperGroup;
+    this.mouseHelper.position.set(0, -999, 0);
+    this.mouseHelper.visible = this.showMouseCollider;
     this.scene.add(this.mouseHelper);
   }
 
@@ -561,9 +576,17 @@ export class PhysicsCanvas {
   }
 
   updateCamera(dt) {
-    // Smooth camera transition when toggling perspective
-    this.camera.position.lerp(this.targetCameraPos, 0.06);
-    this.camera.lookAt(this.targetCameraLook);
+    if (this.cameraTilted && this.mouse2D.x > -900) {
+      const parallaxX = this.targetCameraPos.x + this.mouse2D.x * 1.5;
+      const parallaxY = this.targetCameraPos.y + this.mouse2D.y * 1.0;
+      this.camera.position.x += (parallaxX - this.camera.position.x) * 0.05;
+      this.camera.position.y += (parallaxY - this.camera.position.y) * 0.05;
+      this.camera.position.z += (this.targetCameraPos.z - this.camera.position.z) * 0.05;
+      this.camera.lookAt(this.targetCameraLook);
+    } else {
+      this.camera.position.lerp(this.targetCameraPos, 0.06);
+      this.camera.lookAt(this.targetCameraLook);
+    }
   }
 
   animate() {
