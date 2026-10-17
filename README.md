@@ -1,61 +1,48 @@
-# David Petrie — Editorial Portfolio & Three.js Physics Canvas
+# David Petrie — Minimalist Portfolio & Three.js Physics Ball Pit
 
-A minimalist, high-contrast editorial portfolio inspired by the interaction and visual aesthetic of **[shiyunlu.com](https://www.shiyunlu.com/)**.
+A pure, minimalist editorial portfolio and tactile 3D physics ball pit inspired directly by the design and interaction of **[shiyunlu.com](https://www.shiyunlu.com/)**.
 
-Combines an interactive 3D Verlet physics simulation running at 60 FPS in Three.js with an editorial typography layer (`Geist` & `Geist Mono`), live physics telemetry, collapsible Technical HUD debug controls, and verified institutional systems architecture case studies.
+Combines real downward gravity (`-Y`), screen-space frustum bounding walls and floor, tactile glossy boba pearls with soft studio contact shadows, an invisible kinematic mouse collider that plows through settled spheres, and an ultra-clean typography centerpiece with corner navigation drawer.
 
 ---
 
 ## ⚡ Architectural Design System
 
-1. **Layered Full-Viewport Architecture (`100dvh`)**:
-   - **Background Substrate (`z-index: 1`)**: Full-screen Three.js WebGL physics canvas.
-   - **Foreground Editorial Layer (`z-index: 10`)**: High-contrast typography with `pointer-events: none` on structural wrappers and `pointer-events: auto` on interactive elements, allowing cursor interactions and drag gestures to pass directly to the physics canvas while keeping content clickable.
+1. **Ultra-Minimalist Centerpiece Layout (`100dvh`, `overflow: hidden`)**:
+   - **Display Typography**: Giant, high-impact uppercase name `DAVID PETRIE` with tight tracking (`-0.04em`) and understated lowercase title `systems & security engineer.`
+   - **Pointer-events transparency**: Header and centerpiece have `pointer-events: none` on layout wrappers, allowing the cursor to freely sweep and plow through the 3D balls anywhere across the screen.
 
-2. **Interactive 3D Sphere Physics Engine (`js/physics-engine.js`)**:
-   - Zero-dependency, lightweight Verlet collision integration solver.
-   - Camera frustum boundary math with real-time viewport reflection.
-   - 3D Raycaster cursor force field:
-     - **Repel**: Spheres scatter dynamically away from the cursor.
-     - **Attract**: Spheres cluster smoothly toward the cursor.
-     - **Vortex**: Spheres orbit cyclonically around the cursor.
-   - Radial impulse shockwaves on mouse click.
-   - 3D sphere grabbing, dragging, and throwing with velocity inheritance.
-   - Subtle camera parallax reacting to cursor movement.
+2. **Corner Navigation Drawer**:
+   - Minimalist `Menu` pill in the top-right corner that slides out a clean editorial drawer for:
+     - **01 // Selected Work**: `sync // KXBTC15M` (Kalshi 15M Bitcoin Quantitative Architecture), `PixelLabz Global RPC Mesh` (Solana & Aptos Non-Consensus Mesh), `NodeStop Security Infrastructure` (InfoSec Threat Hunting).
+     - **02 // Foundation**: The Pennsylvania State University (B.S. in ETI & Cybersecurity, GPA 3.4).
+     - **03 // Connect**: Direct links (`dvp5782@psu.edu`, LinkedIn `/in/gander`, GitHub `/petriedavid`).
 
-3. **Technical HUD / Debug Controls Overlay (Shiyun Lu Style)**:
-   - Docked in the lower-right corner with monospaced typography (`Geist Mono`).
-   - Live controls:
-     - **`// Spheres`**: Dynamic count switching (16 / 30 / 48), Gravity presets (0G, 1G, -1G, Vortex), Restitution elasticity slider (0.40 – 0.98), Materials (Obsidian, Chrome, Studio).
-     - **`// Mouse`**: Force mode toggling (Repel / Attract / Vortex), Force radius slider (3.0 – 12.0).
-     - **`// Camera`**: Mouse parallax toggle.
-     - **`// Telemetry`**: Live FPS performance monitor (`requestAnimationFrame` delta tracking) and Verlet 3D engine status.
-     - **Scene Actions**: Instant `SCATTER` impulse and clean `RESET` layout.
+3. **Tactile 3D Boba Physics Simulation (`js/physics-engine.js`)**:
+   - **Physicality**: Real downward gravity (`gravity: -26.0`), snappy elastic sphere-to-sphere collisions with momentum exchange, and camera frustum floor & walls.
+   - **Settling & Ball Pit Packing**: 50+ glossy boba pearls with variable radii settle naturally on the bottom floor like pearls in a glass box.
+   - **Studio Lighting & Contact Shadows**: Studio key and fill lighting with soft directional shadow mapping onto an invisible floor plane (`ShadowMaterial`).
+   - **Materials**: `MeshPhysicalMaterial` with clearcoat (`1.0`), low roughness (`0.12`), and graphite/chrome accents.
+   - **Kinematic Mouse Collider**: The mouse cursor drives an invisible 3D kinematic sphere that plows through settled balls, imparting velocity based on cursor speed and trajectory.
+   - **Click Impulses**: Clicking pops nearby balls upward with a spring impulse or drops a fresh batch of boba pearls from the ceiling.
 
-4. **Preserved Real-World Systems & Engineering Specifications**:
-   - **`sync // KXBTC15M`**: Institutional Kalshi 15-Minute Bitcoin Binary Quantitative Trading Engine (81.8% Win Rate, 2.14 Profit Factor, 11ms Gateway Latency, Azure Hyper-V Hardware PTP `<5μs`, RSA-PSS, Quarter-Kelly).
-   - **`PixelLabz Global RPC Mesh`**: High-Throughput Non-Consensus Node Mesh on Solana & Aptos (8M+ transactions, 1,000 RPS/node, 0s same-block landing, $180k+ revenue, 99.99% uptime).
-   - **`NodeStop Enterprise Security Infrastructure`**: Information Security Analyst Intern (Snort IDS, Wireshark packet inspection, Nmap, Nessus, Hydra, penetration testing).
-   - **`Academic Foundation`**: The Pennsylvania State University, B.S. in Enterprise Technology Integration & Cybersecurity Operations & Analytics (GPA: 3.4, Expected May 2027).
+4. **Subtle Inline Controls**:
+   - **`// Camera`**: Smoothly toggles between frontal studio view and a tilted isometric perspective.
+   - **`// Mouse`**: Toggles visibility of the kinematic mouse collider ring.
+   - **`// Spheres`**: Triggers a waterfall cascade reset from the top of the viewport.
 
 ---
 
 ## 🚀 Local Development
 
-To run locally using any standard static server:
-
 ```bash
-# Python 3 built-in HTTP server
 python3 -m http.server 8080
 ```
-
 Open `http://localhost:8080` in your browser.
 
 ---
 
 ## 🌐 Production Deployment
-
-The project is configured for static zero-friction deployment to Vercel:
 
 ```bash
 vercel --prod
