@@ -1,42 +1,52 @@
-# David Petrie // Systems Architecture & Quantitative Infrastructure
+# David Petrie // The Celestial Playground of Big Data
 
-An ultra-modern, high-performance **Liquid Glass** digital portfolio and systems resume inspired by **Apple visionOS, Linear, and Vercel Geist**.
-
----
-
-## 🏛️ Systems Architecture & Invariants
-
-1. **Kernel Bypass & Hardware Clock Synchronization**:
-   - Virtualized network interface routing via **Azure SR-IOV** (`<15μs` packet latency), lock-free Single-Producer Single-Consumer (SPSC) ring buffers, and **IEEE 1588 PTP hardware clock synchronization** (`/dev/ptp0` drift `<5μs`).
-2. **Multi-Region Distributed RPC Mesh**:
-   - Geographically dispersed bare-metal node architecture across **Ashburn (US-East), Frankfurt (EU-Central), and Singapore (APAC)**, sustaining **1,000 RPS per node** with Yellowstone & Geyser gRPC real-time streaming.
-3. **Deterministic Quantitative Microstructure**:
-   - Purpose-built execution engine for Kalshi `KXBTC15M` prediction markets. Replaces curve-fit heuristics with **Synthetic CME CF BRTI Lead-Lag Replication** across Coinbase, Kraken, and Bitstamp with 60-second settlement TWAP pinning arbitrage and Quarter-Kelly risk sizing.
-4. **Cryptographic Auditing & Active Inference Defense**:
-   - Cryptographically verifiable trade journaling with **append-only SHA-256 hash chains** and RSA-PSS signatures in TimescaleDB, paired with raw packet inspection using **Snort IDS** and active inference anomaly detection models.
+An interactive, whimsical **Celestial Playground** portfolio where big data and distributed systems come alive through playful fantasy metaphors, glowing neon hand-drawn doodles, and deep architectural rigor.
 
 ---
 
-## 🫧 Visual Architecture & Scrolling Reveal
+## 🪐 The Creative Concept: Metaphors of the Cosmos
 
-- **Obsidian Liquid Glass Foundation**: Deep obsidian charcoal (`#060709`) and translucent glass cards (`rgba(16, 18, 24, 0.64)`) with top specular highlights and refractive shadow depths.
-- **Scrolling Reveal**: Smooth `IntersectionObserver` reveal animations with subtle blur-up and translation dynamics, micro-staggering child metrics, and full `prefers-reduced-motion` compliance.
-- **Viscous Cursor Spotlight**: Inertial damping (`lerp: 0.085`) trailing behind the cursor with automatic idle throttling (0% CPU when stationary).
-- **Interactive Systems Inspector**: 3-tab modal inspector displaying real-time system interface screenshots, end-to-end data-flow topologies, and complete hardware/system invariant specification tables.
+Instead of scary cybersecurity terminal screens or strict finance charts, the portfolio explains complex technical disciplines through natural, celestial, and whimsical world-building:
+
+- **Quantitative Finance → "Catching the Waves of Market Oceans"**:
+  Not cold numbers, but sailing sturdy paper boats through the turbulent 15-minute Bitcoin tidal waves of prediction market order books (`sync // KXBTC15M`), using stars (Coinbase, Kraken, Bitstamp spot feeds) as navigational constellations.
+- **Cybersecurity → "Magic Digital Castle Defense"**:
+  Not sterile code, but building enchanted digital fortresses and weaving protective wards (Snort IDS, Wireshark, RSA-PSS cryptographic runes) that bounce away mischievous little pixel-ghost threats.
+- **Distributed RPC Networks → "The Galactic Starlight Beacon Network"**:
+  Not boring server clusters, but a 15-tower orbital beacon mesh across Ashburn, Frankfurt, and Singapore, beaming 8,000,000+ starlight packets at lightspeed with 0s landing time.
+- **AI & Systems Architecture → "Organic Pattern-Weaving"**:
+  An organic loom where threads of latency, synchronization, and active inference are woven into glowing celestial tapestry.
 
 ---
 
-## 🚀 Verified Systems & Engineering Projects
+## ✨ Interactive Playful Features
+
+1. **Interactive Cosmic Vortex Canvas**:
+   - Real-time 2D HTML5 canvas featuring a swirling stardust vortex with gravitational mouse pull.
+   - Periodic shooting stars and comets crossing the midnight sky.
+   - Click anywhere to launch a burst of twinkling stardust sparkler confetti.
+2. **Interactive Cosmo-Kitten Mascot ("space-cat")**:
+   - A hand-drawn astronaut kitten floating in a starlight helmet. Click the cat to receive quirky quotes ("Purr-ing at 1,000 RPS! 🐾✨", "Sipping cosmic milk in the Azure cloud! 🥛🪐").
+3. **Floating Paper Boat & Wave Animations**:
+   - An animated origami paper boat bobbing on glowing multi-layer sine waves, braving the 60-second settlement tidal wave.
+4. **Mischievous Pixel-Ghosts & Magic Castle Shield**:
+   - Floating pixel-ghost cyber-threats that bounce off the castle's shimmering translucent ward bubble on hover with a cute "boop! blocked! 👻🛡️".
+5. **Celestial Systems Grimoire (Lightbox Modal)**:
+   - 3-tab technical inspector revealing full-resolution vessel screenshots, end-to-end data planes, and complete component latency specifications.
+
+---
+
+## 🏛️ Verified Systems & Engineering Specifications
 
 ### 1. sync // KXBTC15M
 *Institutional Kalshi 15-Minute Bitcoin Binary Quantitative Trading & Telemetry Architecture*
-- **Mandate:** Closed-form microstructure pricing: Synthetic BRTI Lead-Lag Replication across Coinbase, Kraken, and Bitstamp with 60-Second Settlement TWAP Pinning Arbitrage.
-- **Performance:**
-  - **Live Win Rate / Profit Factor:** `81.8%` // `2.14 PF`
-  - **Realized Session PnL:** `+$110.52 USD`
+- **Closed-Form Microstructure:** Synthetic BRTI Lead-Lag Replication across Coinbase, Kraken, and Bitstamp with 60-Second Settlement TWAP Pinning Arbitrage.
+- **Live Performance:**
+  - **Live Win Rate / Profit Factor:** `81.8%` // `2.14 PF` (15,000 backtest segments)
+  - **Realized Session PnL:** `+$110.52 USD` (Live Kalshi markets)
   - **Gateway Latency:** `11ms End-to-End`
-  - **Clock Drift:** Azure Hyper-V Hardware PTP `/dev/ptp0` `<5μs`
-- **Stack:** Python 3.11, FastAPI (100ms Telemetry), React 18, TypeScript, TimescaleDB, Azure Linux (SR-IOV), RSA-PSS Signatures, Quarter-Kelly Sizing.
+  - **Cosmic Star-Clock Drift:** Azure Hyper-V Hardware PTP `/dev/ptp0` `<5μs`
+- **Stack:** Python 3.11, FastAPI (100ms Telemetry), React 18, TypeScript, TimescaleDB, Azure Linux (SR-IOV <15μs), RSA-PSS Signatures, Quarter-Kelly Sizing.
 
 ### 2. PixelLabz Global RPC Mesh
 *High-Throughput Non-Consensus Node Mesh on Solana & Aptos*
@@ -46,18 +56,10 @@ An ultra-modern, high-performance **Liquid Glass** digital portfolio and systems
 
 ---
 
-## 💼 Systems Track Record
-
-- **PixelLabz / PixelPilotz RPC** (Co-Founder & Infrastructure Lead | Apr 2022 — March 2025 // Ashburn, VA)
-- **NodeStop LLC** (Information Security Analyst Intern | Jan 2023 — March 2024 // Remote)
-
----
-
 ## 🎓 Academic Foundation
 
 - **The Pennsylvania State University** — University Park, PA
 - B.S. in Enterprise Technology Integration & Cybersecurity Operations & Analytics (GPA: 3.4, Expected May 2027)
-- Coursework: Systems Architecture, Distributed Systems & Blockchain, Operating Systems Principles, AI & Machine Learning, Cyber Threat Analytics, Network Security, Database Management.
 
 ---
 

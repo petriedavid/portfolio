@@ -1,66 +1,66 @@
 /**
- * GEIST MONOCHROME // LIQUID GLASS (VERCEL / NEXT.JS VIBE)
- * Ultra-clean stark contrast, zero color distraction.
- * - Canvas: #000000
- * - Glass Surfaces & Cards: #111111 (Translucent Glass)
- * - Borders: 1px solid #222222
- * - Primary Text: #EDEDED
- * - Secondary Text: #888888
- * - Signal Blue: #3B82F6 (Hyperlinks, active indicator, focus rings only)
+ * THE CELESTIAL PLAYGROUND OF BIG DATA // THEME TOKENS
+ * Deep cosmic void, glowing neon stardust, and whimsical hand-drawn magic.
  */
 
 :root {
-  /* Foundations */
-  --bg-canvas: #060709;
-  --bg-surface: #0E1015;
-  --bg-card: #12141A;
-  --bg-card-glass: rgba(16, 18, 24, 0.64);
-  --bg-card-hover: rgba(22, 26, 36, 0.78);
-  --bg-pill: rgba(255, 255, 255, 0.05);
-  --bg-glass-nav: rgba(6, 7, 10, 0.78);
+  /* Cosmic Void Foundations */
+  --bg-canvas: #060412;
+  --bg-surface: #0C0822;
+  --bg-card: #120D2F;
+  --bg-card-glass: rgba(18, 13, 47, 0.68);
+  --bg-card-hover: rgba(26, 19, 66, 0.82);
+  --bg-pill: rgba(255, 255, 255, 0.07);
+  --bg-glass-nav: rgba(6, 4, 18, 0.82);
 
-  /* Liquid Glass Borders & Specular Highlights */
-  --border-subtle: rgba(255, 255, 255, 0.09);
-  --border-hover: rgba(59, 130, 246, 0.45);
-  --border-light: rgba(255, 255, 255, 0.16);
-  --glass-specular-top: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  /* Celestial Neon Inks & Starlight Highlights */
+  --neon-cyan: #00F0FF;
+  --neon-cyan-glow: rgba(0, 240, 255, 0.35);
+  --neon-mint: #00FFA3;
+  --neon-mint-glow: rgba(0, 255, 163, 0.35);
+  --neon-violet: #B388FF;
+  --neon-violet-glow: rgba(179, 136, 255, 0.35);
+  --neon-gold: #FFD54F;
+  --neon-gold-glow: rgba(255, 213, 79, 0.35);
+  --neon-pink: #FF6090;
+  --neon-pink-glow: rgba(255, 96, 144, 0.35);
 
-  /* Shadows with Colored Liquid Refraction */
-  --glass-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8);
-  --glass-shadow-hover: 0 24px 60px -10px rgba(0, 0, 0, 0.9), 0 0 35px -5px rgba(59, 130, 246, 0.22);
+  /* Borders & Specular Glass Rim */
+  --border-subtle: rgba(255, 255, 255, 0.11);
+  --border-cosmic: rgba(179, 136, 255, 0.3);
+  --border-hover: rgba(0, 240, 255, 0.55);
+  --border-hand: 1.5px dashed rgba(255, 255, 255, 0.22);
+  --glass-specular-top: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+  /* Shadows with Cosmic Glow */
+  --cosmic-shadow: 0 16px 44px -10px rgba(0, 0, 0, 0.85);
+  --cosmic-shadow-hover: 0 24px 64px -10px rgba(0, 0, 0, 0.95), 0 0 40px -5px rgba(0, 240, 255, 0.25);
 
   /* Typographic Hierarchy */
-  --text-primary: #EDEDED;
-  --text-secondary: #8E96A4;
-  --text-tertiary: #5A6270;
+  --text-primary: #F7F5FF;
+  --text-secondary: #A79FC4;
+  --text-tertiary: #6E678E;
+  --text-hand: #FFD54F;
+  --text-hand-pink: #FF94B9;
+  --text-hand-cyan: #7CEEFF;
 
-  /* Signal Blue Accent */
-  --signal-blue: #3B82F6;
-  --signal-blue-hover: #60A5FA;
-  --signal-blue-glow: rgba(59, 130, 246, 0.35);
-  --signal-blue-badge-bg: rgba(59, 130, 246, 0.12);
-  --signal-blue-badge-border: rgba(59, 130, 246, 0.32);
-
-  /* Liquid Glass Palette */
-  --liquid-blue: #3B82F6;
-  --liquid-mint: #00FFC2;
-  --liquid-indigo: #6366F1;
-  --liquid-cyan: #38BDF8;
-  --liquid-violet: #8B5CF6;
-
-  /* Typography */
+  /* Fonts */
   --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "Geist Mono", "JetBrains Mono", monospace;
+  --font-hand: "Caveat", "Comic Sans MS", cursive, sans-serif;
 
-  /* Dimensions */
-  --max-width: 880px;
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 10px;
+  /* Hand-Drawn Wobbly Borders */
+  --doodle-radius-1: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --doodle-radius-2: 20px 255px 20px 255px / 255px 20px 255px 20px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --radius-pill: 9999px;
 
-  --transition-fast: 0.12s ease;
-  --transition-normal: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Dimensions */
+  --max-width: 940px;
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *, *::before, *::after {
@@ -95,25 +95,25 @@ a {
 }
 
 a:hover {
-  color: var(--signal-blue);
+  color: var(--neon-cyan);
 }
 
 ::selection {
-  background-color: var(--signal-blue);
+  background-color: var(--neon-violet);
   color: #FFFFFF;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-canvas);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--border-subtle);
+  background: rgba(179, 136, 255, 0.25);
   border-radius: var(--radius-pill);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--border-hover);
+  background: var(--neon-cyan);
 }

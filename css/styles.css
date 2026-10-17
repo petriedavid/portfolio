@@ -1,13 +1,13 @@
 /**
- * GEIST MONOCHROME // SYSTEMS ARCHITECTURE & QUANTITATIVE INFRASTRUCTURE
- * Liquid glass refraction, high-contrast brutalist restraint, and systems precision.
- * Color Palette: #060709 (Obsidian) | #101218 (Glass) | #EDEDED (Primary) | #8E96A4 (Secondary) | #3B82F6 (Signal Blue)
+ * THE CELESTIAL PLAYGROUND OF BIG DATA // STYLES
+ * Deep cosmic void, glowing sketched neon doodles, floating fantasy metaphors,
+ * and quirky handwritten annotations atop rock-solid systems engineering.
  */
 
 /* =========================================================================
-   1. Ambient Liquid Glass Background (Apple visionOS / Linear Refraction)
+   1. Interactive Cosmic Vortex Canvas & Nebula Ambience
    ========================================================================= */
-.ambient-background {
+#cosmic-canvas {
   position: fixed;
   top: 0;
   left: 0;
@@ -15,136 +15,104 @@
   height: 100vh;
   z-index: 0;
   pointer-events: none;
-  overflow: hidden;
   background-color: var(--bg-canvas);
-  contain: strict;
 }
 
-/* Dynamic Ambient Light Orbs with Fluid Motion */
-.ambient-orb {
+.ambient-nebula {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nebula-cloud {
   position: absolute;
   border-radius: 50%;
-  pointer-events: none;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-}
-
-/* Orb 1: Electric Mint Glow (Top-Left) */
-.orb-mint {
-  top: 4%;
-  left: 6%;
-  width: min(780px, 85vw);
-  height: min(780px, 85vw);
-  background: radial-gradient(
-    circle,
-    rgba(0, 255, 194, 0.20) 0%,
-    rgba(6, 182, 212, 0.12) 38%,
-    rgba(0, 255, 194, 0.02) 60%,
-    transparent 72%
-  );
-  filter: blur(125px);
-  -webkit-filter: blur(125px);
-  animation: float-orb-mint 28s infinite ease-in-out alternate;
-}
-
-/* Orb 2: Signal Blue Glow (Center-Right) */
-.orb-signal {
-  top: 16%;
-  right: 4%;
-  width: min(850px, 90vw);
-  height: min(850px, 90vw);
-  background: radial-gradient(
-    circle,
-    rgba(59, 130, 246, 0.26) 0%,
-    rgba(99, 102, 241, 0.15) 42%,
-    rgba(59, 130, 246, 0.03) 65%,
-    transparent 75%
-  );
-  filter: blur(130px);
-  -webkit-filter: blur(130px);
-  animation: float-orb-signal 32s infinite ease-in-out alternate;
-}
-
-/* Orb 3: Deep Indigo Glow (Bottom-Left) */
-.orb-indigo {
-  bottom: 8%;
-  left: 10%;
-  width: min(800px, 85vw);
-  height: min(800px, 85vw);
-  background: radial-gradient(
-    circle,
-    rgba(99, 102, 241, 0.22) 0%,
-    rgba(139, 92, 246, 0.14) 45%,
-    rgba(99, 102, 241, 0.02) 65%,
-    transparent 74%
-  );
   filter: blur(140px);
   -webkit-filter: blur(140px);
-  animation: float-orb-indigo 36s infinite ease-in-out alternate;
+  opacity: 0.22;
+  will-change: transform;
+  pointer-events: none;
 }
 
-/* Orb 4: Luminous Cyan Glow (Bottom-Right) */
-.orb-cyan {
-  bottom: 2%;
-  right: 6%;
-  width: min(720px, 78vw);
-  height: min(720px, 78vw);
-  background: radial-gradient(
-    circle,
-    rgba(56, 189, 248, 0.20) 0%,
-    rgba(59, 130, 246, 0.10) 42%,
-    rgba(0, 255, 194, 0.02) 60%,
-    transparent 72%
-  );
-  filter: blur(120px);
-  -webkit-filter: blur(120px);
-  animation: float-orb-cyan 30s infinite ease-in-out alternate;
+.cloud-cyan {
+  top: 5%;
+  left: 10%;
+  width: min(750px, 80vw);
+  height: min(750px, 80vw);
+  background: radial-gradient(circle, var(--neon-cyan) 0%, rgba(0, 240, 255, 0.1) 50%, transparent 70%);
+  animation: float-nebula-1 32s infinite ease-in-out alternate;
 }
 
-@keyframes float-orb-mint {
+.cloud-violet {
+  top: 25%;
+  right: 5%;
+  width: min(850px, 85vw);
+  height: min(850px, 85vw);
+  background: radial-gradient(circle, var(--neon-violet) 0%, rgba(179, 136, 255, 0.1) 50%, transparent 70%);
+  animation: float-nebula-2 38s infinite ease-in-out alternate;
+}
+
+.cloud-gold {
+  bottom: 10%;
+  left: 15%;
+  width: min(700px, 75vw);
+  height: min(700px, 75vw);
+  background: radial-gradient(circle, var(--neon-gold) 0%, rgba(255, 213, 79, 0.1) 50%, transparent 70%);
+  animation: float-nebula-3 30s infinite ease-in-out alternate;
+}
+
+.cloud-pink {
+  bottom: 5%;
+  right: 12%;
+  width: min(680px, 75vw);
+  height: min(680px, 75vw);
+  background: radial-gradient(circle, var(--neon-pink) 0%, rgba(255, 96, 144, 0.1) 50%, transparent 70%);
+  animation: float-nebula-1 34s infinite ease-in-out alternate;
+}
+
+@keyframes float-nebula-1 {
   0% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(100px, 70px, 0) scale(1.12); }
-  100% { transform: translate3d(-50px, 120px, 0) scale(0.95); }
+  50% { transform: translate3d(90px, 60px, 0) scale(1.1); }
+  100% { transform: translate3d(-60px, 100px, 0) scale(0.95); }
 }
 
-@keyframes float-orb-signal {
+@keyframes float-nebula-2 {
   0% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(-120px, -80px, 0) scale(1.15); }
-  100% { transform: translate3d(70px, -100px, 0) scale(0.94); }
+  50% { transform: translate3d(-100px, -70px, 0) scale(1.12); }
+  100% { transform: translate3d(70px, -90px, 0) scale(0.93); }
 }
 
-@keyframes float-orb-indigo {
+@keyframes float-nebula-3 {
   0% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(80px, -60px, 0) scale(1.10); }
-  100% { transform: translate3d(-70px, 90px, 0) scale(0.96); }
+  50% { transform: translate3d(70px, -50px, 0) scale(1.08); }
+  100% { transform: translate3d(-50px, 80px, 0) scale(0.96); }
 }
 
-@keyframes float-orb-cyan {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(-90px, 60px, 0) scale(1.12); }
-  100% { transform: translate3d(60px, -70px, 0) scale(0.97); }
-}
-
-/* Viscous Luminous Mouse Cursor Spotlight */
+/* Stardust Cursor Glow */
 #cursor-glow {
   position: fixed;
   top: 0;
   left: 0;
-  width: 520px;
-  height: 520px;
+  width: 480px;
+  height: 480px;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 1;
+  z-index: 2;
   transform: translate(-50%, -50%);
   background: radial-gradient(
     circle,
-    rgba(59, 130, 246, 0.30) 0%,
-    rgba(0, 255, 194, 0.14) 35%,
-    rgba(99, 102, 241, 0.06) 55%,
+    rgba(0, 240, 255, 0.22) 0%,
+    rgba(179, 136, 255, 0.12) 35%,
+    rgba(255, 213, 79, 0.05) 55%,
     transparent 72%
   );
-  filter: blur(48px);
-  -webkit-filter: blur(48px);
+  filter: blur(44px);
+  -webkit-filter: blur(44px);
   opacity: 0;
   transition: opacity 0.35s ease;
   will-change: transform, left, top;
@@ -154,105 +122,128 @@ body:hover #cursor-glow {
   opacity: 1;
 }
 
-/* Precision Dot Grid Overlay */
-.ambient-background::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 28px 28px;
-  opacity: 0.45;
-  pointer-events: none;
-}
-
 /* =========================================================================
-   2. Layout & Foreground Container
+   2. Main Layout & Celestial Orbit Navigation
    ========================================================================= */
 .app-container {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 900px;
+  max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 clamp(16px, 4vw, 32px) 80px;
+  padding: 0 clamp(16px, 4vw, 32px) 90px;
 }
 
-/* Sticky Minimal Navigation Bar */
-.top-nav {
+/* Sticky Cosmic Orbit Dock */
+.orbit-nav {
   position: sticky;
-  top: 0;
+  top: 14px;
   z-index: 100;
   background-color: var(--bg-glass-nav);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-bottom: 1px solid var(--border-subtle);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.7), var(--glass-specular-top);
-  margin-bottom: clamp(28px, 5vh, 44px);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.8), var(--glass-specular-top);
+  margin-bottom: clamp(24px, 4vh, 36px);
+  padding: 6px 14px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.orbit-nav:hover {
+  border-color: var(--border-cosmic);
+  box-shadow: 0 12px 40px -4px rgba(0, 0, 0, 0.9), 0 0 24px -4px var(--neon-cyan-glow);
 }
 
 .nav-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 12px clamp(16px, 4vw, 32px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
-.brand-dot {
-  width: 8px;
-  height: 8px;
+.brand-orb {
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background-color: var(--signal-blue);
-  box-shadow: 0 0 10px var(--signal-blue-glow);
-  animation: pulse-dot 2.5s infinite ease-in-out;
+  background: radial-gradient(circle, var(--neon-cyan) 0%, var(--neon-violet) 100%);
+  box-shadow: 0 0 10px var(--neon-cyan);
+  animation: pulse-orb 2.4s infinite ease-in-out;
 }
 
-@keyframes pulse-dot {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.25); }
+@keyframes pulse-orb {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 16px var(--neon-pink); }
 }
 
 .brand-name {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.01em;
 }
 
 .brand-sub {
+  font-family: var(--font-hand);
+  font-size: 15px;
+  color: var(--neon-gold);
+  transform: rotate(-1.5deg);
+}
+
+/* Orbit Realm Quick Links */
+.orbit-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.orbit-link {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-secondary);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.orbit-link:hover {
+  color: var(--neon-cyan);
+  background-color: rgba(0, 240, 255, 0.08);
+}
+
+.orbit-link.active {
+  color: var(--neon-gold);
+  background-color: rgba(255, 213, 79, 0.1);
+  font-weight: 600;
 }
 
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.status-tag {
+.status-capsule {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 4px 12px;
-  background-color: var(--signal-blue-badge-bg);
-  border: 1px solid var(--signal-blue-badge-border);
-  color: var(--signal-blue);
+  font-size: 10.5px;
+  padding: 3px 10px;
+  background-color: rgba(0, 255, 163, 0.08);
+  border: 1px solid rgba(0, 255, 163, 0.28);
+  color: var(--neon-mint);
   border-radius: var(--radius-pill);
 }
 
@@ -263,93 +254,189 @@ body:hover #cursor-glow {
   background-color: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-pill);
-  padding: 4px 12px;
+  padding: 3px 10px;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .btn-print:hover {
-  border-color: var(--signal-blue);
-  color: var(--signal-blue);
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
 }
 
 /* =========================================================================
-   3. Scrolling Reveal System
+   3. Hand-Drawn Doodle & Whimsical Typography Components
    ========================================================================= */
-.reveal-item {
-  opacity: 0;
-  transform: translateY(22px);
-  filter: blur(4px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
+.hand-note {
+  font-family: var(--font-hand);
+  font-size: 18px;
+  line-height: 1.25;
+  color: var(--text-hand);
+  display: inline-block;
+  transform: rotate(-1.5deg);
+  user-select: none;
 }
 
-.reveal-item.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
+.hand-note-pink {
+  color: var(--text-hand-pink);
 }
 
-/* Staggering Delays for Child Elements */
-.stagger-group > *:nth-child(1) { transition-delay: 40ms; }
-.stagger-group > *:nth-child(2) { transition-delay: 80ms; }
-.stagger-group > *:nth-child(3) { transition-delay: 120ms; }
-.stagger-group > *:nth-child(4) { transition-delay: 160ms; }
-.stagger-group > *:nth-child(5) { transition-delay: 200ms; }
-.stagger-group > *:nth-child(6) { transition-delay: 240ms; }
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal-item {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
-    transition: none !important;
-  }
+.hand-note-cyan {
+  color: var(--text-hand-cyan);
 }
 
-/* =========================================================================
-   4. Profile Hero Section
-   ========================================================================= */
-.profile-hero {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 34px clamp(20px, 3.5vw, 36px);
+.hand-arrow {
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-size: 20px;
+  color: var(--neon-cyan);
+}
+
+.doodle-card {
   background-color: var(--bg-card-glass);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow);
-  margin-bottom: 32px;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: var(--glass-specular-top), var(--cosmic-shadow);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  position: relative;
 }
 
-.profile-hero:hover {
+.doodle-card:hover {
   border-color: var(--border-hover);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow-hover);
+  box-shadow: var(--glass-specular-top), var(--cosmic-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.doodle-wobbly {
+  border-radius: var(--doodle-radius-1);
+}
+
+/* Handwritten Sticky Tag */
+.sticky-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-hand);
+  font-size: 14px;
+  padding: 3px 10px;
+  background-color: rgba(255, 213, 79, 0.12);
+  border: 1px dashed rgba(255, 213, 79, 0.4);
+  color: var(--neon-gold);
+  border-radius: 6px;
+  transform: rotate(-1deg);
+}
+
+/* =========================================================================
+   4. Profile Hero // The Celestial Playground Entrance
+   ========================================================================= */
+.profile-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 36px clamp(20px, 3.5vw, 40px);
+  margin-bottom: 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-headline-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hero-welcome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-hand);
+  font-size: 17px;
+  color: var(--neon-cyan);
+  margin-bottom: 2px;
 }
 
 .hero-name {
-  font-size: clamp(34px, 5vw, 48px);
+  font-size: clamp(36px, 5.5vw, 52px);
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--text-primary);
-  line-height: 1.1;
+  line-height: 1.08;
+  background: linear-gradient(135deg, #FFFFFF 0%, #D8D2FF 60%, var(--neon-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.hero-subhead {
+.hero-metaphor-subhead {
+  font-family: var(--font-hand);
+  font-size: 21px;
+  color: var(--neon-gold);
+  line-height: 1.3;
+}
+
+.hero-real-subhead {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12.5px;
   color: var(--text-secondary);
   letter-spacing: -0.01em;
 }
 
+/* Interactive Space-Cat Mascot ("Cosmo-Kitten") */
+.space-cat-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform var(--transition-fast);
+}
+
+.space-cat-wrap:hover {
+  transform: scale(1.08);
+}
+
+.space-cat-svg {
+  width: 90px;
+  height: 90px;
+  filter: drop-shadow(0 0 12px var(--neon-cyan-glow));
+  animation: float-cat 4s infinite ease-in-out alternate;
+}
+
+@keyframes float-cat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+  100% { transform: translateY(4px) rotate(-2deg); }
+}
+
+.cat-bubble {
+  position: absolute;
+  top: -24px;
+  right: -20px;
+  font-family: var(--font-hand);
+  font-size: 14px;
+  background-color: rgba(6, 4, 18, 0.9);
+  border: 1px dashed var(--neon-pink);
+  color: var(--text-hand-pink);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+  box-shadow: 0 0 10px var(--neon-pink-glow);
+  transform: rotate(4deg);
+}
+
 .hero-summary {
-  font-size: 15px;
-  line-height: 1.68;
+  font-size: 15.5px;
+  line-height: 1.7;
   color: var(--text-secondary);
   max-width: 820px;
 }
@@ -359,6 +446,19 @@ body:hover #cursor-glow {
   font-weight: 600;
 }
 
+.hero-summary .highlight-cyan {
+  color: var(--neon-cyan);
+}
+
+.hero-summary .highlight-gold {
+  color: var(--neon-gold);
+}
+
+.hero-summary .highlight-pink {
+  color: var(--neon-pink);
+}
+
+/* Hero Contact Pills */
 .hero-contacts {
   display: flex;
   align-items: center;
@@ -382,219 +482,504 @@ body:hover #cursor-glow {
 }
 
 .contact-pill:hover {
-  border-color: var(--signal-blue);
+  border-color: var(--neon-cyan);
   color: var(--text-primary);
+  box-shadow: 0 0 14px var(--neon-cyan-glow);
 }
 
 .contact-pill-primary {
-  background-color: #EDEDED;
-  color: #000000;
-  font-weight: 600;
-  border: 1px solid #EDEDED;
+  background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-violet) 100%);
+  color: #060412;
+  font-weight: 700;
+  border: none;
 }
 
 .contact-pill-primary:hover {
-  background-color: var(--signal-blue);
-  color: #FFFFFF;
-  border-color: var(--signal-blue);
-  box-shadow: 0 0 16px var(--signal-blue-glow);
+  box-shadow: 0 0 20px var(--neon-cyan);
+  color: #000000;
+  transform: translateY(-1px);
 }
 
 /* =========================================================================
-   5. Sections Common
+   5. Sections Common & Cosmic Realm Headers
    ========================================================================= */
 .resume-section {
-  padding: 32px 0;
+  padding: 34px 0;
+  position: relative;
 }
 
 .section-label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.section-tag-main {
   font-family: var(--font-mono);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--text-tertiary);
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.section-label::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background-color: var(--border-subtle);
+.section-tag-main::before {
+  content: "✦";
+  color: var(--neon-cyan);
+}
+
+.section-tag-doodle {
+  font-family: var(--font-hand);
+  font-size: 17px;
+  color: var(--neon-gold);
+  transform: rotate(-1deg);
 }
 
 /* =========================================================================
-   6. Systems Architecture Taxonomy & Invariants
+   6. Realm 01: The Wave-Rider's Lagoon (Quant & KXBTC15M)
    ========================================================================= */
-.arch-grid {
+.wave-rider-card {
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.wave-stage-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: radial-gradient(circle at 50% 20%, #150F3C 0%, #080518 80%);
+  border: 1px solid var(--border-cosmic);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* Paper Boat Animation */
+.paper-boat-svg {
+  position: absolute;
+  top: 75px;
+  left: calc(50% - 40px);
+  width: 80px;
+  height: 80px;
+  z-index: 4;
+  animation: boat-ride 4.8s infinite ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.4));
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.paper-boat-svg:hover {
+  transform: scale(1.15) rotate(5deg);
+}
+
+@keyframes boat-ride {
+  0% { transform: translateY(0px) rotate(-4deg); }
+  35% { transform: translateY(-12px) rotate(5deg); }
+  65% { transform: translateY(6px) rotate(-3deg); }
+  100% { transform: translateY(0px) rotate(-4deg); }
+}
+
+/* Animated Ocean Waves */
+.ocean-wave-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 90px;
+  pointer-events: none;
+}
+
+.wave-front {
+  z-index: 5;
+  opacity: 0.85;
+  animation: wave-slide 9s infinite linear;
+}
+
+.wave-back {
+  z-index: 2;
+  opacity: 0.45;
+  animation: wave-slide 14s infinite linear reverse;
+  bottom: 12px;
+}
+
+@keyframes wave-slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Constellation Overlay in Lagoon Sky */
+.constellation-sky {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+.star-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.star-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--neon-gold);
+  box-shadow: 0 0 8px var(--neon-gold);
+}
+
+.star-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--neon-cyan);
+}
+
+/* Wave-Rider Telemetry Grid */
+.lagoon-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  gap: 12px;
+}
+
+.lagoon-metric {
+  background-color: rgba(6, 4, 18, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  position: relative;
+}
+
+.metric-caption {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+}
+
+.metric-val {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--neon-cyan);
+}
+
+.metric-doodle-note {
+  font-family: var(--font-hand);
+  font-size: 13.5px;
+  color: var(--neon-gold);
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+/* =========================================================================
+   7. Realm 02: The Digital Citadel (Cybersecurity & NodeStop)
+   ========================================================================= */
+.citadel-card {
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.citadel-stage-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: radial-gradient(circle at 50% 80%, #1A0D36 0%, #060412 85%);
+  border: 1px solid var(--border-cosmic);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Glowing Castle Vector */
+.castle-svg {
+  width: 150px;
+  height: 150px;
+  z-index: 3;
+  filter: drop-shadow(0 0 16px var(--neon-violet-glow));
+}
+
+/* Magic Protective Shield Ward Bubble */
+.magic-shield-bubble {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 2px dashed rgba(0, 240, 255, 0.55);
+  box-shadow: inset 0 0 30px rgba(0, 240, 255, 0.2), 0 0 35px rgba(179, 136, 255, 0.3);
+  z-index: 4;
+  animation: shield-pulse 4.5s infinite ease-in-out alternate;
+  pointer-events: none;
+}
+
+@keyframes shield-pulse {
+  0% { transform: scale(0.97); border-color: rgba(0, 240, 255, 0.4); }
+  50% { transform: scale(1.03); border-color: rgba(179, 136, 255, 0.7); box-shadow: inset 0 0 45px rgba(0, 240, 255, 0.35), 0 0 45px rgba(179, 136, 255, 0.45); }
+  100% { transform: scale(0.97); border-color: rgba(0, 240, 255, 0.4); }
+}
+
+/* Mischievous Floating Pixel-Ghosts ("Cyber Threats") */
+.pixel-ghost {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  z-index: 5;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 0 8px var(--neon-pink-glow));
+}
+
+.ghost-left {
+  top: 35px;
+  left: 14%;
+  animation: ghost-float-1 3.8s infinite ease-in-out alternate;
+}
+
+.ghost-right {
+  top: 55px;
+  right: 14%;
+  animation: ghost-float-2 4.2s infinite ease-in-out alternate;
+}
+
+@keyframes ghost-float-1 {
+  0% { transform: translate3d(0, 0, 0) rotate(-6deg); }
+  50% { transform: translate3d(14px, 18px, 0) rotate(4deg); }
+  100% { transform: translate3d(-10px, 12px, 0) rotate(-4deg); }
+}
+
+@keyframes ghost-float-2 {
+  0% { transform: translate3d(0, 0, 0) rotate(6deg); }
+  50% { transform: translate3d(-16px, 14px, 0) rotate(-5deg); }
+  100% { transform: translate3d(12px, 16px, 0) rotate(5deg); }
+}
+
+.pixel-ghost:hover {
+  transform: scale(1.3) rotate(15deg);
+}
+
+.ghost-shout {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-hand);
+  font-size: 13px;
+  color: var(--neon-pink);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.pixel-ghost:hover .ghost-shout {
+  opacity: 1;
+}
+
+/* Citadel Runes & Defense Points */
+.citadel-runes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.citadel-rune-box {
+  background-color: rgba(6, 4, 18, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rune-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--neon-violet);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rune-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* =========================================================================
+   8. Realm 03: The Starlight Beacon Mesh (PixelLabz Global RPC)
+   ========================================================================= */
+.mesh-card {
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mesh-stage-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: radial-gradient(circle at 50% 50%, #16103A 0%, #060412 85%);
+  border: 1px solid var(--border-cosmic);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 20px;
+}
+
+.beacon-tower {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.beacon-tower:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.tower-beacon-glow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--neon-mint) 0%, rgba(0, 255, 163, 0.2) 60%, transparent 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px var(--neon-mint-glow);
+  animation: pulse-beacon 2.6s infinite ease-in-out;
+}
+
+@keyframes pulse-beacon {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 30px var(--neon-cyan); }
+}
+
+.tower-region {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tower-meta {
+  font-family: var(--font-hand);
+  font-size: 14px;
+  color: var(--neon-gold);
+}
+
+/* Connecting Laser Starlight Streams */
+.laser-beam-line {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-mint) 0%, var(--neon-cyan) 50%, var(--neon-violet) 100%);
+  box-shadow: 0 0 12px var(--neon-cyan);
+  z-index: 1;
+}
+
+.laser-packet {
+  position: absolute;
+  top: -4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 12px #FFFFFF, 0 0 24px var(--neon-cyan);
+  animation: packet-travel 3s infinite linear;
+}
+
+@keyframes packet-travel {
+  0% { left: 0%; }
+  100% { left: 100%; }
+}
+
+/* =========================================================================
+   9. Realm 04: The Pattern Weaver's Loom (AI, Systems & Penn State)
+   ========================================================================= */
+.loom-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
 }
 
-.arch-card {
-  background-color: var(--bg-card-glass);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow);
+.loom-thread-card {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  gap: 8px;
 }
 
-.arch-card:hover {
-  border-color: var(--border-hover);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow-hover);
-  transform: translateY(-2px);
-}
-
-.arch-header {
+.thread-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
 }
 
-.arch-num {
+.thread-num {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--signal-blue);
+  color: var(--neon-cyan);
   letter-spacing: 0.1em;
   font-weight: 600;
 }
 
-.arch-tag {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  padding: 2px 8px;
-  background-color: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.25);
-  border-radius: var(--radius-pill);
-  color: var(--signal-blue);
-  font-weight: 500;
+.thread-doodle-tag {
+  font-family: var(--font-hand);
+  font-size: 14px;
+  color: var(--neon-gold);
 }
 
-.arch-title {
+.thread-title {
   font-size: 15px;
   font-weight: 600;
   color: var(--text-primary);
-  letter-spacing: -0.01em;
 }
 
-.arch-desc {
+.thread-desc {
   font-size: 13px;
   line-height: 1.6;
   color: var(--text-secondary);
 }
 
-.arch-desc strong {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-.arch-specs-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 4px;
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 8px;
-}
-
-.arch-specs-list li {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
-  line-height: 1.45;
-}
-
-.arch-specs-list li::before {
-  content: "›";
-  color: var(--signal-blue);
-  font-weight: bold;
-}
-
-/* =========================================================================
-   7. Verified Systems & Architecture Implementations
-   ========================================================================= */
-.project-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.project-card {
-  background-color: var(--bg-card-glass);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow);
-  overflow: hidden;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
-}
-
-.project-card:hover {
-  border-color: var(--border-hover);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow-hover);
-  transform: translateY(-2px);
-}
-
-.project-image-slot {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background-color: #000000;
-  border-bottom: 1px solid var(--border-subtle);
-  overflow: hidden;
-  cursor: zoom-in;
-}
-
-.project-image-slot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.project-image-slot:hover img {
-  transform: scale(1.015);
-}
-
-.slot-tag {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: #EDEDED;
-  background-color: rgba(6, 7, 10, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.project-body {
+/* Academic Observatory Card */
+.observatory-card {
   padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+  margin-top: 18px;
 }
 
-.project-header-row {
+.observatory-top {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -602,413 +987,58 @@ body:hover #cursor-glow {
   flex-wrap: wrap;
 }
 
-.project-title {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-
-.project-subtitle {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--signal-blue);
-  font-weight: 500;
-}
-
-.project-desc {
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--text-secondary);
-}
-
-.project-desc strong {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-/* Visual Architecture Pipeline / Data Flow */
-.arch-pipeline {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background-color: rgba(8, 10, 14, 0.72);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
-}
-
-.arch-pipeline-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-tertiary);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.arch-pipeline-flow {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width: thin;
-}
-
-.pipeline-node {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 6px 10px;
-  min-width: 130px;
-  transition: border-color var(--transition-fast), background-color var(--transition-fast);
-}
-
-.pipeline-node:hover {
-  border-color: var(--signal-blue);
-  background-color: rgba(59, 130, 246, 0.08);
-}
-
-.node-step {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  color: var(--signal-blue);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.node-name {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-primary);
-  white-space: nowrap;
-}
-
-.node-meta {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  color: var(--text-secondary);
-  white-space: nowrap;
-}
-
-.pipeline-connector {
-  flex-shrink: 0;
-  color: var(--text-tertiary);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 0 2px;
-  user-select: none;
-}
-
-/* Quantitative Audit Stats Bar */
-.stat-pill-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 10px;
-  padding: 12px 14px;
-  background-color: #080A0E;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.stat-lbl {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.stat-val {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.stat-val.accent {
-  color: var(--signal-blue);
-}
-
-.project-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding-top: 10px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.project-chips {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.chip {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  padding: 2px 8px;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  color: var(--text-secondary);
-}
-
-.project-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.project-action-link {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--signal-blue);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: color var(--transition-fast);
-}
-
-.project-action-link:hover {
-  text-decoration: underline;
-  color: var(--signal-blue-hover);
-}
-
-/* =========================================================================
-   8. Systems Track Record & Experience
-   ========================================================================= */
-.experience-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.exp-box {
-  background-color: var(--bg-card-glass);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow);
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
-}
-
-.exp-box:hover {
-  border-color: var(--border-hover);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow-hover);
-  transform: translateY(-2px);
-}
-
-.exp-top {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.exp-title-company {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.exp-title {
+.observatory-univ {
   font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-}
-
-.exp-company {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--signal-blue);
-  font-weight: 500;
-}
-
-.exp-date {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-tertiary);
-}
-
-.exp-points {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.exp-points li {
-  position: relative;
-  padding-left: 16px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
-
-.exp-points li::before {
-  content: "›";
-  position: absolute;
-  left: 0;
-  color: var(--signal-blue);
-  font-weight: bold;
-}
-
-.exp-points strong {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-.exp-chips {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-  padding-top: 4px;
-}
-
-/* =========================================================================
-   9. Core Capabilities & Systems Stack
-   ========================================================================= */
-.skills-box-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 14px;
-}
-
-.skill-tile {
-  background-color: var(--bg-card-glass);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow);
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
-}
-
-.skill-tile:hover {
-  border-color: var(--border-hover);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow-hover);
-  transform: translateY(-2px);
-}
-
-.skill-title {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--signal-blue);
-}
-
-.skill-list {
-  font-size: 13px;
-  line-height: 1.6;
-  color: var(--text-secondary);
-}
-
-/* =========================================================================
-   10. Academic Foundation
-   ========================================================================= */
-.edu-card {
-  background-color: var(--bg-card-glass);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow);
-  padding: 20px 22px;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
-}
-
-.edu-card:hover {
-  border-color: var(--border-hover);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow-hover);
-  transform: translateY(-2px);
-}
-
-.edu-main {
-  font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
-.edu-sub {
-  font-size: 13px;
-  color: var(--text-secondary);
+.observatory-degree {
+  font-size: 13.5px;
+  color: var(--neon-cyan);
   margin-top: 2px;
 }
 
-.edu-meta {
+.observatory-meta {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--signal-blue);
+  color: var(--neon-gold);
   font-weight: 600;
 }
 
 /* =========================================================================
-   11. Footer
+   10. Scrolling Reveal Dynamics
    ========================================================================= */
-.page-footer {
-  padding-top: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-tertiary);
-  border-top: 1px solid var(--border-subtle);
-  margin-top: 32px;
+.reveal-item {
+  opacity: 0;
+  transform: translateY(24px) scale(0.99);
+  filter: blur(5px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
 }
 
-.footer-links {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.reveal-item.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-item {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  .paper-boat-svg, .space-cat-svg, .magic-shield-bubble, .pixel-ghost {
+    animation: none !important;
+  }
 }
 
 /* =========================================================================
-   12. Upgraded Systems Architecture Lightbox Inspector
+   11. Whimsical Celestial Lightbox Grimoire / Modal
    ========================================================================= */
 .lightbox-overlay {
   position: fixed;
@@ -1016,9 +1046,9 @@ body:hover #cursor-glow {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(4, 5, 8, 0.94);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
+  background-color: rgba(4, 2, 12, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -1043,10 +1073,10 @@ body:hover #cursor-glow {
   background-color: var(--bg-card-glass);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-cosmic);
   border-radius: var(--radius-lg);
-  box-shadow: var(--glass-specular-top), var(--glass-shadow-hover);
-  padding: 20px;
+  box-shadow: var(--glass-specular-top), var(--cosmic-shadow-hover);
+  padding: 22px;
   overflow-y: auto;
   gap: 14px;
 }
@@ -1060,19 +1090,31 @@ body:hover #cursor-glow {
   padding-bottom: 12px;
 }
 
+.lightbox-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .lightbox-title {
-  font-family: var(--font-mono);
-  font-size: 13px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
   color: var(--text-primary);
-  font-weight: 600;
+}
+
+.lightbox-sub-doodle {
+  font-family: var(--font-hand);
+  font-size: 15px;
+  color: var(--neon-gold);
 }
 
 .lightbox-close-btn {
   background: transparent;
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1083,8 +1125,9 @@ body:hover #cursor-glow {
 }
 
 .lightbox-close-btn:hover {
-  border-color: var(--signal-blue);
-  color: var(--signal-blue);
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan-glow);
 }
 
 /* Lightbox Tabs */
@@ -1102,21 +1145,21 @@ body:hover #cursor-glow {
   color: var(--text-secondary);
   background: transparent;
   border: 1px solid transparent;
-  padding: 4px 12px;
-  border-radius: var(--radius-sm);
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .lightbox-tab:hover {
-  color: var(--text-primary);
+  color: var(--neon-cyan);
   border-color: var(--border-subtle);
 }
 
 .lightbox-tab.is-active {
-  color: var(--signal-blue);
-  background-color: rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.3);
+  color: var(--neon-cyan);
+  background-color: rgba(0, 240, 255, 0.12);
+  border-color: rgba(0, 240, 255, 0.35);
   font-weight: 600;
 }
 
@@ -1128,11 +1171,11 @@ body:hover #cursor-glow {
 
 .lightbox-media-wrap {
   width: 100%;
-  max-height: 55vh;
+  max-height: 52vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #06070A;
+  background-color: #060412;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid var(--border-subtle);
@@ -1140,23 +1183,23 @@ body:hover #cursor-glow {
 
 .lightbox-media-wrap img {
   max-width: 100%;
-  max-height: 55vh;
+  max-height: 52vh;
   object-fit: contain;
 }
 
 .lightbox-desc {
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 13.5px;
+  line-height: 1.65;
   color: var(--text-secondary);
 }
 
-/* Systems Specifications Table */
+/* Specs Table */
 .spec-table {
   width: 100%;
   border-collapse: collapse;
   font-family: var(--font-mono);
   font-size: 11.5px;
-  background-color: rgba(8, 10, 14, 0.8);
+  background-color: rgba(6, 4, 18, 0.8);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -1165,7 +1208,7 @@ body:hover #cursor-glow {
 .spec-table th {
   text-align: left;
   padding: 8px 12px;
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.04);
   color: var(--text-tertiary);
   font-weight: 600;
   border-bottom: 1px solid var(--border-subtle);
@@ -1175,7 +1218,7 @@ body:hover #cursor-glow {
 }
 
 .spec-table td {
-  padding: 8px 12px;
+  padding: 9px 12px;
   color: var(--text-secondary);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   vertical-align: top;
@@ -1187,16 +1230,53 @@ body:hover #cursor-glow {
 
 .spec-table td.spec-key {
   color: var(--text-primary);
-  font-weight: 500;
+  font-weight: 600;
   width: 25%;
 }
 
 .spec-table td.spec-val {
-  color: var(--signal-blue);
+  color: var(--neon-cyan);
   width: 35%;
 }
 
-.spec-table td.spec-notes {
+/* =========================================================================
+   12. Footer & Colophon
+   ========================================================================= */
+.page-footer {
+  padding-top: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 36px;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.footer-doodle {
+  font-family: var(--font-hand);
+  font-size: 15px;
+  color: var(--neon-gold);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
   color: var(--text-secondary);
 }
 
@@ -1204,21 +1284,31 @@ body:hover #cursor-glow {
    13. Responsive Media Queries & Print Overrides
    ========================================================================= */
 @media (max-width: 768px) {
-  .arch-grid {
+  .loom-grid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 640px) {
+  .orbit-nav {
+    border-radius: var(--radius-md);
+  }
+
   .nav-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
   }
 
-  .nav-right {
-    width: 100%;
-    justify-content: space-between;
+  .orbit-links {
+    flex-wrap: wrap;
+  }
+
+  .hero-top-row {
+    flex-direction: column-reverse;
+  }
+
+  .space-cat-wrap {
+    align-self: flex-start;
   }
 
   .hero-contacts {
@@ -1231,32 +1321,27 @@ body:hover #cursor-glow {
     min-height: 42px;
   }
 
-  .stat-pill-row {
+  .lagoon-metrics-grid {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .skills-box-grid {
-    grid-template-columns: 1fr;
   }
 
   .page-footer {
     flex-direction: column;
     align-items: flex-start;
   }
-
-  .lightbox-tabs {
-    flex-wrap: wrap;
-  }
 }
 
 /* Print Overrides */
 @media print {
-  .ambient-background,
+  #cosmic-canvas,
+  .ambient-nebula,
   #cursor-glow,
-  .top-nav,
+  .orbit-nav,
   .btn-print,
-  .slot-tag,
-  .arch-pipeline,
+  .space-cat-wrap,
+  .wave-stage-container,
+  .citadel-stage-container,
+  .mesh-stage-container,
   .lightbox-overlay {
     display: none !important;
   }
@@ -1268,34 +1353,15 @@ body:hover #cursor-glow {
     max-width: 100% !important;
     padding: 0 !important;
   }
-  .profile-hero,
-  .exp-box,
-  .project-card,
-  .arch-card,
-  .skill-tile,
-  .edu-card {
+  .doodle-card {
     background-color: #ffffff !important;
-    border: 1px solid #dddddd !important;
+    border: 1px solid #cccccc !important;
     box-shadow: none !important;
     break-inside: avoid;
   }
-  .hero-name,
-  .exp-title,
-  .project-title,
-  .arch-title,
-  .edu-main,
-  .stat-val {
+  .hero-name, h2, h3, .metric-val {
     color: #000000 !important;
-  }
-  .exp-company,
-  .skill-title,
-  .project-subtitle,
-  .arch-num {
-    color: #222222 !important;
-  }
-  .reveal-item {
-    opacity: 1 !important;
-    transform: none !important;
-    filter: none !important;
+    -webkit-text-fill-color: initial !important;
+    background: none !important;
   }
 }
