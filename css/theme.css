@@ -1,66 +1,45 @@
 /**
- * MINIMALIST LIQUID GLASS DESIGN SYSTEM // THEME TOKENS
- * Pure, high-end minimalism layered with optical physical realism.
- * Monochromatic deep obsidian, frosted semi-translucent glass, and chromatic specular refraction.
+ * SHIYUN LU INSPIRED EDITORIAL DESIGN SYSTEM // THEME TOKENS
+ * Minimalist, high-contrast, editorial layout with layered WebGL physics substrate.
  */
 
 :root {
-  /* Base Canvas - Deep Luminous Obsidian */
+  /* Monochromatic Foundations */
   --bg-canvas: #08090C;
   --bg-surface: #0E1015;
-  --bg-subsurface: #13161C;
+  --bg-card: rgba(14, 16, 21, 0.65);
+  --bg-card-hover: rgba(20, 24, 32, 0.85);
+  --bg-hud: rgba(10, 12, 16, 0.88);
+  --bg-pill: rgba(255, 255, 255, 0.04);
+  --bg-pill-hover: rgba(255, 255, 255, 0.09);
 
-  /* Frosted Glass Substrates (Variable Alpha Optical Layers) */
-  --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-bg-hover: rgba(255, 255, 255, 0.06);
-  --glass-bg-active: rgba(255, 255, 255, 0.08);
-  --glass-bg-nav: rgba(8, 9, 12, 0.72);
-  --glass-pill: rgba(255, 255, 255, 0.04);
-  --glass-pill-hover: rgba(255, 255, 255, 0.09);
+  /* Optical Glass Borders & Specular Edges */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glass: rgba(255, 255, 255, 0.14);
+  --border-focus: rgba(255, 255, 255, 0.32);
+  --glass-specular-top: inset 0 1px 0 rgba(255, 255, 255, 0.16);
 
-  /* Multi-Stop Precision Glass Beveling & Specular Edges */
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-glass: rgba(255, 255, 255, 0.12);
-  --border-glass-bright: rgba(255, 255, 255, 0.28);
-  --glass-specular-top: inset 0 1px 1px 0 rgba(255, 255, 255, 0.24);
-  --glass-bevel: inset 0 1px 1px 0 rgba(255, 255, 255, 0.22), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-  --glass-bevel-hover: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.38), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
-
-  /* Subtle Chromatic Refraction Accents */
-  --prismatic-cyan: rgba(112, 225, 255, 0.6);
-  --prismatic-violet: rgba(163, 144, 228, 0.45);
-  --prismatic-pearl: rgba(255, 255, 255, 0.85);
-  --signal-blue: #3B82F6;
-  --signal-blue-hover: #60A5FA;
-  --signal-blue-subtle: rgba(59, 130, 246, 0.12);
-  --signal-blue-glow: rgba(59, 130, 246, 0.25);
-
-  /* Optical Glass Shadows (Serene, non-muddy, physically diffused) */
-  --glass-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.7);
-  --glass-shadow-hover: 0 28px 64px -12px rgba(0, 0, 0, 0.85), 0 0 32px -4px rgba(255, 255, 255, 0.05);
-
-  /* Typographic Tokens */
+  /* Typographic Hierarchy */
   --text-primary: #EDEDED;
   --text-secondary: #8E96A4;
   --text-tertiary: #525866;
-  --text-inverse: #08090C;
+  --text-accent: #3B82F6;
 
-  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  /* Typography Fonts */
+  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "Geist Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 
-  /* Dimensions & Radius */
-  --max-width: 920px;
+  /* Radius Tokens */
   --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 12px;
-  --radius-lg: 18px;
   --radius-pill: 9999px;
 
-  /* Spring Physics & Damping */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-fast: 0.16s var(--ease-out-expo);
-  --transition-normal: 0.28s var(--ease-out-expo);
-  --transition-slow: 0.5s var(--ease-out-expo);
+  /* Layout */
+  --max-width: 1040px;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.16s var(--ease-expo);
+  --transition-normal: 0.28s var(--ease-expo);
 }
 
 *, *::before, *::after {
@@ -81,7 +60,7 @@ html {
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100dvh;
   background-color: var(--bg-canvas);
   color: var(--text-primary);
   overflow-x: hidden;
@@ -95,11 +74,11 @@ a {
 }
 
 a:hover {
-  color: var(--text-primary);
+  color: #FFFFFF;
 }
 
 ::selection {
-  background-color: rgba(255, 255, 255, 0.18);
+  background-color: rgba(255, 255, 255, 0.2);
   color: #FFFFFF;
 }
 
@@ -108,12 +87,12 @@ a:hover {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-canvas);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.14);
   border-radius: var(--radius-pill);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.28);
 }

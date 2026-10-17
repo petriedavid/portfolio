@@ -1,140 +1,74 @@
 /**
- * MINIMALIST LIQUID GLASS DESIGN SYSTEM // STYLES
- * High-end architectural glass installations, visionOS specular refraction,
- * and liquid optical realism.
+ * SHIYUN LU INSPIRED EDITORIAL MINIMALISM // STYLES
+ * Full-viewport layered architecture with Three.js physics canvas and Technical HUD.
  */
 
 /* =========================================================================
-   1. The Liquid Glass Canvas (WebGL Caustics & Ambient Light)
+   1. Layered Architecture (Canvas vs Foreground UI)
    ========================================================================= */
-#liquid-canvas {
+#canvas-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0;
-  pointer-events: none;
+  height: 100dvh;
+  z-index: 1;
+  overflow: hidden;
   background-color: var(--bg-canvas);
 }
 
-/* Atmospheric Refraction Background Gradient Layers */
-.optic-refraction-layer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  pointer-events: none;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 15% 15%, rgba(112, 225, 255, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 85% 25%, rgba(163, 144, 228, 0.035) 0%, transparent 50%),
-    radial-gradient(circle at 50% 85%, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
-}
-
-/* Subtle Linear-Style Precision Dot Matrix */
-.optic-refraction-layer::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.55;
-  pointer-events: none;
-}
-
-/* Inertial Optical Mercury Cursor Spotlight */
-#cursor-spotlight {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 2;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.06) 0%,
-    rgba(112, 225, 255, 0.03) 35%,
-    rgba(163, 144, 228, 0.015) 60%,
-    transparent 72%
-  );
-  filter: blur(40px);
-  -webkit-filter: blur(40px);
-  opacity: 0;
-  transition: opacity 0.4s var(--ease-out-expo);
-  will-change: transform, left, top;
-}
-
-body:hover #cursor-spotlight {
-  opacity: 1;
-}
-
-/* =========================================================================
-   2. Main Layout Architecture
-   ========================================================================= */
-.app-container {
+#ui-layer {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 clamp(16px, 4vw, 32px) 96px;
+  min-height: 100dvh;
+  pointer-events: none; /* Passes mouse interactions seamlessly to canvas */
 }
 
-/* Suspended Precision Glass Navigation */
+/* All interactive elements must explicitly opt back in to pointer events */
+.interactive,
+a,
+button,
+input,
+select,
+.hud-panel,
+.project-card,
+.contact-pill,
+.modal-container {
+  pointer-events: auto;
+}
+
+/* =========================================================================
+   2. Minimalist Navigation Bar
+   ========================================================================= */
 .top-nav {
   position: sticky;
-  top: 16px;
-  z-index: 100;
-  background-color: var(--glass-bg-nav);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
-  box-shadow: var(--glass-bevel), var(--glass-shadow);
-  margin-bottom: clamp(28px, 5vh, 44px);
-  padding: 6px 16px;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.top-nav:hover {
-  border-color: var(--border-glass);
-  box-shadow: var(--glass-bevel-hover), var(--glass-shadow-hover);
-}
-
-.nav-inner {
+  top: 0;
+  z-index: 50;
+  padding: 18px clamp(16px, 4vw, 36px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  background: linear-gradient(180deg, rgba(8, 9, 12, 0.85) 0%, rgba(8, 9, 12, 0.4) 70%, transparent 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  text-decoration: none;
 }
 
-.brand-specular-dot {
+.brand-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background-color: #EDEDED;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 16px var(--signal-blue);
-  animation: pulse-specular 3s infinite ease-in-out;
-}
-
-@keyframes pulse-specular {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 .brand-name {
@@ -142,874 +76,592 @@ body:hover #cursor-spotlight {
   font-size: 13px;
   font-weight: 600;
   color: var(--text-primary);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.brand-meta {
+.nav-center-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-tertiary);
+  font-size: 10.5px;
+  color: var(--text-secondary);
+  background: var(--bg-pill);
+  border: 1px solid var(--border-subtle);
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
   letter-spacing: 0.04em;
 }
 
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.status-capsule {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 3px 12px;
-  background-color: var(--glass-pill);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  border-radius: var(--radius-pill);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.btn-print {
+.nav-menu-link {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-secondary);
-  background-color: var(--glass-pill);
-  border: 1px solid var(--border-subtle);
+  padding: 4px 10px;
   border-radius: var(--radius-pill);
-  padding: 3px 12px;
-  cursor: pointer;
+  letter-spacing: 0.04em;
   transition: all var(--transition-fast);
 }
 
-.btn-print:hover {
-  border-color: var(--border-glass-bright);
+.nav-menu-link:hover {
   color: var(--text-primary);
-  background-color: var(--glass-pill-hover);
+  background: var(--bg-pill-hover);
 }
 
-/* =========================================================================
-   3. Floating Liquid Discipline Filter Bar
-   ========================================================================= */
-.filter-bar-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 32px;
-}
-
-.filter-glass-dock {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  background-color: var(--glass-bg);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
-  box-shadow: var(--glass-bevel), 0 8px 24px -4px rgba(0, 0, 0, 0.5);
-  padding: 4px;
-  gap: 2px;
-}
-
-/* Floating Physical Liquid Slider Indicator */
-.liquid-slider-thumb {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  height: calc(100% - 8px);
-  background-color: rgba(255, 255, 255, 0.12);
-  border: 1px solid var(--border-glass-bright);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4), 0 2px 8px rgba(0, 0, 0, 0.4);
-  border-radius: var(--radius-pill);
-  pointer-events: none;
-  transition: transform 0.38s var(--ease-out-expo), width 0.38s var(--ease-out-expo);
-  z-index: 1;
-}
-
-.filter-pill-btn {
-  position: relative;
-  z-index: 2;
+.btn-hud-toggle {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--text-secondary);
-  background: transparent;
-  border: none;
-  padding: 6px 14px;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  transition: color var(--transition-fast);
-  white-space: nowrap;
-}
-
-.filter-pill-btn:hover {
   color: var(--text-primary);
+  background: var(--bg-pill);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
 }
 
-.filter-pill-btn.is-active {
-  color: #FFFFFF;
-  font-weight: 500;
+.btn-hud-toggle:hover {
+  background: var(--bg-pill-hover);
+  border-color: var(--border-focus);
 }
 
 /* =========================================================================
-   4. Hero Layer // Floating Precision Glass Sheet
+   3. Content Container & Hero Viewport
    ========================================================================= */
-.hero-glass-sheet {
-  position: relative;
-  background-color: var(--glass-bg);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glass-bevel), var(--glass-shadow);
-  padding: 40px clamp(22px, 4vw, 44px);
-  margin-bottom: 36px;
+.main-content {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 36px) 120px;
+}
+
+.hero-viewport {
+  min-height: calc(100dvh - 120px);
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  justify-content: center;
+  gap: 22px;
+  padding: 40px 0 60px;
 }
 
-.hero-glass-sheet:hover {
-  border-color: var(--border-glass);
-  box-shadow: var(--glass-bevel-hover), var(--glass-shadow-hover);
-}
-
-.hero-meta-label {
+.hero-meta-lead {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-tertiary);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
-.hero-title {
-  font-size: clamp(38px, 5.5vw, 54px);
+.hero-display-title {
+  font-size: clamp(42px, 6.5vw, 76px);
   font-weight: 600;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
   color: var(--text-primary);
-  line-height: 1.06;
 }
 
-.hero-role-row {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
+.hero-subhead {
   font-family: var(--font-mono);
   font-size: 13px;
   color: var(--text-secondary);
+  letter-spacing: 0.02em;
 }
 
-.hero-role-badge {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-.hero-summary {
-  font-size: 15.5px;
-  line-height: 1.68;
+.hero-lorem-text {
+  font-size: 16px;
+  line-height: 1.7;
   color: var(--text-secondary);
-  max-width: 820px;
+  max-width: 720px;
 }
 
-.hero-summary strong {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-/* Minimalist Invariant Telemetry Pills */
-.hero-telemetry-ribbon {
-  display: flex;
+.simulation-hint-pill {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 6px 16px;
+  width: fit-content;
+  box-shadow: var(--glass-specular-top);
+}
+
+.simulation-dot-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-primary);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.hero-action-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   flex-wrap: wrap;
   padding-top: 6px;
 }
 
-.telemetry-chip {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-secondary);
-  background-color: var(--glass-pill);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
-  padding: 5px 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-  transition: border-color var(--transition-fast), color var(--transition-fast);
-}
-
-.telemetry-chip:hover {
-  border-color: var(--border-glass-bright);
-  color: var(--text-primary);
-}
-
-.telemetry-chip-val {
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-.hero-contacts {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding-top: 4px;
-}
-
 .contact-pill {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--text-secondary);
-  background-color: var(--glass-pill);
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-subtle);
-  padding: 7px 16px;
   border-radius: var(--radius-pill);
+  padding: 7px 16px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: var(--glass-specular-top);
   transition: all var(--transition-fast);
 }
 
 .contact-pill:hover {
-  border-color: var(--border-glass-bright);
   color: var(--text-primary);
-  background-color: var(--glass-pill-hover);
+  border-color: var(--border-focus);
+  background: var(--bg-card-hover);
 }
 
 .contact-pill-primary {
-  background-color: #EDEDED;
-  color: var(--text-inverse);
+  background: #EDEDED;
+  color: #08090C;
   font-weight: 600;
   border-color: #EDEDED;
 }
 
 .contact-pill-primary:hover {
-  background-color: #FFFFFF;
+  background: #FFFFFF;
   color: #000000;
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 /* =========================================================================
-   5. Section Header Conventions
+   4. Editorial Project Showcase
    ========================================================================= */
-.resume-section {
-  padding: 36px 0;
-  position: relative;
+.editorial-section {
+  padding: 48px 0;
+  border-top: 1px solid var(--border-subtle);
 }
 
-.section-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--text-tertiary);
-  margin-bottom: 22px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.section-label::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background-color: var(--border-subtle);
-}
-
-/* =========================================================================
-   6. The Floating Prism Project Dock (3D Tilt Crystalline Panels)
-   ========================================================================= */
-.project-prism-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-  perspective: 1200px;
-}
-
-.prism-card {
-  position: relative;
-  background-color: var(--glass-bg);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--glass-bevel), var(--glass-shadow);
-  overflow: hidden;
-  transform-style: preserve-3d;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
-}
-
-.prism-card:hover {
-  border-color: var(--border-glass-bright);
-  box-shadow: var(--glass-bevel-hover), var(--glass-shadow-hover);
-}
-
-/* Specular Rim Light Follower */
-.prism-specular-glare {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: var(--radius-lg);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 5;
-}
-
-.prism-card:hover .prism-specular-glare {
-  opacity: 1;
-}
-
-/* Optical Image Slot (Emerging from beneath frosted surface) */
-.prism-media-viewport {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background-color: #040507;
-  border-bottom: 1px solid var(--border-subtle);
-  overflow: hidden;
-  cursor: zoom-in;
-}
-
-.prism-media-viewport img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.88;
-  filter: contrast(102%) brightness(96%);
-  transition: opacity 0.4s ease, transform 0.4s var(--ease-out-expo);
-}
-
-.prism-card:hover .prism-media-viewport img {
-  opacity: 1;
-  transform: scale(1.02);
-}
-
-.viewport-tag {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.06em;
-  color: var(--text-primary);
-  background-color: rgba(8, 9, 12, 0.78);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
-}
-
-.prism-body {
-  padding: 26px clamp(20px, 3.5vw, 32px);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.prism-header {
+.section-editorial-header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
 }
 
-.prism-title {
-  font-size: 19px;
+.section-num-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.section-title-clean {
+  font-size: 20px;
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 
-.prism-subtitle {
+.projects-editorial-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--glass-specular-top);
+  padding: 26px clamp(20px, 3.5vw, 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.project-card:hover {
+  border-color: var(--border-glass);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.project-top-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.project-title-editorial {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.project-subtitle-editorial {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-secondary);
 }
 
-.prism-desc {
+.project-lorem-desc {
   font-size: 14.5px;
   line-height: 1.68;
   color: var(--text-secondary);
 }
 
-.prism-desc strong {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-/* Linear-Precision Data Pipeline Ribbon */
-.pipeline-ribbon {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background-color: rgba(4, 5, 8, 0.6);
+/* Minimalist Hardware & Telemetry Matrix */
+.telemetry-bar-editorial {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  padding: 12px 14px;
+  background: rgba(8, 9, 12, 0.7);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 12px 14px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
-.pipeline-header {
+.telemetry-cell {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.telemetry-cell-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 9.5px;
   color: var(--text-tertiary);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
-.pipeline-flow {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  overflow-x: auto;
-  padding-bottom: 2px;
-}
-
-.pipeline-step {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  background-color: var(--glass-pill);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xs);
-  padding: 6px 10px;
-  min-width: 130px;
-  transition: border-color var(--transition-fast), background-color var(--transition-fast);
-}
-
-.pipeline-step:hover {
-  border-color: var(--border-glass-bright);
-  background-color: var(--glass-pill-hover);
-}
-
-.step-meta {
+.telemetry-cell-val {
   font-family: var(--font-mono);
-  font-size: 9px;
-  color: var(--text-tertiary);
-  letter-spacing: 0.06em;
-}
-
-.step-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-primary);
-  white-space: nowrap;
-}
-
-.step-spec {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  color: var(--text-secondary);
-  white-space: nowrap;
-}
-
-.pipeline-arrow {
-  flex-shrink: 0;
-  color: var(--text-tertiary);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  padding: 0 2px;
-}
-
-/* Precision Telemetry Grid */
-.telemetry-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 10px;
-  padding: 12px 14px;
-  background-color: rgba(4, 5, 8, 0.6);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-}
-
-.telemetry-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.telemetry-lbl {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.telemetry-val {
-  font-family: var(--font-mono);
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.telemetry-val.accent {
-  color: #FFFFFF;
-}
-
-.prism-footer {
+.project-footer-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
-  padding-top: 10px;
+  padding-top: 8px;
   border-top: 1px solid var(--border-subtle);
 }
 
-.prism-chips {
+.project-chips-wrap {
   display: flex;
   align-items: center;
   gap: 6px;
   flex-wrap: wrap;
 }
 
-.prism-chip {
+.tech-chip {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 10px;
   padding: 3px 9px;
-  background-color: var(--glass-pill);
+  background: var(--bg-pill);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-xs);
   color: var(--text-secondary);
 }
 
-.btn-prism-inspect {
+.btn-case-study {
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 500;
   color: var(--text-primary);
-  background-color: var(--glass-pill);
+  background: var(--bg-pill);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-pill);
   padding: 5px 14px;
   cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all var(--transition-fast);
 }
 
-.btn-prism-inspect:hover {
-  border-color: var(--border-glass-bright);
-  background-color: var(--glass-pill-hover);
+.btn-case-study:hover {
+  border-color: var(--border-focus);
+  background: var(--bg-pill-hover);
   color: #FFFFFF;
 }
 
 /* =========================================================================
-   7. Systems Architecture Taxonomy & Invariants
+   5. Technical HUD / Physics Debug Controls (Inspired by Shiyun Lu)
    ========================================================================= */
-.taxonomy-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.taxonomy-card {
-  background-color: var(--glass-bg);
+.hud-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  max-width: 320px;
+  width: calc(100vw - 40px);
+  background: var(--bg-hud);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-glass);
   border-radius: var(--radius-md);
-  box-shadow: var(--glass-bevel), var(--glass-shadow);
-  padding: 22px;
+  box-shadow: var(--glass-specular-top), 0 20px 48px -10px rgba(0, 0, 0, 0.8);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.hud-panel.is-collapsed .hud-body {
+  display: none;
+}
+
+.hud-header {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  user-select: none;
+}
+
+.hud-title {
+  color: var(--text-primary);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.hud-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hud-btn-action {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  padding: 2px 6px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.hud-btn-action:hover {
+  color: var(--text-primary);
+  border-color: var(--border-focus);
+}
+
+.hud-body {
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  gap: 12px;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
-.taxonomy-card:hover {
-  border-color: var(--border-glass);
-  box-shadow: var(--glass-bevel-hover), var(--glass-shadow-hover);
-  transform: translateY(-2px);
+.hud-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: 10px;
 }
 
-.taxonomy-header {
+.hud-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.hud-group-label {
+  color: var(--text-tertiary);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hud-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
 }
 
-.taxonomy-num {
+.hud-row span {
+  color: var(--text-secondary);
+}
+
+.hud-row-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.hud-pill-toggle {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--text-tertiary);
-  letter-spacing: 0.1em;
-  font-weight: 600;
-}
-
-.taxonomy-spec-pill {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  padding: 2px 8px;
-  background-color: var(--glass-pill);
+  color: var(--text-secondary);
+  background: var(--bg-pill);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-pill);
-  color: var(--text-secondary);
+  border-radius: var(--radius-xs);
+  padding: 3px 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
-.taxonomy-title {
-  font-size: 15.5px;
-  font-weight: 600;
+.hud-pill-toggle:hover {
   color: var(--text-primary);
-  letter-spacing: -0.01em;
+  border-color: var(--border-focus);
 }
 
-.taxonomy-desc {
-  font-size: 13.5px;
-  line-height: 1.62;
-  color: var(--text-secondary);
+.hud-pill-toggle.active {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+  font-weight: 600;
 }
 
-.taxonomy-specs {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-top: 4px;
-  border-top: 1px solid var(--border-subtle);
-  padding-top: 8px;
+/* Range input slider styling */
+.hud-slider {
+  -webkit-appearance: none;
+  width: 90px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  outline: none;
 }
 
-.taxonomy-specs li {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: flex-start;
+.hud-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #EDEDED;
+  cursor: pointer;
+}
+
+.hud-telemetry-badge {
+  display: inline-flex;
+  align-items: center;
   gap: 6px;
-  line-height: 1.45;
-}
-
-.taxonomy-specs li::before {
-  content: "—";
-  color: var(--text-tertiary);
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 /* =========================================================================
-   8. Track Record & Academic Foundation
+   6. Project Detail Modal / Case Study Overlay
    ========================================================================= */
-.experience-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.exp-sheet {
-  background-color: var(--glass-bg);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  box-shadow: var(--glass-bevel), var(--glass-shadow);
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
-}
-
-.exp-sheet:hover {
-  border-color: var(--border-glass);
-  box-shadow: var(--glass-bevel-hover), var(--glass-shadow-hover);
-  transform: translateY(-2px);
-}
-
-.exp-top-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.exp-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.exp-company {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--text-primary);
-}
-
-.exp-date {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-tertiary);
-}
-
-.exp-bullets {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.exp-bullets li {
-  position: relative;
-  padding-left: 16px;
-  font-size: 14px;
-  line-height: 1.62;
-  color: var(--text-secondary);
-}
-
-.exp-bullets li::before {
-  content: "›";
-  position: absolute;
-  left: 0;
-  color: var(--text-primary);
-  font-weight: 600;
-}
-
-.exp-bullets strong {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-/* Academic Substrate Card */
-.edu-sheet {
-  background-color: var(--glass-bg);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  box-shadow: var(--glass-bevel), var(--glass-shadow);
-  padding: 22px 24px;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.edu-sheet:hover {
-  border-color: var(--border-glass);
-  box-shadow: var(--glass-bevel-hover), var(--glass-shadow-hover);
-}
-
-.edu-univ {
-  font-size: 15.5px;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.edu-degree {
-  font-size: 13.5px;
-  color: var(--text-secondary);
-  margin-top: 2px;
-}
-
-.edu-meta {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-/* =========================================================================
-   9. Interactive Project Overlay ("The Magnifying Glass")
-   ========================================================================= */
-.overlay-backdrop {
+.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(4, 5, 8, 0.92);
+  height: 100dvh;
+  z-index: 1000;
+  background: rgba(4, 5, 8, 0.94);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s var(--ease-out-expo);
+  transition: opacity 0.3s var(--ease-expo);
   padding: 24px;
 }
 
-.overlay-backdrop.is-active {
+.modal-overlay.is-active {
   opacity: 1;
   pointer-events: auto;
 }
 
-.overlay-glass-container {
-  display: flex;
-  flex-direction: column;
-  max-width: 940px;
+.modal-container {
+  max-width: 900px;
   width: 100%;
   max-height: 90vh;
-  background-color: rgba(14, 16, 21, 0.78);
-  backdrop-filter: blur(36px) saturate(190%);
-  -webkit-backdrop-filter: blur(36px) saturate(190%);
+  background: rgba(14, 16, 21, 0.85);
+  backdrop-filter: blur(36px);
+  -webkit-backdrop-filter: blur(36px);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
-  box-shadow: var(--glass-bevel-hover), 0 32px 80px -10px rgba(0, 0, 0, 0.9);
+  box-shadow: var(--glass-specular-top), 0 32px 80px -10px rgba(0, 0, 0, 0.9);
   padding: 24px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
   transform: scale(0.96) translateY(12px);
-  transition: transform 0.36s var(--ease-out-expo);
+  transition: transform 0.36s var(--ease-expo);
 }
 
-.overlay-backdrop.is-active .overlay-glass-container {
+.modal-overlay.is-active .modal-container {
   transform: scale(1) translateY(0);
 }
 
-.overlay-header {
+.modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
   border-bottom: 1px solid var(--border-subtle);
   padding-bottom: 14px;
 }
 
-.overlay-title-group {
+.modal-title-wrap {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.overlay-title {
-  font-size: 16px;
+.modal-title {
+  font-size: 17px;
   font-weight: 600;
   color: var(--text-primary);
-  letter-spacing: -0.01em;
 }
 
-.overlay-subtitle {
+.modal-subtitle {
   font-family: var(--font-mono);
   font-size: 11.5px;
   color: var(--text-secondary);
 }
 
-.overlay-close-btn {
-  background: var(--glass-pill);
+.modal-close-btn {
+  background: var(--bg-pill);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
   width: 32px;
@@ -1020,151 +672,40 @@ body:hover #cursor-spotlight {
   justify-content: center;
   font-size: 14px;
   cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all var(--transition-fast);
 }
 
-.overlay-close-btn:hover {
-  border-color: var(--border-glass-bright);
-  background-color: var(--glass-pill-hover);
-  color: #FFFFFF;
+.modal-close-btn:hover {
+  border-color: var(--border-focus);
+  background: var(--bg-pill-hover);
 }
 
-/* Overlay Tab Bar */
-.overlay-tabs {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 10px;
-}
-
-.overlay-tab {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-secondary);
-  background: transparent;
-  border: 1px solid transparent;
-  padding: 5px 14px;
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-}
-
-.overlay-tab:hover {
-  color: var(--text-primary);
-  border-color: var(--border-subtle);
-}
-
-.overlay-tab.is-active {
-  color: #FFFFFF;
-  background-color: var(--glass-pill-hover);
-  border-color: var(--border-glass-bright);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  font-weight: 500;
-}
-
-.overlay-tab-content {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.overlay-media-viewport {
+.modal-media-wrap {
   width: 100%;
-  max-height: 52vh;
+  max-height: 50vh;
+  background: #040507;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #040507;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 1px solid var(--border-subtle);
 }
 
-.overlay-media-viewport img {
+.modal-media-wrap img {
   max-width: 100%;
-  max-height: 52vh;
+  max-height: 50vh;
   object-fit: contain;
 }
 
-.overlay-desc {
+.modal-desc {
   font-size: 14px;
   line-height: 1.68;
   color: var(--text-secondary);
 }
 
-/* Minimalist Specification Table */
-.spec-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  background-color: rgba(4, 5, 8, 0.6);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-}
-
-.spec-table th {
-  text-align: left;
-  padding: 10px 14px;
-  background-color: rgba(255, 255, 255, 0.03);
-  color: var(--text-tertiary);
-  font-weight: 600;
-  border-bottom: 1px solid var(--border-subtle);
-  text-transform: uppercase;
-  font-size: 10px;
-  letter-spacing: 0.08em;
-}
-
-.spec-table td {
-  padding: 10px 14px;
-  color: var(--text-secondary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  vertical-align: top;
-}
-
-.spec-table tr:last-child td {
-  border-bottom: none;
-}
-
-.spec-table td.spec-key {
-  color: var(--text-primary);
-  font-weight: 500;
-  width: 25%;
-}
-
-.spec-table td.spec-val {
-  color: #FFFFFF;
-  width: 35%;
-}
-
 /* =========================================================================
-   10. Scrolling Reveal Dynamics
-   ========================================================================= */
-.reveal-item {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.65s var(--ease-out-expo), transform 0.65s var(--ease-out-expo);
-  will-change: opacity, transform;
-}
-
-.reveal-item.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal-item {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-}
-
-/* =========================================================================
-   11. Footer & Colophon
+   7. Footer & Colophon
    ========================================================================= */
 .page-footer {
   padding-top: 36px;
@@ -1187,82 +728,39 @@ body:hover #cursor-spotlight {
 }
 
 /* =========================================================================
-   12. Responsive Media Queries & Print
+   8. Responsive Media Queries
    ========================================================================= */
-@media (max-width: 768px) {
-  .taxonomy-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 640px) {
-  .nav-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  .top-nav {
+    padding: 12px 16px;
   }
 
-  .nav-right {
-    width: 100%;
-    justify-content: space-between;
+  .nav-center-status {
+    display: none;
   }
 
-  .filter-glass-dock {
-    width: 100%;
-    overflow-x: auto;
-    justify-content: flex-start;
-  }
-
-  .hero-contacts {
+  .hero-action-row {
     flex-direction: column;
     align-items: stretch;
   }
 
   .contact-pill {
     justify-content: center;
-    min-height: 42px;
+    min-height: 40px;
   }
 
-  .telemetry-grid {
+  .telemetry-bar-editorial {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .hud-panel {
+    bottom: 12px;
+    right: 12px;
+    max-width: calc(100vw - 24px);
   }
 
   .page-footer {
     flex-direction: column;
     align-items: flex-start;
-  }
-}
-
-/* Print Overrides */
-@media print {
-  #liquid-canvas,
-  .optic-refraction-layer,
-  #cursor-spotlight,
-  .top-nav,
-  .btn-print,
-  .filter-bar-wrapper,
-  .overlay-backdrop {
-    display: none !important;
-  }
-  body {
-    background-color: #ffffff !important;
-    color: #111111 !important;
-  }
-  .app-container {
-    max-width: 100% !important;
-    padding: 0 !important;
-  }
-  .hero-glass-sheet,
-  .prism-card,
-  .taxonomy-card,
-  .exp-sheet,
-  .edu-sheet {
-    background-color: #ffffff !important;
-    border: 1px solid #dddddd !important;
-    box-shadow: none !important;
-    break-inside: avoid;
-  }
-  .hero-title, h2, h3, .telemetry-val {
-    color: #000000 !important;
   }
 }

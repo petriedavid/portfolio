@@ -1,69 +1,62 @@
-# David Petrie // Minimalist Liquid Glass Portfolio
+# David Petrie — Editorial Portfolio & Three.js Physics Canvas
 
-An ultra-modern, high-end **Liquid Glass** interactive portfolio designed with optical physical realism, architectural glass beveling, visionOS specular refraction, and WebGL fluid caustics.
+A minimalist, high-contrast editorial portfolio inspired by the interaction and visual aesthetic of **[shiyunlu.com](https://www.shiyunlu.com/)**.
 
----
-
-## 💎 Design System & Aesthetic Architecture
-
-1. **Pure Monochromatic Minimalism**:
-   - Deep Obsidian base canvas (`#08090C`), avoiding flat pitch black or muddy blur overlays.
-   - Variable alpha frosted glass substrates (`rgba(255, 255, 255, 0.03)` to `0.08`) with multi-stop inner borders (`inset 0 1px 1px rgba(255, 255, 255, 0.22)`) replicating physical glass beveling.
-   - Adaptive background blur: `backdrop-filter: blur(28px) saturate(180%)`.
-2. **The Liquid Glass Canvas (Hero Layer & Background)**:
-   - Full-viewport WebGL fluid background rendering real-time optical caustics, simplex noise waves, and chromatic aberration (prismatic RGB split on wave peaks).
-   - Inertial optical mercury spotlight trailing the cursor with smooth damping and automatic idle throttling (0% CPU when stationary).
-3. **The Floating Prism Project Dock**:
-   - Suspended glass crystalline panels with 3D perspective tilt (`perspective(1200px) rotateX(...) rotateY(...)`) reactive to mouse position.
-   - On hover, ambient light concentrates along the bevel edge with shifting specular rim light, while the high-resolution interface preview emerges smoothly from beneath the frosted surface.
-4. **Discipline Filters (The Liquid Toggle)**:
-   - Floating glass toggle bar with a smooth liquid highlight slider that physically stretches, snaps, and filters project categories (ALL, QUANT & MICROSTRUCTURE, DISTRIBUTED RPC, CYBER DEFENSE, CORE SYSTEMS).
-5. **Interactive Project Overlay ("The Magnifying Glass")**:
-   - Seamless elastic zoom expansion into edge-to-edge minimalist case study overlay with full telemetry matrices, hardware invariants, and data plane routing pipelines.
+Combines an interactive 3D Verlet physics simulation running at 60 FPS in Three.js with an editorial typography layer (`Geist` & `Geist Mono`), live physics telemetry, collapsible Technical HUD debug controls, and verified institutional systems architecture case studies.
 
 ---
 
-## 🏛️ Verified Systems & Engineering Specifications
+## ⚡ Architectural Design System
 
-### 1. sync // KXBTC15M
-*Institutional Kalshi 15-Minute Bitcoin Binary Quantitative Trading & Telemetry Architecture*
-- **Closed-Form Microstructure:** Synthetic BRTI Lead-Lag Replication across Coinbase, Kraken, and Bitstamp with 60-Second Settlement TWAP Pinning Arbitrage.
-- **Live Performance:**
-  - **Live Win Rate / Profit Factor:** `81.8%` // `2.14 PF` (15,000 backtest segments)
-  - **Realized Session PnL:** `+$110.52 USD` (Live Kalshi markets)
-  - **Gateway Latency:** `11ms End-to-End`
-  - **Hardware Clock Drift:** Azure Hyper-V Hardware PTP `/dev/ptp0` `<5μs`
-- **Stack:** Python 3.11, FastAPI (100ms Telemetry), React 18, TypeScript, TimescaleDB, Azure Linux (SR-IOV <15μs), RSA-PSS Signatures, Quarter-Kelly Sizing.
+1. **Layered Full-Viewport Architecture (`100dvh`)**:
+   - **Background Substrate (`z-index: 1`)**: Full-screen Three.js WebGL physics canvas.
+   - **Foreground Editorial Layer (`z-index: 10`)**: High-contrast typography with `pointer-events: none` on structural wrappers and `pointer-events: auto` on interactive elements, allowing cursor interactions and drag gestures to pass directly to the physics canvas while keeping content clickable.
 
-### 2. PixelLabz Global RPC Mesh
-*High-Throughput Non-Consensus Node Mesh on Solana & Aptos*
-- Co-architected non-consensus RPC network on Solana and Aptos across 15+ bare-metal servers in U.S., Germany, and Singapore.
-- Sustained 1,000 RPS per node with 0s landing time (same-block transaction inclusion) and Yellowstone gRPC streaming.
-- Validated across 8M+ live transactions; generated ~$180,000 in platform revenue; 4,000+ active users; 99.99% service uptime.
+2. **Interactive 3D Sphere Physics Engine (`js/physics-engine.js`)**:
+   - Zero-dependency, lightweight Verlet collision integration solver.
+   - Camera frustum boundary math with real-time viewport reflection.
+   - 3D Raycaster cursor force field:
+     - **Repel**: Spheres scatter dynamically away from the cursor.
+     - **Attract**: Spheres cluster smoothly toward the cursor.
+     - **Vortex**: Spheres orbit cyclonically around the cursor.
+   - Radial impulse shockwaves on mouse click.
+   - 3D sphere grabbing, dragging, and throwing with velocity inheritance.
+   - Subtle camera parallax reacting to cursor movement.
 
-### 3. NodeStop Enterprise Security Infrastructure
-*Information Security Analyst Intern — Threat Hunting & Deep Packet Telemetry*
-- Real-time network traffic analysis and raw packet inspection with Snort IDS and Wireshark.
-- Penetration testing and credential fuzzing exercises with Nmap, Nessus, Hydra, Medusa.
+3. **Technical HUD / Debug Controls Overlay (Shiyun Lu Style)**:
+   - Docked in the lower-right corner with monospaced typography (`Geist Mono`).
+   - Live controls:
+     - **`// Spheres`**: Dynamic count switching (16 / 30 / 48), Gravity presets (0G, 1G, -1G, Vortex), Restitution elasticity slider (0.40 – 0.98), Materials (Obsidian, Chrome, Studio).
+     - **`// Mouse`**: Force mode toggling (Repel / Attract / Vortex), Force radius slider (3.0 – 12.0).
+     - **`// Camera`**: Mouse parallax toggle.
+     - **`// Telemetry`**: Live FPS performance monitor (`requestAnimationFrame` delta tracking) and Verlet 3D engine status.
+     - **Scene Actions**: Instant `SCATTER` impulse and clean `RESET` layout.
+
+4. **Preserved Real-World Systems & Engineering Specifications**:
+   - **`sync // KXBTC15M`**: Institutional Kalshi 15-Minute Bitcoin Binary Quantitative Trading Engine (81.8% Win Rate, 2.14 Profit Factor, 11ms Gateway Latency, Azure Hyper-V Hardware PTP `<5μs`, RSA-PSS, Quarter-Kelly).
+   - **`PixelLabz Global RPC Mesh`**: High-Throughput Non-Consensus Node Mesh on Solana & Aptos (8M+ transactions, 1,000 RPS/node, 0s same-block landing, $180k+ revenue, 99.99% uptime).
+   - **`NodeStop Enterprise Security Infrastructure`**: Information Security Analyst Intern (Snort IDS, Wireshark packet inspection, Nmap, Nessus, Hydra, penetration testing).
+   - **`Academic Foundation`**: The Pennsylvania State University, B.S. in Enterprise Technology Integration & Cybersecurity Operations & Analytics (GPA: 3.4, Expected May 2027).
 
 ---
 
-## 🎓 Academic Foundation
+## 🚀 Local Development
 
-- **The Pennsylvania State University** — University Park, PA
-- B.S. in Enterprise Technology Integration & Cybersecurity Operations & Analytics (GPA: 3.4, Expected May 2027)
-
----
-
-## 🛠️ Running Locally & Deployment
+To run locally using any standard static server:
 
 ```bash
-# Run local HTTP server
+# Python 3 built-in HTTP server
 python3 -m http.server 8080
 ```
+
 Open `http://localhost:8080` in your browser.
 
-Deploy directly to Vercel:
+---
+
+## 🌐 Production Deployment
+
+The project is configured for static zero-friction deployment to Vercel:
+
 ```bash
 vercel --prod
 ```

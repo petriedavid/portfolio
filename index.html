@@ -4,26 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>David Petrie — Systems Architecture &amp; Quantitative Infrastructure</title>
-  <meta name="description" content="Tactile minimalist liquid glass portfolio of David Petrie. Systems architecture, low-latency market microstructure engines, multi-region bare-metal RPC networks, and enterprise cybersecurity.">
+  <meta name="description" content="Minimalist editorial portfolio with interactive Three.js 3D physics simulation. Systems architecture, low-latency market microstructure engines, and distributed RPC networks.">
   <meta name="author" content="David Petrie">
   <meta name="theme-color" content="#08090C">
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="David Petrie — Systems Architecture &amp; Quantitative Infrastructure">
-  <meta property="og:description" content="Minimalist Liquid Glass portfolio. Low-latency prediction market microstructure, multi-region bare-metal RPC infrastructure, and enterprise cybersecurity.">
+  <meta property="og:description" content="Minimalist editorial portfolio with interactive Three.js 3D physics simulation.">
   <meta property="og:image" content="assets/screenshots/sync.png">
 
   <!-- Twitter Meta -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="David Petrie — Systems Architecture &amp; Quantitative Infrastructure">
-  <meta name="twitter:description" content="Minimalist Liquid Glass portfolio. Low-latency prediction market microstructure, multi-region bare-metal RPC infrastructure, and enterprise cybersecurity.">
+  <meta name="twitter:description" content="Minimalist editorial portfolio with interactive Three.js 3D physics simulation.">
   <meta name="twitter:image" content="assets/screenshots/sync.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- Geist & Geist Mono (Pure Geometric Grotesque & Monospaced Typography) -->
+  <!-- Geist & Geist Mono Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -35,518 +35,402 @@
 <body>
 
   <!-- =========================================================================
-       1. The Liquid Glass Canvas (WebGL Fluid Refraction & Optic Caustics)
+       Background Layer: Three.js Interactive Physics Canvas
        ========================================================================= -->
-  <canvas id="liquid-canvas" aria-hidden="true"></canvas>
+  <div id="canvas-container" aria-hidden="true"></div>
 
-  <div class="optic-refraction-layer" aria-hidden="true">
-    <div id="cursor-spotlight"></div>
-  </div>
+  <!-- =========================================================================
+       Foreground UI Layer (Pointer-events transparent, elements interactive)
+       ========================================================================= -->
+  <div id="ui-layer">
 
-  <!-- Sticky Precision Glass Navigation -->
-  <nav class="top-nav" aria-label="Quick Controls">
-    <div class="nav-inner">
-      <div class="nav-brand">
-        <span class="brand-specular-dot" aria-hidden="true"></span>
+    <!-- Minimalist Sticky Navigation Bar -->
+    <nav class="top-nav" aria-label="Main Navigation">
+      <a href="#" class="nav-brand interactive">
+        <span class="brand-dot" aria-hidden="true"></span>
         <span class="brand-name">David Petrie</span>
-        <span class="brand-meta">// SYSTEMS ARCHITECTURE &amp; QUANT INFRA</span>
+      </a>
+
+      <div class="nav-center-status">
+        <span style="color: var(--text-primary);" aria-hidden="true">●</span>
+        <span>SYSTEMS &amp; QUANT // 2026</span>
       </div>
 
       <div class="nav-right">
-        <div class="status-capsule">
-          <span style="color: #EDEDED;" aria-hidden="true">●</span>
-          <span>Available for Roles // 2026</span>
-        </div>
-        <button onclick="window.print()" class="btn-print" title="Print document" aria-label="Print or export page as PDF">Print / PDF ⎙</button>
+        <a href="#work" class="nav-menu-link interactive">Work</a>
+        <a href="#about" class="nav-menu-link interactive">About</a>
+        <a href="#contact" class="nav-menu-link interactive">Contact</a>
+        <button id="btn-hud-nav" class="btn-hud-toggle interactive" title="Toggle Technical HUD">
+          <span>// CONTROLS</span>
+        </button>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Main Content Sheet -->
-  <main class="app-container">
+    <!-- Main Editorial Content Container -->
+    <main class="main-content">
 
-    <!-- Hero Layer: Floating Precision Glass Sheet -->
-    <header class="hero-glass-sheet reveal-item">
-      <span class="hero-meta-label">SYSTEMS ARCHITECT &amp; INFRASTRUCTURE BUILDER</span>
-      
-      <h1 class="hero-title">David Petrie</h1>
+      <!-- Hero Viewport Layer -->
+      <section class="hero-viewport" id="intro">
+        <span class="hero-meta-lead">// PORTFOLIO 2026 · SYSTEMS ARCHITECTURE &amp; QUANTITATIVE INFRASTRUCTURE</span>
 
-      <div class="hero-role-row">
-        <span class="hero-role-badge">Co-Founder @ PixelLabz RPC</span>
-        <span>·</span>
-        <span class="hero-role-badge">Former InfoSec Intern @ NodeStop LLC</span>
-        <span>·</span>
-        <span>Penn State University (ETI &amp; Cybersecurity)</span>
-      </div>
+        <h1 class="hero-display-title">David Petrie</h1>
 
-      <p class="hero-summary">
-        Systems developer and quantitative infrastructure builder at Penn State. Hands-on experience engineering <strong>deterministic, low-latency market-microstructure trading engines</strong> for prediction markets, co-founding <strong>multi-region blockchain RPC infrastructure across 15+ bare-metal nodes</strong>, and applying active inference telemetry models for enterprise cybersecurity.
-      </p>
-
-      <!-- Minimalist Invariant Telemetry Ribbon -->
-      <div class="hero-telemetry-ribbon">
-        <div class="telemetry-chip">
-          <span>Azure SR-IOV</span>
-          <span class="telemetry-chip-val">&lt; 15μs</span>
+        <div class="hero-subhead">
+          Co-Founder @ PixelLabz RPC · Former InfoSec Intern @ NodeStop LLC · Penn State ETI &amp; Cybersecurity
         </div>
-        <div class="telemetry-chip">
-          <span>Hardware PTP</span>
-          <span class="telemetry-chip-val">&lt; 5μs</span>
+
+        <p class="hero-lorem-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+
+        <!-- Interactive Simulation Prompt Pill -->
+        <div class="simulation-hint-pill">
+          <span class="simulation-dot-pulse" aria-hidden="true"></span>
+          <span>// INTERACTION: MOVE CURSOR TO REPEL SPHERES · DRAG OR CLICK TO LAUNCH IMPULSE</span>
         </div>
-        <div class="telemetry-chip">
-          <span>Solana RPC</span>
-          <span class="telemetry-chip-val">1,000 RPS / Node</span>
+
+        <!-- Action & Contact Links -->
+        <div class="hero-action-row">
+          <a href="mailto:dvp5702@psu.edu" class="contact-pill contact-pill-primary interactive">
+            <span>Contact (dvp5702@psu.edu)</span> ↗
+          </a>
+          <a href="https://linkedin.com/in/gender" target="_blank" rel="noopener noreferrer" class="contact-pill interactive">
+            <span>LinkedIn (/in/gender)</span> ↗
+          </a>
+          <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer" class="contact-pill interactive">
+            <span>GitHub (/petriedavid)</span> ↗
+          </a>
         </div>
-        <div class="telemetry-chip">
-          <span>Live Win Rate</span>
-          <span class="telemetry-chip-val">81.8% (2.14 PF)</span>
+      </section>
+
+      <!-- Editorial Project Showcase -->
+      <section class="editorial-section" id="work">
+        <div class="section-editorial-header">
+          <span class="section-num-tag">01 // VERIFIED SYSTEMS &amp; ARCHITECTURAL IMPLEMENTATIONS</span>
+          <h2 class="section-title-clean">Selected Architecture</h2>
         </div>
-        <div class="telemetry-chip">
-          <span>Audit WAL</span>
-          <span class="telemetry-chip-val">SHA-256 Chained</span>
-        </div>
-      </div>
 
-      <!-- Contact Links -->
-      <div class="hero-contacts">
-        <a href="mailto:dvp5702@psu.edu" class="contact-pill contact-pill-primary">
-          <span>Email (dvp5702@psu.edu)</span> ↗
-        </a>
-        <a href="https://linkedin.com/in/gender" target="_blank" rel="noopener noreferrer" class="contact-pill">
-          <span>LinkedIn (/in/gender)</span> ↗
-        </a>
-        <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer" class="contact-pill">
-          <span>GitHub (/petriedavid)</span> ↗
-        </a>
-      </div>
-    </header>
+        <div class="projects-editorial-stack">
 
-    <!-- Floating Discipline Filter Bar (The Liquid Toggle) -->
-    <div class="filter-bar-wrapper reveal-item">
-      <nav class="filter-glass-dock" role="tablist" aria-label="Discipline Filters">
-        <span class="liquid-slider-thumb" id="filter-thumb"></span>
-        <button class="filter-pill-btn is-active" data-filter="all" role="tab" aria-selected="true">ALL DISCIPLINES</button>
-        <button class="filter-pill-btn" data-filter="quant" role="tab" aria-selected="false">QUANT &amp; MICROSTRUCTURE</button>
-        <button class="filter-pill-btn" data-filter="rpc" role="tab" aria-selected="false">DISTRIBUTED RPC</button>
-        <button class="filter-pill-btn" data-filter="cyber" role="tab" aria-selected="false">CYBER DEFENSE</button>
-        <button class="filter-pill-btn" data-filter="systems" role="tab" aria-selected="false">CORE SYSTEMS</button>
-      </nav>
-    </div>
-
-    <!-- The Floating Prism Project Dock (Portfolio Hub) -->
-    <section class="resume-section reveal-item" id="projects">
-      <div class="section-label">01 // VERIFIED SYSTEMS &amp; ARCHITECTURAL IMPLEMENTATIONS</div>
-
-      <div class="project-prism-stack" id="project-stack">
-        
-        <!-- Project 01: sync // KXBTC15M -->
-        <article class="prism-card" data-project-id="sync" data-category="quant systems">
-          <div class="prism-specular-glare"></div>
-
-          <div class="prism-media-viewport" title="Click to open full case study overlay">
-            <img src="assets/screenshots/sync.png" alt="sync KXBTC15M Quantitative Trading &amp; Telemetry Architecture" loading="lazy" decoding="async">
-            <div class="viewport-tag">KXBTC15M // DETERMINISTIC MICROSTRUCTURE</div>
-          </div>
-
-          <div class="prism-body">
-            <div class="prism-header">
+          <!-- Project 01: sync // KXBTC15M -->
+          <article class="project-card interactive" data-project-id="sync">
+            <div class="project-top-row">
               <div>
-                <h2 class="prism-title">sync // KXBTC15M</h2>
-                <span class="prism-subtitle">Institutional Kalshi 15-Minute Bitcoin Binary Quantitative Trading &amp; Telemetry Architecture</span>
+                <h3 class="project-title-editorial">sync // KXBTC15M</h3>
+                <span class="project-subtitle-editorial">Institutional Kalshi 15-Minute Bitcoin Binary Quantitative Trading Architecture</span>
               </div>
             </div>
 
-            <p class="prism-desc">
-              A deterministic, low-latency market-microstructure trading bot and telemetry dashboard purpose-built for Kalshi's 15-minute Bitcoin binary prediction markets (<code>KXBTC15M</code>). Closed-form microstructure pricing: <strong>Synthetic BRTI Lead-Lag Replication</strong> across Coinbase, Kraken, and Bitstamp with <strong>60-Second Settlement TWAP Pinning Arbitrage</strong>, sub-millisecond execution routing, and SHA-256 tamper-evident cryptographic trade logging.
+            <p class="project-lorem-desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
             </p>
 
-            <!-- Precision Data Pipeline Ribbon -->
-            <div class="pipeline-ribbon">
-              <div class="pipeline-header">
-                <span>SYSTEM ARCHITECTURE // DATA PLANE &amp; ROUTING</span>
-                <span style="color: var(--text-primary);">SR-IOV &lt; 15μs · 11ms RTT</span>
+            <!-- Real Telemetry Matrix -->
+            <div class="telemetry-bar-editorial">
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Live Win Rate // Factor</span>
+                <span class="telemetry-cell-val">81.8% // 2.14 PF</span>
               </div>
-              <div class="pipeline-flow">
-                <div class="pipeline-step">
-                  <span class="step-meta">01 // INGRESS</span>
-                  <span class="step-label">Exchange Feeds</span>
-                  <span class="step-spec">Coinbase · Kraken · Bitstamp</span>
-                </div>
-                <div class="pipeline-arrow">──▶</div>
-                <div class="pipeline-step">
-                  <span class="step-meta">02 // BYPASS</span>
-                  <span class="step-label">Azure SR-IOV</span>
-                  <span class="step-spec">Lock-Free SPSC Buffer</span>
-                </div>
-                <div class="pipeline-arrow">──▶</div>
-                <div class="pipeline-step">
-                  <span class="step-meta">03 // PRICING</span>
-                  <span class="step-label">BRTI Lead-Lag</span>
-                  <span class="step-spec">60s TWAP Pinning</span>
-                </div>
-                <div class="pipeline-arrow">──▶</div>
-                <div class="pipeline-step">
-                  <span class="step-meta">04 // GATEWAY</span>
-                  <span class="step-label">Kalshi Dispatch</span>
-                  <span class="step-spec">Sub-ms Order Route</span>
-                </div>
-                <div class="pipeline-arrow">──▶</div>
-                <div class="pipeline-step">
-                  <span class="step-meta">05 // AUDIT</span>
-                  <span class="step-label">SHA-256 WAL</span>
-                  <span class="step-spec">TimescaleDB Chain</span>
-                </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Realized Session PnL</span>
+                <span class="telemetry-cell-val">+$110.52 (Kalshi)</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Gateway Latency</span>
+                <span class="telemetry-cell-val">11ms End-to-End</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Hardware Clock Sync</span>
+                <span class="telemetry-cell-val">Azure PTP &lt; 5μs</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Audit Integrity</span>
+                <span class="telemetry-cell-val">SHA-256 Chained WAL</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Order Dispatch</span>
+                <span class="telemetry-cell-val">&lt; 1ms Low-Latency</span>
               </div>
             </div>
 
-            <!-- Precision Telemetry Grid -->
-            <div class="telemetry-grid">
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Live Win Rate // Factor</span>
-                <span class="telemetry-val accent">81.8% // 2.14 PF</span>
+            <div class="project-footer-row">
+              <div class="project-chips-wrap">
+                <span class="tech-chip">Python 3.11</span>
+                <span class="tech-chip">FastAPI (100ms)</span>
+                <span class="tech-chip">React 18</span>
+                <span class="tech-chip">TimescaleDB</span>
+                <span class="tech-chip">Azure SR-IOV</span>
+                <span class="tech-chip">Quarter-Kelly</span>
               </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Realized Session PnL</span>
-                <span class="telemetry-val accent">+$110.52 (Kalshi)</span>
-              </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Gateway Latency</span>
-                <span class="telemetry-val">11ms End-to-End</span>
-              </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Hardware Clock Sync</span>
-                <span class="telemetry-val">Azure PTP &lt; 5μs</span>
-              </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Audit Integrity</span>
-                <span class="telemetry-val">SHA-256 Chained WAL</span>
-              </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Order Dispatch</span>
-                <span class="telemetry-val">&lt; 1ms Low-Latency</span>
-              </div>
-            </div>
-
-            <div class="prism-footer">
-              <div class="prism-chips">
-                <span class="prism-chip">Python 3.11</span>
-                <span class="prism-chip">FastAPI (100ms)</span>
-                <span class="prism-chip">React 18 + TS</span>
-                <span class="prism-chip">TimescaleDB</span>
-                <span class="prism-chip">Azure SR-IOV</span>
-                <span class="prism-chip">Quarter-Kelly</span>
-              </div>
-              <button class="btn-prism-inspect btn-open-overlay">
-                Inspect Case Study ↗
+              <button class="btn-case-study interactive" data-open-project="sync">
+                Open Project Telemetry ↗
               </button>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- Project 02: PixelLabz Global RPC Mesh -->
-        <article class="prism-card" data-project-id="pixellabz" data-category="rpc systems">
-          <div class="prism-specular-glare"></div>
-
-          <div class="prism-media-viewport" title="Click to open full case study overlay">
-            <img src="assets/screenshots/pixellabz.png" alt="PixelLabz High-Performance Solana RPC Infrastructure" loading="lazy" decoding="async">
-            <div class="viewport-tag">SOLANA RPC // HIGH-THROUGHPUT MESH</div>
-          </div>
-
-          <div class="prism-body">
-            <div class="prism-header">
+          <!-- Project 02: PixelLabz Global RPC Mesh -->
+          <article class="project-card interactive" data-project-id="pixellabz">
+            <div class="project-top-row">
               <div>
-                <h2 class="prism-title">PixelLabz Global RPC Mesh</h2>
-                <span class="prism-subtitle">High-Throughput Non-Consensus Node Mesh on Solana &amp; Aptos</span>
+                <h3 class="project-title-editorial">PixelLabz Global RPC Mesh</h3>
+                <span class="project-subtitle-editorial">High-Throughput Non-Consensus Node Mesh on Solana &amp; Aptos</span>
               </div>
             </div>
 
-            <p class="prism-desc">
-              Co-architected a decentralized, non-consensus RPC network spanning 15+ bare-metal servers across the United States, Germany, and Singapore. Purpose-built for Solana developers and high-frequency traders with <strong>1,000 RPS throughput ceiling</strong>, <strong>0s landing time</strong> (sub-second same-block transaction inclusion), full <strong>Geyser / Yellowstone</strong> real-time gRPC streaming plugins, and IP-whitelisted endpoint isolation. Validated across <strong>8M+ transactions</strong> with <strong>~$180,000</strong> in platform revenue.
+            <p class="project-lorem-desc">
+              Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh.
             </p>
 
-            <!-- Precision Data Pipeline Ribbon -->
-            <div class="pipeline-ribbon">
-              <div class="pipeline-header">
-                <span>SYSTEM ARCHITECTURE // MULTI-REGION TOPOLOGY &amp; STREAMING</span>
-                <span style="color: var(--text-primary);">1,000 RPS / NODE · 0s LANDING</span>
+            <div class="telemetry-bar-editorial">
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Verified Transactions</span>
+                <span class="telemetry-cell-val">8M+ Transactions</span>
               </div>
-              <div class="pipeline-flow">
-                <div class="pipeline-step">
-                  <span class="step-meta">01 // CLIENT</span>
-                  <span class="step-label">4,000+ Users</span>
-                  <span class="step-spec">Traders &amp; HFT Bots</span>
-                </div>
-                <div class="pipeline-arrow">──▶</div>
-                <div class="pipeline-step">
-                  <span class="step-meta">02 // EDGE</span>
-                  <span class="step-label">Anycast GeoDNS</span>
-                  <span class="step-spec">DDoS &amp; IP Whitelist</span>
-                </div>
-                <div class="pipeline-arrow">──▶</div>
-                <div class="pipeline-step">
-                  <span class="step-meta">03 // GATEWAY</span>
-                  <span class="step-label">Regional Fabric</span>
-                  <span class="step-spec">Ashburn · Frankfurt · SG</span>
-                </div>
-                <div class="pipeline-arrow">──▶</div>
-                <div class="pipeline-step">
-                  <span class="step-meta">04 // NODES</span>
-                  <span class="step-label">15+ Bare-Metal</span>
-                  <span class="step-spec">1,000 RPS / Node</span>
-                </div>
-                <div class="pipeline-arrow">──▶</div>
-                <div class="pipeline-step">
-                  <span class="step-meta">05 // STREAM</span>
-                  <span class="step-label">Yellowstone gRPC</span>
-                  <span class="step-spec">0s Same-Block Landing</span>
-                </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Throughput Ceiling</span>
+                <span class="telemetry-cell-val">1,000 RPS / Node</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Transaction Landing</span>
+                <span class="telemetry-cell-val">0s (Same Block)</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Active Users &amp; Mesh</span>
+                <span class="telemetry-cell-val">4k+ Users · 15+ Nodes</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Node Availability</span>
+                <span class="telemetry-cell-val">99.99% Uptime</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Platform Revenue</span>
+                <span class="telemetry-cell-val">~$180,000 Verified</span>
               </div>
             </div>
 
-            <div class="telemetry-grid">
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Verified Transactions</span>
-                <span class="telemetry-val accent">8M+ Transactions</span>
+            <div class="project-footer-row">
+              <div class="project-chips-wrap">
+                <span class="tech-chip">Solana</span>
+                <span class="tech-chip">Aptos</span>
+                <span class="tech-chip">Yellowstone gRPC</span>
+                <span class="tech-chip">1,000 RPS</span>
+                <span class="tech-chip">0s Landing</span>
+                <span class="tech-chip">Bare-Metal Linux</span>
               </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Throughput Ceiling</span>
-                <span class="telemetry-val accent">1,000 RPS / Node</span>
-              </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Transaction Landing</span>
-                <span class="telemetry-val">0s (Same Block)</span>
-              </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Active Users &amp; Mesh</span>
-                <span class="telemetry-val">4k+ Users · 15+ Bare-Metal</span>
-              </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Node Availability</span>
-                <span class="telemetry-val">99.99% Uptime</span>
-              </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Platform Revenue</span>
-                <span class="telemetry-val">~$180,000 Verified</span>
-              </div>
-            </div>
-
-            <div class="prism-footer">
-              <div class="prism-chips">
-                <span class="prism-chip">Solana</span>
-                <span class="prism-chip">Aptos</span>
-                <span class="prism-chip">Yellowstone gRPC</span>
-                <span class="prism-chip">1,000 RPS</span>
-                <span class="prism-chip">0s Landing</span>
-                <span class="prism-chip">Bare-Metal Linux</span>
-              </div>
-              <div style="display: flex; gap: 8px;">
-                <button class="btn-prism-inspect btn-open-overlay">
-                  Inspect Case Study ↗
-                </button>
-                <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer" class="btn-prism-inspect">
-                  GitHub ↗
-                </a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 03: NodeStop Enterprise Security -->
-        <article class="prism-card" data-project-id="nodestop" data-category="cyber systems">
-          <div class="prism-specular-glare"></div>
-
-          <div class="prism-body">
-            <div class="prism-header">
-              <div>
-                <h2 class="prism-title">NodeStop Enterprise Security Infrastructure</h2>
-                <span class="prism-subtitle">Information Security Analyst Intern — Deep Packet Telemetry &amp; Vulnerability Remediation</span>
-              </div>
-              <span class="status-capsule">JAN 2023 — MARCH 2024</span>
-            </div>
-
-            <p class="prism-desc">
-              Conducted enterprise vulnerability assessments, risk analyses, and real-time network traffic monitoring using <strong>Snort IDS and Wireshark</strong>, inspecting raw packet streams for intrusion signatures. Executed structured penetration testing and credential fuzzing exercises with <strong>Nmap, Nessus, Hydra, and Medusa</strong>, authoring risk remediation plans for senior security engineers and hardening infrastructure against adversarial attack surfaces.
-            </p>
-
-            <div class="telemetry-grid">
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Intrusion Detection</span>
-                <span class="telemetry-val accent">Snort IDS &amp; Wireshark</span>
-              </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Fuzzing &amp; Recon</span>
-                <span class="telemetry-val accent">Nmap · Nessus · Hydra</span>
-              </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Traffic Telemetry</span>
-                <span class="telemetry-val">Deep Packet Inspection</span>
-              </div>
-              <div class="telemetry-item">
-                <span class="telemetry-lbl">Defense Model</span>
-                <span class="telemetry-val">Active Threat Mitigation</span>
-              </div>
-            </div>
-
-            <div class="prism-footer">
-              <div class="prism-chips">
-                <span class="prism-chip">Snort IDS</span>
-                <span class="prism-chip">Wireshark</span>
-                <span class="prism-chip">Penetration Testing</span>
-                <span class="prism-chip">Nmap</span>
-                <span class="prism-chip">Nessus</span>
-                <span class="prism-chip">SIEM</span>
-              </div>
-              <button class="btn-prism-inspect btn-open-overlay">
-                Inspect Security Specs ↗
+              <button class="btn-case-study interactive" data-open-project="pixellabz">
+                Open Mesh Architecture ↗
               </button>
             </div>
+          </article>
+
+          <!-- Project 03: NodeStop Enterprise Security -->
+          <article class="project-card interactive" data-project-id="nodestop">
+            <div class="project-top-row">
+              <div>
+                <h3 class="project-title-editorial">NodeStop Enterprise Security Infrastructure</h3>
+                <span class="project-subtitle-editorial">Information Security Analyst Intern — Threat Hunting &amp; Deep Packet Telemetry</span>
+              </div>
+              <span class="tech-chip">JAN 2023 — MARCH 2024</span>
+            </div>
+
+            <p class="project-lorem-desc">
+              Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices.
+            </p>
+
+            <div class="telemetry-bar-editorial">
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Intrusion Detection</span>
+                <span class="telemetry-cell-val">Snort IDS &amp; Wireshark</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Recon &amp; Fuzzing</span>
+                <span class="telemetry-cell-val">Nmap · Nessus · Hydra</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Traffic Analysis</span>
+                <span class="telemetry-cell-val">Deep Packet Inspection</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-cell-label">Defense Playbook</span>
+                <span class="telemetry-cell-val">Active Threat Mitigation</span>
+              </div>
+            </div>
+
+            <div class="project-footer-row">
+              <div class="project-chips-wrap">
+                <span class="tech-chip">Snort IDS</span>
+                <span class="tech-chip">Wireshark</span>
+                <span class="tech-chip">Penetration Testing</span>
+                <span class="tech-chip">Nmap</span>
+                <span class="tech-chip">Nessus</span>
+                <span class="tech-chip">SIEM</span>
+              </div>
+              <button class="btn-case-study interactive" data-open-project="nodestop">
+                Open Security Protocols ↗
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Academic Substrate & Core Invariants -->
+      <section class="editorial-section" id="about">
+        <div class="section-editorial-header">
+          <span class="section-num-tag">02 // ACADEMIC SUBSTRATE &amp; BACKGROUND</span>
+          <h2 class="section-title-clean">Foundation</h2>
+        </div>
+
+        <div class="project-card interactive">
+          <div class="project-top-row">
+            <div>
+              <h3 class="project-title-editorial">The Pennsylvania State University — University Park, PA</h3>
+              <span class="project-subtitle-editorial">B.S. in Enterprise Technology Integration &amp; Cybersecurity Operations &amp; Analytics · GPA: 3.4</span>
+            </div>
+            <span class="tech-chip">EXPECTED MAY 2027</span>
           </div>
-        </article>
 
-      </div>
-    </section>
-
-    <!-- 02 // Architectural Systems Taxonomy & Invariants -->
-    <section class="resume-section reveal-item" id="taxonomy">
-      <div class="section-label">02 // ARCHITECTURAL SYSTEMS TAXONOMY &amp; INVARIANTS</div>
-
-      <div class="taxonomy-grid">
-        <article class="taxonomy-card">
-          <div class="taxonomy-header">
-            <span class="taxonomy-num">01 // KERNEL BYPASS &amp; INGRESS</span>
-            <span class="taxonomy-spec-pill">SUB-15μs INGRESS</span>
-          </div>
-          <h3 class="taxonomy-title">SR-IOV &amp; Lock-Free Ring Buffers</h3>
-          <p class="taxonomy-desc">
-            Virtualized network interface routing via <strong>Azure SR-IOV</strong> bypassing hypervisor socket overhead, coupled with <strong>lock-free SPSC ring buffers</strong> for zero-copy packet ingestion avoiding OS context switches.
+          <p class="project-lorem-desc">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Coursework: Systems Architecture, Distributed Systems &amp; Blockchain, Operating Systems Principles, AI &amp; Machine Learning, Cyber Threat Analytics, Network Security, Database Management.
           </p>
-          <ul class="taxonomy-specs">
-            <li>Direct NIC memory routing with sub-15 microsecond packet ingestion</li>
-            <li>Single-Producer Single-Consumer lock-free ring buffers</li>
-            <li>Zero memory allocations on the critical trading execution path</li>
-          </ul>
-        </article>
+        </div>
+      </section>
 
-        <article class="taxonomy-card">
-          <div class="taxonomy-header">
-            <span class="taxonomy-num">02 // HARDWARE TIMEKEEPING</span>
-            <span class="taxonomy-spec-pill">PTP /dev/ptp0 &lt; 5μs</span>
-          </div>
-          <h3 class="taxonomy-title">IEEE 1588 Precision Time Protocol</h3>
-          <p class="taxonomy-desc">
-            Hardware clock synchronization via Azure Linux <code>/dev/ptp0</code>, disciplining system timestamps against exchange matching engines to bound clock jitter strictly below 5 microseconds.
-          </p>
-          <ul class="taxonomy-specs">
-            <li>Hardware-assisted timestamping on network frame arrival</li>
-            <li>Sub-microsecond alignment against exchange matching engines</li>
-            <li>Guarantees deterministic causality across distributed trade logs</li>
-          </ul>
-        </article>
-
-        <article class="taxonomy-card">
-          <div class="taxonomy-header">
-            <span class="taxonomy-num">03 // DETERMINISTIC MICROSTRUCTURE</span>
-            <span class="taxonomy-spec-pill">CLOSED-FORM PRICING</span>
-          </div>
-          <h3 class="taxonomy-title">BRTI Lead-Lag &amp; TWAP Pinning Arbitrage</h3>
-          <p class="taxonomy-desc">
-            Closed-form quantitative execution for Kalshi <code>KXBTC15M</code> binary markets. Replaces curve-fit heuristics with <strong>Synthetic CME CF BRTI Lead-Lag Replication</strong> across 3 spot venues with 60-second settlement pinning.
-          </p>
-          <ul class="taxonomy-specs">
-            <li>Volume-weighted synthetic spot index across Coinbase, Kraken, Bitstamp</li>
-            <li>Deterministic settlement TWAP pinning in the final contract minute</li>
-            <li>81.8% live session win rate with 2.14 profit factor</li>
-          </ul>
-        </article>
-
-        <article class="taxonomy-card">
-          <div class="taxonomy-header">
-            <span class="taxonomy-num">04 // CRYPTOGRAPHIC WAL INTEGRITY</span>
-            <span class="taxonomy-spec-pill">SHA-256 TAMPER-EVIDENT</span>
-          </div>
-          <h3 class="taxonomy-title">Chained Write-Ahead Logs &amp; RSA-PSS</h3>
-          <p class="taxonomy-desc">
-            Cryptographically verifiable trade logging via <strong>append-only SHA-256 hash chains</strong> and RSA-PSS signatures in TimescaleDB, paired with active inference anomaly detection models.
-          </p>
-          <ul class="taxonomy-specs">
-            <li>Every state transition cryptographically chained in append-only WAL</li>
-            <li>Asymmetric RSA-PSS trade signature verification and telemetry signing</li>
-            <li>Deep packet inspection with Snort IDS and automated mitigation</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- 03 // Academic Substrate -->
-    <section class="resume-section reveal-item" id="education" style="border-bottom: none;">
-      <div class="section-label">03 // ACADEMIC SUBSTRATE</div>
-
-      <div class="edu-sheet">
+      <!-- Footer & Colophon -->
+      <footer class="page-footer" id="contact">
         <div>
-          <h3 class="edu-univ">The Pennsylvania State University — University Park, PA</h3>
-          <div class="edu-degree">
-            B.S. in Enterprise Technology Integration &amp; Cybersecurity Operations &amp; Analytics · GPA: 3.4
-          </div>
-          <p style="font-size: 13px; color: var(--text-secondary); margin-top: 6px;">
-            Coursework: Systems Architecture, Distributed Systems &amp; Blockchain, Operating Systems Principles, AI &amp; Machine Learning, Cyber Threat Analytics, Network Security, Database Management.
-          </p>
+          <span>© 2026 David Petrie. Editorial layout inspired by Shiyun Lu.</span>
         </div>
-        <span class="edu-meta">EXPECTED MAY 2027</span>
-      </div>
-    </section>
 
-    <!-- Footer & Colophon -->
-    <footer class="page-footer reveal-item">
-      <div>
-        <span>© 2026 David Petrie. Built with minimalist liquid glass restraint.</span>
+        <div class="footer-links">
+          <a href="mailto:dvp5702@psu.edu" class="interactive">dvp5702@psu.edu</a>
+          <a href="https://linkedin.com/in/gender" target="_blank" rel="noopener noreferrer" class="interactive">LinkedIn (/in/gender)</a>
+          <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer" class="interactive">GitHub</a>
+          <span id="live-clock" style="color: var(--text-primary); font-family: var(--font-mono);">--:--:-- EDT</span>
+        </div>
+      </footer>
+
+    </main>
+
+    <!-- =========================================================================
+         Technical HUD / Physics Debug Controls (Inspired by Shiyun Lu)
+         ========================================================================= -->
+    <aside class="hud-panel interactive" id="hud-panel" aria-label="Physics Debug Controls">
+      <div class="hud-header" id="hud-toggle-header">
+        <span class="hud-title">// SIMULATION CONTROLS</span>
+        <div class="hud-header-actions">
+          <button class="hud-btn-action" id="hud-scatter-btn" title="Scatter Spheres">SCATTER</button>
+          <button class="hud-btn-action" id="hud-reset-btn" title="Reset Scene">RESET</button>
+          <button class="hud-btn-action" id="hud-minimize-btn" title="Minimize Panel">_</button>
+        </div>
       </div>
 
-      <div class="footer-links">
-        <a href="mailto:dvp5702@psu.edu">dvp5702@psu.edu</a>
-        <a href="https://linkedin.com/in/gender" target="_blank" rel="noopener noreferrer">LinkedIn (/in/gender)</a>
-        <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <span id="live-clock" style="font-family: var(--font-mono); color: var(--text-primary);">--:--:-- EDT</span>
-      </div>
-    </footer>
+      <div class="hud-body">
+        <!-- Spheres Group -->
+        <div class="hud-group">
+          <span class="hud-group-label">// Spheres</span>
+          <div class="hud-row">
+            <span>Count</span>
+            <div class="hud-row-controls">
+              <button class="hud-pill-toggle" data-hud-count="16">16</button>
+              <button class="hud-pill-toggle active" data-hud-count="30">30</button>
+              <button class="hud-pill-toggle" data-hud-count="48">48</button>
+            </div>
+          </div>
+          <div class="hud-row">
+            <span>Gravity</span>
+            <div class="hud-row-controls">
+              <button class="hud-pill-toggle active" data-hud-gravity="none">0G</button>
+              <button class="hud-pill-toggle" data-hud-gravity="down">1G</button>
+              <button class="hud-pill-toggle" data-hud-gravity="up">-1G</button>
+              <button class="hud-pill-toggle" data-hud-gravity="center">Vortex</button>
+            </div>
+          </div>
+          <div class="hud-row">
+            <span>Restitution</span>
+            <div class="hud-row-controls">
+              <input type="range" class="hud-slider" id="hud-restitution" min="0.4" max="0.98" step="0.02" value="0.92">
+              <span id="hud-restitution-val">0.92</span>
+            </div>
+          </div>
+          <div class="hud-row">
+            <span>Materials</span>
+            <div class="hud-row-controls">
+              <button class="hud-pill-toggle active" data-hud-material="obsidian">Obsidian</button>
+              <button class="hud-pill-toggle" data-hud-material="chrome">Chrome</button>
+              <button class="hud-pill-toggle" data-hud-material="studio">Studio</button>
+            </div>
+          </div>
+        </div>
 
-  </main>
+        <!-- Mouse Group -->
+        <div class="hud-group">
+          <span class="hud-group-label">// Mouse</span>
+          <div class="hud-row">
+            <span>Force Mode</span>
+            <div class="hud-row-controls">
+              <button class="hud-pill-toggle active" data-hud-mouse-mode="repel">Repel</button>
+              <button class="hud-pill-toggle" data-hud-mouse-mode="attract">Attract</button>
+              <button class="hud-pill-toggle" data-hud-mouse-mode="vortex">Vortex</button>
+            </div>
+          </div>
+          <div class="hud-row">
+            <span>Radius</span>
+            <div class="hud-row-controls">
+              <input type="range" class="hud-slider" id="hud-mouse-radius" min="3.0" max="12.0" step="0.5" value="6.5">
+              <span id="hud-mouse-radius-val">6.5</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Camera Group -->
+        <div class="hud-group">
+          <span class="hud-group-label">// Camera</span>
+          <div class="hud-row">
+            <span>Mouse Parallax</span>
+            <div class="hud-row-controls">
+              <button class="hud-pill-toggle active" id="hud-camera-parallax">ON</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry Group -->
+        <div class="hud-group">
+          <span class="hud-group-label">// Telemetry</span>
+          <div class="hud-row">
+            <span>Performance</span>
+            <span class="hud-telemetry-badge" id="hud-fps-val">60 FPS</span>
+          </div>
+          <div class="hud-row">
+            <span>Engine</span>
+            <span style="color: var(--text-secondary);">Verlet 3D / Three.js</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
 
   <!-- =========================================================================
-       Interactive Project Overlay ("The Magnifying Glass" Case Study)
+       Project Detail Modal Overlay
        ========================================================================= -->
-  <div id="project-overlay" class="overlay-backdrop" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
-    <div class="overlay-glass-container">
-      <div class="overlay-header">
-        <div class="overlay-title-group">
-          <h3 id="overlay-title" class="overlay-title">System Architecture Case Study</h3>
-          <span id="overlay-subtitle" class="overlay-subtitle">Deep Technical Specification &amp; Telemetry</span>
+  <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3 id="modal-title" class="modal-title">Project Title</h3>
+          <span id="modal-subtitle" class="modal-subtitle">Project Subtitle</span>
         </div>
-        <button id="overlay-close-btn" class="overlay-close-btn" aria-label="Close Case Study">✕</button>
+        <button id="modal-close-btn" class="modal-close-btn" aria-label="Close Project Modal">✕</button>
       </div>
 
-      <!-- Tab Navigator -->
-      <div class="overlay-tabs" role="tablist">
-        <button class="overlay-tab is-active" data-tab="preview" role="tab" aria-selected="true">01 // Case Study &amp; Overview</button>
-        <button class="overlay-tab" data-tab="pipeline" role="tab" aria-selected="false">02 // Data Plane &amp; Routing</button>
-        <button class="overlay-tab" data-tab="invariants" role="tab" aria-selected="false">03 // Invariants &amp; Hardware Specs</button>
-      </div>
+      <div id="modal-media" class="modal-media-wrap"></div>
 
-      <!-- Tab Content Panels -->
-      <div id="overlay-tab-preview" class="overlay-tab-content">
-        <div id="overlay-media" class="overlay-media-viewport"></div>
-        <p id="overlay-desc" class="overlay-desc"></p>
-      </div>
-
-      <div id="overlay-tab-pipeline" class="overlay-tab-content" style="display: none;">
-        <div id="overlay-pipeline-content"></div>
-      </div>
-
-      <div id="overlay-tab-invariants" class="overlay-tab-content" style="display: none;">
-        <div id="overlay-invariants-content"></div>
-      </div>
+      <p id="modal-desc" class="modal-desc"></p>
     </div>
   </div>
 
-  <script src="js/app.js"></script>
+  <!-- Main ES Module Script -->
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
