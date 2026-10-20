@@ -14,9 +14,10 @@ Combines real downward gravity (`-Y`), screen-space frustum bounding walls and f
 
 2. **Corner Navigation Drawer**:
    - Minimalist `Menu` pill in the top-right corner that slides out a clean editorial drawer for:
-     - **01 // Selected Work**: `sync // KXBTC15M` (Kalshi 15M Bitcoin Quantitative Architecture), `PixelLabz Global RPC Mesh` (Solana & Aptos Non-Consensus Mesh), `NodeStop Security Infrastructure` (InfoSec Threat Hunting).
-     - **02 // Foundation**: The Pennsylvania State University (B.S. in ETI & Cybersecurity, GPA 3.4).
-     - **03 // Connect**: Direct links (`dvp5782@psu.edu`, LinkedIn `/in/gander`, GitHub `/petriedavid`).
+     - **00 // Profile & Focus**: Systems architecture, market microstructure, and high-throughput distributed networks.
+     - **01 // Connect & Channels**: Direct contact links (`dvp5782@psu.edu`, LinkedIn `/in/gander`, GitHub `/petriedavid`).
+     - **02 // Selected Work**: `sync // KXBTC15M` (Kalshi 15M Bitcoin Quantitative Architecture), `PixelLabz Global RPC Mesh` (Solana & Aptos Non-Consensus Mesh), `NodeStop Security Infrastructure` (InfoSec Threat Hunting).
+     - **03 // Academic Foundation**: The Pennsylvania State University (B.S. in ETI & Cybersecurity).
 
 3. **Tactile 3D Boba Physics Simulation (`js/physics-engine.js`)**:
    - **Physicality**: Real downward gravity (`gravity: -26.0`), snappy elastic sphere-to-sphere collisions with momentum exchange, and camera frustum floor & walls.
