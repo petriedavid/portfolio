@@ -7,17 +7,26 @@
  * - Snappy sphere-to-sphere collision & impulse resolution
  * - Tactile MeshPhysicalMaterial boba pearls with clearcoat and soft contact shadows
  * - Kinematic mouse ball collider that physically plows through settled spheres
- * - Subtle inline debug toggles: // Camera, // Mouse, // Spheres
  * - Responsive boundary recalculation and mobile auto-scaling
  */
 
 import * as THREE from './vendor/three.module.js';
 
+// Balls per world unit of floor width at full size.
+const PILE_DENSITY = 1.2;
+
+// The camera sits back from the balls (z = 0) so the floor in front of them can hold the name.
+const CAMERA_Z = 25.5;
+const CAMERA_LOOK_Z = 4.5;
+const WALL_DISTANCE = 23; // Camera to the front row of balls
+const NAME_Z_FAR = 3;
+const NAME_Z_NEAR = 6.9;
+const NAME_SHADOW_OPACITY = 0.13;
+
 export class PhysicsCanvas {
   constructor(containerElement, options = {}) {
     this.container = containerElement;
     this.options = Object.assign({
-      sphereCount: window.innerWidth < 768 ? 32 : 56,
       gravity: -26.0,
       restitution: 0.78,
       mouseRadius: 2.3,
@@ -33,23 +42,21 @@ export class PhysicsCanvas {
     this.raycaster = new THREE.Raycaster();
     this.planeIntersectPoint = new THREE.Vector3();
 
-    this.clock = new THREE.Clock();
+    this.lastFrameTime = performance.now();
     this.isRunning = true;
+    this.isPaused = false;
     this.rafId = null;
 
-    // Debug / State Toggles (Auto ON by default)
-    this.showMouseCollider = true;
-    this.cameraTilted = true;
-    this.targetCameraPos = new THREE.Vector3(2.0, 3.2, 21.0);
-    this.targetCameraLook = new THREE.Vector3(0, -1.5, 0);
+    this.targetCameraPos = new THREE.Vector3(0, 3.2, CAMERA_Z);
+    this.targetCameraLook = new THREE.Vector3(0, -1.5, CAMERA_LOOK_Z);
 
     this.initScene();
     this.initLighting();
     this.initMaterials();
     this.initFloorShadowPlane();
-    this.initMouseHelper();
+    this.initNameShadow();
     this.updateFrustumBounds();
-    this.spawnSpheres(this.options.sphereCount);
+    this.spawnSpheres(this.getTargetSphereCount());
     this.initEventListeners();
     this.animate();
   }
@@ -75,7 +82,7 @@ export class PhysicsCanvas {
 
     if (this.options.shadows) {
       this.renderer.shadowMap.enabled = true;
-      this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      this.renderer.shadowMap.type = THREE.PCFShadowMap;
     }
 
     this.canvas = this.renderer.domElement;
@@ -93,23 +100,24 @@ export class PhysicsCanvas {
     const hemiLight = new THREE.HemisphereLight(0xFFFFFF, 0xE2DDD5, 0.85);
     this.scene.add(hemiLight);
 
-    // Primary Studio Key Light (Directional with soft shadows)
+    // Primary Studio Key Light (shapes the highlights on the balls)
     this.keyLight = new THREE.DirectionalLight(0xFFFFFF, 1.8);
     this.keyLight.position.set(10, 18, 14);
-    if (this.options.shadows) {
-      this.keyLight.castShadow = true;
-      this.keyLight.shadow.mapSize.width = 1024;
-      this.keyLight.shadow.mapSize.height = 1024;
-      this.keyLight.shadow.camera.near = 1;
-      this.keyLight.shadow.camera.far = 40;
-      this.keyLight.shadow.camera.left = -16;
-      this.keyLight.shadow.camera.right = 16;
-      this.keyLight.shadow.camera.top = 16;
-      this.keyLight.shadow.camera.bottom = -16;
-      this.keyLight.shadow.bias = -0.0005;
-      this.keyLight.shadow.radius = 3;
-    }
     this.scene.add(this.keyLight);
+
+    // Overhead light that adds no brightness and only casts the floor shadows, so they
+    // stay under the balls on both sides of the screen.
+    if (this.options.shadows) {
+      this.shadowLight = new THREE.DirectionalLight(0xFFFFFF, 0);
+      this.shadowLight.position.set(0, 30, -3);
+      this.shadowLight.castShadow = true;
+      this.shadowLight.shadow.mapSize.set(2048, 1024);
+      this.shadowLight.shadow.camera.near = 1;
+      this.shadowLight.shadow.camera.far = 60;
+      this.shadowLight.shadow.bias = -0.0005;
+      this.shadowLight.shadow.radius = 6;
+      this.scene.add(this.shadowLight);
+    }
 
     // Soft Front Fill Light
     this.fillLight = new THREE.DirectionalLight(0xF4F0EB, 0.9);
@@ -159,51 +167,130 @@ export class PhysicsCanvas {
     this.scene.add(this.floorShadowPlane);
   }
 
-  initMouseHelper() {
-    // Sleek reticle indicator for // Mouse toggle
-    const helperGroup = new THREE.Group();
-    const ringGeo = new THREE.RingGeometry(this.options.mouseRadius - 0.035, this.options.mouseRadius, 64);
-    const ringMat = new THREE.MeshBasicMaterial({
-      color: 0x111215,
-      side: THREE.DoubleSide,
-      transparent: true,
-      opacity: 0.4
-    });
-    const ring = new THREE.Mesh(ringGeo, ringMat);
-    helperGroup.add(ring);
+  // The name lies on the floor in front of the balls as a soft shadow, in the same perspective.
+  initNameShadow() {
+    this.nameCanvas = document.createElement('canvas');
+    this.nameTexture = new THREE.CanvasTexture(this.nameCanvas);
+    this.nameTexture.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
 
-    const dotGeo = new THREE.CircleGeometry(0.12, 16);
-    const dotMat = new THREE.MeshBasicMaterial({
-      color: 0x111215,
-      transparent: true,
-      opacity: 0.45
-    });
-    const dot = new THREE.Mesh(dotGeo, dotMat);
-    helperGroup.add(dot);
+    this.nameShadow = new THREE.Mesh(
+      new THREE.PlaneGeometry(1, 1),
+      new THREE.MeshBasicMaterial({
+        map: this.nameTexture,
+        color: 0x000000,
+        transparent: true,
+        opacity: NAME_SHADOW_OPACITY,
+        depthWrite: false,
+        toneMapped: false
+      })
+    );
+    this.nameShadow.rotation.x = -Math.PI / 2;
+    this.scene.add(this.nameShadow);
 
-    this.mouseHelper = helperGroup;
-    this.mouseHelper.position.set(0, -999, 0);
-    this.mouseHelper.visible = this.showMouseCollider;
-    this.scene.add(this.mouseHelper);
+    // Redraw once the hero font loads so the two names match.
+    document.fonts?.load('900 200px Geist')
+      .then(() => {
+        this.drawNameShadow();
+        this.updateNameShadow();
+      })
+      .catch(() => {});
+  }
+
+  drawNameShadow() {
+    const fontSize = 200;
+    const lineGap = 44;
+    const padding = 30;
+    const blur = 5;
+    const canvas = this.nameCanvas;
+    const ctx = canvas.getContext('2d');
+
+    const applyTextStyle = () => {
+      ctx.font = `900 ${fontSize}px Geist, sans-serif`;
+      ctx.letterSpacing = `${-0.04 * fontSize}px`;
+    };
+
+    applyTextStyle();
+    const textWidth = Math.max(...this.nameLines.map(line => ctx.measureText(line).width));
+    const capHeight = ctx.measureText('D').actualBoundingBoxAscent;
+
+    // Resizing a canvas clears it and resets its drawing state.
+    canvas.width = Math.ceil(textWidth + padding * 2);
+    canvas.height = Math.ceil(capHeight * this.nameLines.length + lineGap * (this.nameLines.length - 1) + padding * 2);
+
+    applyTextStyle();
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#FFFFFF';
+    if ('filter' in ctx) {
+      ctx.filter = `blur(${blur}px)`;
+    } else {
+      ctx.shadowColor = '#FFFFFF';
+      ctx.shadowBlur = blur * 2;
+    }
+    this.nameLines.forEach((line, i) => {
+      ctx.fillText(line, canvas.width / 2, padding + capHeight * (i + 1) + lineGap * i);
+    });
+
+    this.nameTexture.dispose();
+    this.nameTexture.needsUpdate = true;
+  }
+
+  updateNameShadow() {
+    const lines = this.camera.aspect < 1.1 ? ['DAVID', 'PETRIE'] : ['DAVID PETRIE'];
+    if (lines.length !== this.nameLines?.length) {
+      this.nameLines = lines;
+      this.drawNameShadow();
+    }
+
+    // Fit the width to the nearest row of letters, where the visible floor is narrowest.
+    const tanHalfFov = Math.tan(THREE.MathUtils.degToRad(this.camera.fov) / 2);
+    const visibleWidth = 2 * tanHalfFov * (CAMERA_Z - NAME_Z_NEAR + 2) * this.camera.aspect;
+    const depth = NAME_Z_NEAR - NAME_Z_FAR;
+    const textAspect = this.nameCanvas.width / this.nameCanvas.height;
+    const width = Math.min(visibleWidth * 0.92, depth * textAspect);
+
+    this.nameShadow.scale.set(width, depth, 1);
+    this.nameShadow.position.set(0, this.bounds.floorY + 0.01, (NAME_Z_NEAR + NAME_Z_FAR) / 2);
+  }
+
+  fitShadowLight() {
+    if (!this.shadowLight) return;
+
+    // Covers the floor under every ball, plus room for blur and the light's slight angle.
+    const shadowCamera = this.shadowLight.shadow.camera;
+    const halfDepth = Math.max(-this.bounds.depthMin, this.bounds.depthMax) + 3;
+    shadowCamera.left = -(this.bounds.halfW + 3);
+    shadowCamera.right = this.bounds.halfW + 3;
+    shadowCamera.top = halfDepth;
+    shadowCamera.bottom = -halfDepth;
+    shadowCamera.updateProjectionMatrix();
   }
 
   updateFrustumBounds() {
-    const vFOV = THREE.MathUtils.degToRad(this.camera.fov);
-    const distance = 20; // nominal camera distance to z = 0
-    const height = 2 * Math.tan(vFOV / 2) * distance;
-    const width = height * this.camera.aspect;
+    const tanHalfFov = Math.tan(THREE.MathUtils.degToRad(this.camera.fov) / 2);
+    const halfH = tanHalfFov * 20; // Keeps the floor and ceiling at a fixed world height
 
     this.bounds = {
-      halfW: width / 2,
-      halfH: height / 2,
-      floorY: -height / 2,
-      depthMin: -2.4,
+      halfW: tanHalfFov * WALL_DISTANCE * this.camera.aspect,
+      halfH,
+      floorY: -halfH,
+      depthMin: -3.6,
       depthMax: 2.4
     };
 
-    if (this.floorShadowPlane) {
-      this.floorShadowPlane.position.y = this.bounds.floorY;
-    }
+    this.floorShadowPlane.position.y = this.bounds.floorY;
+    this.fitShadowLight();
+    this.updateNameShadow();
+  }
+
+  // Pile height grows with total ball volume and shrinks with floor width, so ball size
+  // and count follow the viewport to keep the settled pile below the hero text.
+  getRadiusScale() {
+    return THREE.MathUtils.clamp(this.bounds.halfW / 13, 0.8, 1);
+  }
+
+  getTargetSphereCount() {
+    const floorWidth = this.bounds.halfW * 2;
+    return Math.min(56, Math.round((PILE_DENSITY * floorWidth) / this.getRadiusScale() ** 3));
   }
 
   spawnSpheres(count) {
@@ -214,10 +301,11 @@ export class PhysicsCanvas {
     this.spheres = [];
 
     const baseGeom = new THREE.SphereGeometry(1, 32, 32);
+    const radiusScale = this.getRadiusScale();
 
     for (let i = 0; i < count; i++) {
       // Natural boba radius variety between 0.75 and 1.28
-      const radius = THREE.MathUtils.randFloat(0.75, 1.28);
+      const radius = THREE.MathUtils.randFloat(0.75, 1.28) * radiusScale;
       const mass = radius * radius * radius;
 
       let material = this.bobaMaterial;
@@ -227,12 +315,11 @@ export class PhysicsCanvas {
       const mesh = new THREE.Mesh(baseGeom, material);
       mesh.scale.setScalar(radius);
       mesh.castShadow = true;
-      mesh.receiveShadow = true;
 
       // Initial placement: spread across upper and middle viewport to tumble in
       const startX = THREE.MathUtils.randFloat(-this.bounds.halfW * 0.85, this.bounds.halfW * 0.85);
       const startY = THREE.MathUtils.randFloat(-this.bounds.halfH * 0.2, this.bounds.halfH * 1.2);
-      const startZ = THREE.MathUtils.randFloat(-1.2, 1.2);
+      const startZ = THREE.MathUtils.randFloat(this.bounds.depthMin + 1, this.bounds.depthMax - 1);
 
       mesh.position.set(startX, startY, startZ);
       this.scene.add(mesh);
@@ -273,16 +360,26 @@ export class PhysicsCanvas {
       }
     }, { passive: true });
 
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        this.isRunning = false;
-        if (this.rafId) cancelAnimationFrame(this.rafId);
-      } else {
-        this.isRunning = true;
-        this.clock.start();
-        this.animate();
-      }
-    });
+    document.addEventListener('visibilitychange', () => this.syncRunState());
+  }
+
+  setPaused(paused) {
+    this.isPaused = paused;
+    this.syncRunState();
+  }
+
+  syncRunState() {
+    const shouldRun = !this.isPaused && !document.hidden;
+    if (shouldRun === this.isRunning) return;
+
+    this.isRunning = shouldRun;
+    if (shouldRun) {
+      this.lastFrameTime = performance.now();
+      this.prevMouse3D.copy(this.mouse3D);
+      this.animate();
+    } else if (this.rafId) {
+      cancelAnimationFrame(this.rafId);
+    }
   }
 
   onResize() {
@@ -296,6 +393,11 @@ export class PhysicsCanvas {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 
     this.updateFrustumBounds();
+
+    const targetCount = this.getTargetSphereCount();
+    if (Math.abs(targetCount - this.spheres.length) > this.spheres.length * 0.25) {
+      this.spawnSpheres(targetCount);
+    }
   }
 
   onMouseMove(e) {
@@ -306,16 +408,12 @@ export class PhysicsCanvas {
     this.raycaster.setFromCamera(this.mouse2D, this.camera);
     if (this.raycaster.ray.intersectPlane(this.mousePlane, this.planeIntersectPoint)) {
       this.mouse3D.copy(this.planeIntersectPoint);
-      if (this.mouseHelper) {
-        this.mouseHelper.position.copy(this.mouse3D);
-        this.mouseHelper.position.z += 0.05;
-      }
     }
   }
 
   onPointerDown(e) {
     // If user clicked an interactive UI link or button, skip physics impulse
-    if (e.target.closest('a, button, input, select, textarea, .menu-drawer, #menu-btn')) {
+    if (e.target.closest('a, button, input, select, textarea, #menu-drawer')) {
       return;
     }
 
@@ -335,7 +433,7 @@ export class PhysicsCanvas {
     });
 
     // If clicking in clear air, spawn a small burst of new boba pearls
-    if (popped < 3 && this.spheres.length < 80) {
+    if (popped < 3 && this.spheres.length < Math.ceil(this.getTargetSphereCount() * 1.25)) {
       this.spawnBurst(3, this.mouse3D.x);
     }
   }
@@ -343,12 +441,11 @@ export class PhysicsCanvas {
   spawnBurst(count, atX) {
     const baseGeom = new THREE.SphereGeometry(1, 32, 32);
     for (let i = 0; i < count; i++) {
-      const radius = THREE.MathUtils.randFloat(0.8, 1.25);
+      const radius = THREE.MathUtils.randFloat(0.8, 1.25) * this.getRadiusScale();
       const mass = radius * radius * radius;
       const mesh = new THREE.Mesh(baseGeom, i % 2 === 0 ? this.bobaMaterial : this.graphiteMaterial);
       mesh.scale.setScalar(radius);
       mesh.castShadow = true;
-      mesh.receiveShadow = true;
 
       const x = THREE.MathUtils.clamp(atX + THREE.MathUtils.randFloat(-1.2, 1.2), -this.bounds.halfW + 1, this.bounds.halfW - 1);
       const y = this.bounds.halfH + THREE.MathUtils.randFloat(1, 3);
@@ -380,9 +477,14 @@ export class PhysicsCanvas {
     const restitution = this.options.restitution;
     const mouseRadius = this.options.mouseRadius;
 
-    // Calculate mouse velocity for kinematic impulse transfer
-    this.mouseVel.copy(this.mouse3D).sub(this.prevMouse3D).divideScalar(cappedDt || 0.016);
-    this.mouseVel.clampLength(0, 45); // Clamp maximum mouse velocity
+    // Calculate mouse velocity for kinematic impulse transfer. The cursor starts parked far
+    // below the floor, so its first real position must not count as movement.
+    if (this.prevMouse3D.y > -900) {
+      this.mouseVel.copy(this.mouse3D).sub(this.prevMouse3D).divideScalar(cappedDt || 0.016);
+      this.mouseVel.clampLength(0, 45); // Clamp maximum mouse velocity
+    } else {
+      this.mouseVel.set(0, 0, 0);
+    }
     this.prevMouse3D.copy(this.mouse3D);
 
     const subSteps = 3;
@@ -536,47 +638,8 @@ export class PhysicsCanvas {
     });
   }
 
-  // =========================================================================
-  // Subtle Inline Control Hooks (Inspired by Shiyun Lu)
-  // =========================================================================
-  toggleCameraAngle() {
-    this.cameraTilted = !this.cameraTilted;
-    if (this.cameraTilted) {
-      this.targetCameraPos.set(2.0, 3.2, 21.0);
-      this.targetCameraLook.set(0, -1.5, 0);
-    } else {
-      this.targetCameraPos.set(0, 0, 20.0);
-      this.targetCameraLook.set(0, 0, 0);
-    }
-    return this.cameraTilted;
-  }
-
-  toggleMouseColliderVisibility() {
-    this.showMouseCollider = !this.showMouseCollider;
-    if (this.mouseHelper) {
-      this.mouseHelper.visible = this.showMouseCollider;
-    }
-    return this.showMouseCollider;
-  }
-
-  resetCascade() {
-    // Rain all spheres down from the top
-    this.spheres.forEach((s, i) => {
-      s.pos.x = THREE.MathUtils.randFloat(-this.bounds.halfW * 0.85, this.bounds.halfW * 0.85);
-      s.pos.y = this.bounds.halfH + THREE.MathUtils.randFloat(1, 8) + (i * 0.15);
-      s.pos.z = THREE.MathUtils.randFloat(-1.2, 1.2);
-      s.vel.set(
-        THREE.MathUtils.randFloat(-1, 1),
-        THREE.MathUtils.randFloat(-4, -1),
-        THREE.MathUtils.randFloat(-0.5, 0.5)
-      );
-      s.isSettled = false;
-      s.mesh.position.copy(s.pos);
-    });
-  }
-
   updateCamera(dt) {
-    if (this.cameraTilted && this.mouse2D.x > -900) {
+    if (this.mouse2D.x > -900) {
       const parallaxX = this.targetCameraPos.x + this.mouse2D.x * 1.5;
       const parallaxY = this.targetCameraPos.y + this.mouse2D.y * 1.0;
       this.camera.position.x += (parallaxX - this.camera.position.x) * 0.05;
@@ -592,7 +655,10 @@ export class PhysicsCanvas {
   animate() {
     if (!this.isRunning) return;
 
-    const dt = this.clock.getDelta();
+    const now = performance.now();
+    const dt = (now - this.lastFrameTime) / 1000;
+    this.lastFrameTime = now;
+
     this.updatePhysics(dt);
     this.updateCamera(dt);
 

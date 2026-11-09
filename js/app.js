@@ -1,121 +1,94 @@
 /**
  * PORTFOLIO APPLICATION CONTROLLER
- * Minimalist Shiyun Lu Inspired Architecture
- * 
- * Orchestrates:
- * - Interactive 3D Boba Ball Pit Physics Canvas (Three.js)
- * - Corner navigation drawer overlay (Work, About, Contact)
- * - Subtle inline debug toggles (// Camera, // Mouse, // Spheres)
+ *
+ * The menu is wired up first and has no dependency on Three.js, so the content stays
+ * reachable on slow connections, without WebGL, and with reduced motion enabled.
+ * The ball pit is loaded afterwards as an enhancement.
  */
 
-import { PhysicsCanvas } from './physics-engine.js';
+const menuBtn = document.getElementById('menu-btn');
+const menuCloseBtn = document.getElementById('menu-close-btn');
+const menuDrawer = document.getElementById('menu-drawer');
+const uiLayer = document.getElementById('ui-layer');
 
-document.addEventListener('DOMContentLoaded', () => {
-  // =========================================================================
-  // 1. Initialize Interactive Physics Canvas
-  // =========================================================================
-  const canvasContainer = document.getElementById('canvas-container');
-  let physics = null;
+let physics = null;
+let menuTrigger = menuBtn;
 
-  if (canvasContainer) {
-    physics = new PhysicsCanvas(canvasContainer, {
-      sphereCount: window.innerWidth < 768 ? 32 : 56,
+// =========================================================================
+// 1. Full-Screen Menu
+// =========================================================================
+function isMenuOpen() {
+  return menuDrawer.classList.contains('is-open');
+}
+
+function openMenu(trigger = menuBtn, sectionId = null) {
+  menuTrigger = trigger;
+  menuDrawer.classList.add('is-open');
+  menuDrawer.setAttribute('aria-hidden', 'false');
+  menuBtn.setAttribute('aria-expanded', 'true');
+  uiLayer.inert = true;
+  physics?.setPaused(true);
+
+  const section = sectionId ? document.getElementById(sectionId) : null;
+  if (section) {
+    section.scrollIntoView();
+  } else {
+    menuDrawer.scrollTop = 0;
+  }
+  menuCloseBtn.focus({ preventScroll: true });
+}
+
+function closeMenu() {
+  menuDrawer.classList.remove('is-open');
+  menuDrawer.setAttribute('aria-hidden', 'true');
+  menuBtn.setAttribute('aria-expanded', 'false');
+  uiLayer.inert = false;
+  physics?.setPaused(false);
+  menuTrigger.focus({ preventScroll: true });
+}
+
+menuBtn.addEventListener('click', () => openMenu(menuBtn));
+menuCloseBtn.addEventListener('click', closeMenu);
+
+document.querySelectorAll('[data-open-menu]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    openMenu(link, link.dataset.openMenu);
+  });
+});
+
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && isMenuOpen()) {
+    closeMenu();
+  }
+});
+
+// Lets davelabs.me/#work open straight to the projects.
+if (window.location.hash === '#work') {
+  openMenu(menuBtn, 'work');
+}
+
+// =========================================================================
+// 2. Interactive Ball Pit (Optional Enhancement)
+// =========================================================================
+async function startBallPit() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  try {
+    const { PhysicsCanvas } = await import('./physics-engine.js');
+    physics = new PhysicsCanvas(document.getElementById('canvas-container'), {
       gravity: -26.0,
       restitution: 0.78,
       mouseRadius: 2.3,
       shadows: true
     });
+    physics.setPaused(isMenuOpen());
+    document.documentElement.classList.add('has-canvas');
+  } catch (error) {
+    console.warn('Ball pit unavailable, continuing without it:', error);
   }
+}
 
-  // =========================================================================
-  // 2. Corner Navigation Menu Drawer (Work, About, Contact)
-  // =========================================================================
-  const menuBtn = document.getElementById('menu-btn');
-  const menuCloseBtn = document.getElementById('menu-close-btn');
-  const menuDrawer = document.getElementById('menu-drawer');
-
-  function openMenu() {
-    if (!menuDrawer) return;
-    menuDrawer.classList.add('is-open');
-    menuDrawer.setAttribute('aria-hidden', 'false');
-    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
-    menuDrawer.scrollTop = 0;
-  }
-
-  function closeMenu() {
-    if (!menuDrawer) return;
-    menuDrawer.classList.remove('is-open');
-    menuDrawer.setAttribute('aria-hidden', 'true');
-    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
-  }
-
-  if (menuBtn) {
-    menuBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      openMenu();
-    });
-  }
-
-  if (menuCloseBtn) {
-    menuCloseBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      closeMenu();
-    });
-  }
-
-  // Close when clicking drawer backdrop (outside panel)
-  if (menuDrawer) {
-    menuDrawer.addEventListener('click', (e) => {
-      if (e.target === menuDrawer) {
-        closeMenu();
-      }
-    });
-  }
-
-  // Close with Escape key
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && menuDrawer && menuDrawer.classList.contains('is-open')) {
-      closeMenu();
-    }
-  });
-
-  // =========================================================================
-  // 3. Subtle Inline Debug Toggles (// Camera, // Mouse, // Spheres)
-  // =========================================================================
-  const toggleCameraBtn = document.getElementById('toggle-camera');
-  const toggleMouseBtn = document.getElementById('toggle-mouse');
-  const toggleSpheresBtn = document.getElementById('toggle-spheres');
-
-  // Both Camera and Mouse auto on by default
-  if (toggleCameraBtn && physics) {
-    toggleCameraBtn.classList.toggle('is-active', physics.cameraTilted);
-  }
-  if (toggleMouseBtn && physics) {
-    toggleMouseBtn.classList.toggle('is-active', physics.showMouseCollider);
-  }
-
-  if (toggleCameraBtn && physics) {
-    toggleCameraBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isTilted = physics.toggleCameraAngle();
-      toggleCameraBtn.classList.toggle('is-active', isTilted);
-    });
-  }
-
-  if (toggleMouseBtn && physics) {
-    toggleMouseBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isVisible = physics.toggleMouseColliderVisibility();
-      toggleMouseBtn.classList.toggle('is-active', isVisible);
-    });
-  }
-
-  if (toggleSpheresBtn && physics) {
-    toggleSpheresBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      physics.resetCascade();
-      toggleSpheresBtn.classList.add('is-active');
-      setTimeout(() => toggleSpheresBtn.classList.remove('is-active'), 400);
-    });
-  }
-});
+startBallPit();

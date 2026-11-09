@@ -3,20 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DAVID PETRIE</title>
-  <meta name="description" content="David Petrie — Minimalist editorial portfolio with interactive Three.js physics ball pit. Systems architecture, market microstructure, and distributed infrastructure.">
+  <title>David Petrie | Systems &amp; Security Engineer</title>
+  <meta name="description" content="David Petrie is a Penn State student, Class of 2027, who builds systems and security software. Co-founder of PixelLabz and builder of Ringlock. Open to internships and full-time entry-level roles.">
   <meta name="author" content="David Petrie">
   <meta name="theme-color" content="#F4F1EA">
+  <link rel="canonical" href="https://davelabs.me/">
 
   <!-- Open Graph / Meta -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="DAVID PETRIE">
-  <meta property="og:description" content="Minimalist portfolio with interactive Three.js physics simulation inspired by shiyunlu.com.">
-  <meta property="og:image" content="assets/screenshots/sync.png">
+  <meta property="og:url" content="https://davelabs.me/">
+  <meta property="og:title" content="David Petrie | Systems &amp; Security Engineer">
+  <meta property="og:description" content="Penn State, Class of 2027. Co-founder of PixelLabz and builder of Ringlock. Open to internships and full-time entry-level roles.">
+  <meta property="og:image" content="https://davelabs.me/assets/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="David Petrie, systems and security engineer, above a pile of glossy black spheres.">
+  <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicon -->
   <link rel="icon" type="image/gif" href="assets/favicon.gif">
-  <link rel="shortcut icon" href="assets/favicon.gif">
 
   <!-- Geist & Geist Mono Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +46,7 @@
 
     <!-- Top Corner Navigation Menu Button -->
     <header class="top-header">
-      <button id="menu-btn" class="corner-menu-btn" aria-label="Open Fullscreen Index" aria-expanded="false">
+      <button id="menu-btn" class="corner-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="menu-drawer">
         <span class="menu-btn-label">Menu</span>
         <span class="menu-btn-icon" aria-hidden="true">
           <span class="menu-bar"></span>
@@ -51,24 +56,25 @@
     </header>
 
     <!-- Centerpiece Typography (Inspired by shiyunlu.com) -->
-    <main class="hero-centerpiece" id="hero-centerpiece">
+    <section class="hero-centerpiece" id="hero-centerpiece">
       <div class="display-title-wrap">
         <h1 class="display-name">DAVID PETRIE</h1>
         <p class="display-sub">systems &amp; security engineer.</p>
+        <nav class="hero-links" aria-label="Quick links">
+          <a href="#work" data-open-menu="work">work</a>
+          <a href="resume.pdf" target="_blank" rel="noopener">resume</a>
+          <a href="mailto:dvp5702@psu.edu">email</a>
+          <a href="https://linkedin.com/in/gender" target="_blank" rel="noopener noreferrer">linkedin</a>
+          <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer">github</a>
+        </nav>
       </div>
-    </main>
+    </section>
 
-    <!-- Minimalist Footer & Subtle Inline Debug Toggles -->
+    <!-- Minimalist Footer -->
     <footer class="bottom-footer">
       <div class="footer-colophon">
-        <span>Made with Three.js</span>
+        <span>Built with Three.js and a custom physics engine</span>
       </div>
-
-      <nav class="footer-debug-toggles" aria-label="Physics Debug Controls">
-        <button id="toggle-camera" class="debug-toggle-btn is-active" title="Toggle Camera Angle">/cam</button>
-        <button id="toggle-mouse" class="debug-toggle-btn is-active" title="Toggle Mouse Collider Ring">/mouse</button>
-        <button id="toggle-spheres" class="debug-toggle-btn" title="Reset Spheres Cascade">/crazy</button>
-      </nav>
     </footer>
 
   </div>
@@ -76,7 +82,7 @@
   <!-- =========================================================================
        Full-Screen Editorial Overlay (Takes up the entire screen when pressed)
        ========================================================================= -->
-  <div id="menu-drawer" class="menu-fullscreen-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div id="menu-drawer" class="menu-fullscreen-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="menu-title">
     <div class="menu-fullscreen-container">
 
       <!-- Sticky Editorial Header -->
@@ -84,10 +90,10 @@
         <div class="menu-header-brand">
           <span class="brand-pulse-dot" aria-hidden="true"></span>
           <span class="menu-header-name">David Petrie</span>
-          <span class="menu-header-meta">// Systems &amp; Security Architecture</span>
+          <span class="menu-header-meta">// Systems &amp; Security Engineer</span>
         </div>
 
-        <button id="menu-close-btn" class="menu-close-btn" aria-label="Close Fullscreen Index">
+        <button id="menu-close-btn" class="menu-close-btn" aria-label="Close menu">
           <span class="close-label">Close</span>
           <span class="close-key">[×]</span>
         </button>
@@ -98,25 +104,29 @@
 
         <!-- Intro Overview Section -->
         <section class="fs-section fs-intro-section">
-          <div class="fs-section-tag">// 00 · PROFILE &amp; FOCUS</div>
-          <h2 class="fs-intro-heading">Systems architecture, market microstructure, and high-throughput distributed networks.</h2>
+          <div class="fs-section-tag">// 00 · PROFILE</div>
+          <h2 class="fs-intro-heading" id="menu-title">I build and run distributed systems, with a focus on infrastructure and security.</h2>
           <p class="fs-intro-text">
-            Co-Founder @ PixelLabz RPC · Former InfoSec Intern @ NodeStop LLC · Penn State ETI &amp; Cybersecurity. Designing and maintaining low-latency execution engines, non-consensus validator RPC fabrics, and threat hunting telemetry pipelines.
+            Enterprise Technology Integration student at Penn State, Class of 2027. I co-founded PixelLabz, a Solana and Aptos RPC network, interned in information security at NodeStop, and now build and run Ringlock, a missed-call text-back service for trade contractors. Open to internships and full-time entry-level roles.
           </p>
         </section>
 
         <!-- Section 01: Direct Contact & Channels -->
         <section class="fs-section">
-          <div class="fs-section-tag">// 01 · CONNECT &amp; CHANNELS</div>
+          <div class="fs-section-tag">// 01 · CONTACT</div>
 
           <div class="fs-connect-grid">
-            <a href="mailto:dvp5782@psu.edu" class="fs-connect-card">
-              <span class="fs-connect-label">Direct Email</span>
-              <span class="fs-connect-val">dvp5782@psu.edu ↗</span>
+            <a href="resume.pdf" target="_blank" rel="noopener" class="fs-connect-card">
+              <span class="fs-connect-label">Resume</span>
+              <span class="fs-connect-val">View PDF ↗</span>
+            </a>
+            <a href="mailto:dvp5702@psu.edu" class="fs-connect-card">
+              <span class="fs-connect-label">Email</span>
+              <span class="fs-connect-val">dvp5702@psu.edu ↗</span>
             </a>
             <a href="https://linkedin.com/in/gender" target="_blank" rel="noopener noreferrer" class="fs-connect-card">
               <span class="fs-connect-label">LinkedIn</span>
-              <span class="fs-connect-val">/in/gender ↗</span>
+              <span class="fs-connect-val">David Petrie ↗</span>
             </a>
             <a href="https://github.com/petriedavid" target="_blank" rel="noopener noreferrer" class="fs-connect-card">
               <span class="fs-connect-label">GitHub</span>
@@ -125,103 +135,102 @@
           </div>
         </section>
 
-        <!-- Section 02: Selected Systems & Architecture -->
-        <section class="fs-section">
-          <div class="fs-section-tag">// 02 · VERIFIED SYSTEMS &amp; ARCHITECTURAL IMPLEMENTATIONS</div>
+        <!-- Section 02: Selected Work -->
+        <section class="fs-section" id="work">
+          <div class="fs-section-tag">// 02 · SELECTED WORK</div>
 
           <div class="fs-projects-grid">
 
-            <!-- Project 01: sync // Kalshi 15 Minute 15 Market (KXBTC15M) -->
+            <!-- Ringlock -->
             <article class="fs-project-card">
               <div class="fs-card-top">
                 <div>
-                  <h3 class="fs-card-title">sync // KXBTC15M</h3>
-                  <span class="fs-card-subtitle">Institutional Kalshi 15-Minute Bitcoin Binary Quantitative Trading Architecture</span>
+                  <h3 class="fs-card-title">Ringlock</h3>
+                  <span class="fs-card-subtitle">Founder · Missed-call text-back for trade contractors · Built and launched in 2026</span>
                 </div>
-                <span class="fs-tag-pill">QUANT &amp; MICROSTRUCTURE</span>
+                <span class="fs-tag-pill">LIVE PRODUCT</span>
               </div>
 
               <p class="fs-card-desc">
-                Closed-form microstructure pricing architecture rejecting curve-fit multi-strategy ensembles: Synthetic BRTI Lead-Lag Replication across Coinbase, Kraken, and Bitstamp with 60-Second Settlement TWAP Pinning Arbitrage, sub-millisecond execution routing, and SHA-256 tamper-evident cryptographic trade logging.
+                When a contractor can't answer, Ringlock texts the caller from the business's number within about 3 seconds, asks for the job address, and forwards the reply to the contractor's cell. Contractors either keep their own number and forward missed calls to Ringlock, or publish a Ringlock tracking number that rings them first with a "press 1 to take it" screen. Each contractor is a separate tenant in Postgres, and every Twilio webhook is signature-verified.
               </p>
 
-              <!-- Real Telemetry Matrix -->
               <div class="fs-telemetry-grid">
                 <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Live Win Rate // PF</span>
-                  <span class="fs-tel-val">81.8% // 2.14 PF</span>
+                  <span class="fs-tel-label">Text-Back Time</span>
+                  <span class="fs-tel-val">About 3 seconds</span>
                 </div>
                 <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Realized Session PnL</span>
-                  <span class="fs-tel-val">+$110.52 USD (Kalshi)</span>
+                  <span class="fs-tel-label">Call Flows</span>
+                  <span class="fs-tel-val">Carrier forwarding or tracking number</span>
                 </div>
                 <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Gateway Latency</span>
-                  <span class="fs-tel-val">11ms End-to-End</span>
+                  <span class="fs-tel-label">Lead Capture</span>
+                  <span class="fs-tel-val">Asks for the job address</span>
                 </div>
                 <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Hardware Clock Sync</span>
-                  <span class="fs-tel-val">Azure PTP &lt; 5μs</span>
+                  <span class="fs-tel-label">Tenancy</span>
+                  <span class="fs-tel-val">One tenant per contractor</span>
                 </div>
                 <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Audit Integrity</span>
-                  <span class="fs-tel-val">SHA-256 Chained WAL</span>
+                  <span class="fs-tel-label">Webhook Security</span>
+                  <span class="fs-tel-val">Twilio signature checks</span>
                 </div>
                 <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Order Dispatch</span>
-                  <span class="fs-tel-val">&lt; 1ms Low-Latency</span>
+                  <span class="fs-tel-label">Opt-Outs</span>
+                  <span class="fs-tel-val">STOP handling built in</span>
                 </div>
               </div>
 
               <div class="fs-chips-wrap">
-                <span class="fs-chip">Python 3.11</span>
-                <span class="fs-chip">FastAPI (100ms)</span>
-                <span class="fs-chip">React 18</span>
-                <span class="fs-chip">TimescaleDB</span>
-                <span class="fs-chip">Azure SR-IOV</span>
-                <span class="fs-chip">Quarter-Kelly</span>
+                <span class="fs-chip">n8n</span>
+                <span class="fs-chip">PostgreSQL</span>
+                <span class="fs-chip">Twilio</span>
+                <span class="fs-chip">Docker Compose</span>
+                <span class="fs-chip">Caddy</span>
               </div>
+
+              <a class="fs-card-link" href="https://ringlock.tech" target="_blank" rel="noopener noreferrer">ringlock.tech ↗</a>
             </article>
 
-            <!-- Project 02: PixelLabz Global RPC Mesh -->
+            <!-- PixelLabz RPC -->
             <article class="fs-project-card">
               <div class="fs-card-top">
                 <div>
-                  <h3 class="fs-card-title">PixelLabz Global RPC Mesh</h3>
-                  <span class="fs-card-subtitle">High-Throughput Non-Consensus Node Mesh on Solana &amp; Aptos</span>
+                  <h3 class="fs-card-title">PixelLabz RPC</h3>
+                  <span class="fs-card-subtitle">Co-Founder &amp; Director of Community Relations · 2022–2025 · formerly PixelPilotz</span>
                 </div>
                 <span class="fs-tag-pill">DISTRIBUTED INFRASTRUCTURE</span>
               </div>
 
               <p class="fs-card-desc">
-                Co-architected non-consensus RPC network on Solana and Aptos across 15+ bare-metal servers in the U.S., Germany, and Singapore with Yellowstone gRPC streaming. Sustained 1,000 RPS per node per user with 0s landing time (same-block transaction inclusion) and 99.99% service uptime.
+                Co-architected a non-consensus RPC network on Solana and Aptos, running on 15+ bare-metal servers in the U.S., Germany, and Singapore with Yellowstone gRPC streaming. Users got up to 1,000 RPS per node, same-block transaction landing, and 98% service uptime. Also grew the community to 4,000+ users through demos, onboarding, and technical support.
               </p>
 
-              <!-- Real Telemetry Matrix -->
               <div class="fs-telemetry-grid">
                 <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Highest Volume</span>
-                  <span class="fs-tel-val">8M+ Transactions/Day</span>
+                  <span class="fs-tel-label">Peak Volume</span>
+                  <span class="fs-tel-val">8M+ transactions in one day</span>
                 </div>
                 <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Throughput Ceiling</span>
-                  <span class="fs-tel-val">1,000 RPS per User per Node</span>
+                  <span class="fs-tel-label">Users</span>
+                  <span class="fs-tel-val">4,000+</span>
                 </div>
                 <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Transaction Landing</span>
-                  <span class="fs-tel-val">0s (Same Block)</span>
+                  <span class="fs-tel-label">Servers</span>
+                  <span class="fs-tel-val">15+ bare-metal in 3 regions</span>
                 </div>
                 <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Active Users &amp; Mesh</span>
-                  <span class="fs-tel-val">4k+ Users · 15+ Nodes</span>
+                  <span class="fs-tel-label">Rate Limit</span>
+                  <span class="fs-tel-val">1,000 RPS per user, per node</span>
                 </div>
                 <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Node Availability</span>
-                  <span class="fs-tel-val">99.99% Uptime</span>
+                  <span class="fs-tel-label">Service Uptime</span>
+                  <span class="fs-tel-val">98%</span>
                 </div>
                 <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Funding Generated</span>
-                  <span class="fs-tel-val">~$180,000+</span>
+                  <span class="fs-tel-label">Raised</span>
+                  <span class="fs-tel-val">~$180,000 in token sales</span>
                 </div>
               </div>
 
@@ -229,52 +238,32 @@
                 <span class="fs-chip">Solana</span>
                 <span class="fs-chip">Aptos</span>
                 <span class="fs-chip">Yellowstone gRPC</span>
-                <span class="fs-chip">1,000 RPS</span>
-                <span class="fs-chip">0s Landing</span>
                 <span class="fs-chip">Bare-Metal Linux</span>
               </div>
+
+              <a class="fs-card-link" href="assets/screenshots/pixellabz.png" target="_blank" rel="noopener">Product page screenshot ↗</a>
             </article>
 
-            <!-- Project 03: NodeStop Enterprise Security -->
+            <!-- NodeStop LLC -->
             <article class="fs-project-card">
               <div class="fs-card-top">
                 <div>
-                  <h3 class="fs-card-title">NodeStop Security Infrastructure</h3>
-                  <span class="fs-card-subtitle">Information Security Analyst Intern — Threat Hunting &amp; Deep Packet Telemetry</span>
+                  <h3 class="fs-card-title">NodeStop LLC</h3>
+                  <span class="fs-card-subtitle">Information Security Analyst, Jr (Internship) · 2023–2025</span>
                 </div>
-                <span class="fs-tag-pill">CYBER DEFENSE</span>
+                <span class="fs-tag-pill">SECURITY</span>
               </div>
 
               <p class="fs-card-desc">
-                Real-time network traffic analysis and raw packet inspection using Snort IDS and Wireshark. Performed enterprise penetration testing, credential fuzzing exercises with Nmap, Nessus, and Hydra, and active threat mitigation across production endpoints.
+                Conducted vulnerability assessments and risk analysis for enterprise systems, supported compliance readiness and remediation planning, and assisted with IDS/SIEM implementation. Communicated findings to technical and non-technical teams.
               </p>
-
-              <!-- Real Telemetry Matrix -->
-              <div class="fs-telemetry-grid">
-                <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Intrusion Detection</span>
-                  <span class="fs-tel-val">Snort IDS &amp; Wireshark</span>
-                </div>
-                <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Recon &amp; Fuzzing</span>
-                  <span class="fs-tel-val">Nmap · Nessus · Hydra</span>
-                </div>
-                <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Traffic Analysis</span>
-                  <span class="fs-tel-val">Deep Packet Inspection</span>
-                </div>
-                <div class="fs-telemetry-item">
-                  <span class="fs-tel-label">Defense Playbook</span>
-                  <span class="fs-tel-val">Active Threat Mitigation</span>
-                </div>
-              </div>
 
               <div class="fs-chips-wrap">
                 <span class="fs-chip">Snort IDS</span>
                 <span class="fs-chip">Wireshark</span>
-                <span class="fs-chip">Penetration Testing</span>
                 <span class="fs-chip">Nmap</span>
                 <span class="fs-chip">Nessus</span>
+                <span class="fs-chip">Hydra</span>
                 <span class="fs-chip">SIEM</span>
               </div>
             </article>
@@ -282,20 +271,20 @@
           </div>
         </section>
 
-        <!-- Section 03: Academic Foundation -->
+        <!-- Section 03: Education -->
         <section class="fs-section">
-          <div class="fs-section-tag">// 03 · ACADEMIC FOUNDATION</div>
+          <div class="fs-section-tag">// 03 · EDUCATION</div>
 
           <div class="fs-project-card">
             <div class="fs-card-top">
               <div>
-                <h3 class="fs-card-title">The Pennsylvania State University — University Park, PA</h3>
-                <span class="fs-card-subtitle">B.S. in Enterprise Technology Integration &amp; Cybersecurity Operations &amp; Analytics</span>
+                <h3 class="fs-card-title">The Pennsylvania State University</h3>
+                <span class="fs-card-subtitle">B.S. in Enterprise Technology Integration · University Park, PA · Class of 2027</span>
               </div>
             </div>
 
             <p class="fs-card-desc">
-              Focus on systems architecture, distributed systems &amp; blockchain invariants, operating systems principles, AI &amp; machine learning, cyber threat analytics, network security, and database management.
+              Relevant coursework: Systems Architecture, AI &amp; Machine Learning, Distributed Systems &amp; Blockchain, and Data Analytics.
             </p>
           </div>
         </section>
@@ -304,8 +293,8 @@
 
       <!-- Full-Screen Footer -->
       <footer class="fs-footer">
-        <span>© 2026 David Petrie. Editorial layout inspired by Shiyun Lu.</span>
-        <span>Built with Three.js &amp; Verlet 3D Physics</span>
+        <span>© 2026 David Petrie. Design inspired by Shiyun Lu.</span>
+        <span>Built with Three.js and a custom physics engine</span>
       </footer>
 
     </div>

@@ -32,6 +32,8 @@
   padding: clamp(18px, 3.5vw, 36px);
   pointer-events: none; /* Passes mouse interactions freely through to canvas */
   box-sizing: border-box;
+  user-select: none; /* Dragging across the canvas should not select hero text */
+  -webkit-user-select: none;
 }
 
 /* =========================================================================
@@ -61,7 +63,7 @@
   background: rgba(244, 241, 234, 0.75);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .corner-menu-btn:hover {
@@ -99,7 +101,7 @@
   justify-content: center;
   text-align: center;
   pointer-events: none;
-  margin-top: -3vh; /* Optical vertical centering balance */
+  margin-top: -8vh; /* Lifts the name and links clear of the settled ball pile */
 }
 
 .display-title-wrap {
@@ -112,7 +114,7 @@
 
 .display-name {
   font-family: var(--font-sans);
-  font-size: clamp(48px, 11.5vw, 144px);
+  font-size: clamp(48px, min(11.5vw, 18vh), 144px);
   font-weight: 900;
   line-height: 0.94;
   letter-spacing: -0.04em;
@@ -132,8 +134,38 @@
   pointer-events: none;
 }
 
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  pointer-events: none;
+}
+
+.hero-links a {
+  pointer-events: auto;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  background: rgba(244, 241, 234, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.hero-links a:hover {
+  opacity: 1;
+  background: #FFFFFF;
+  border-color: var(--text-primary);
+}
+
 /* =========================================================================
-   4. Minimalist Footer & Subtle Inline Toggles
+   4. Minimalist Footer
    ========================================================================= */
 .bottom-footer {
   display: flex;
@@ -145,43 +177,17 @@
   color: var(--text-tertiary);
   letter-spacing: 0.03em;
   pointer-events: none;
+  visibility: hidden; /* The credit only applies once the ball pit is running */
+}
+
+.has-canvas .bottom-footer {
+  visibility: visible;
 }
 
 .footer-colophon {
   pointer-events: auto;
   user-select: text;
   -webkit-user-select: text;
-}
-
-.footer-debug-toggles {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  pointer-events: auto;
-}
-
-.debug-toggle-btn {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-secondary);
-  background: none;
-  border: none;
-  padding: 4px 6px;
-  cursor: pointer;
-  border-radius: var(--radius-xs);
-  transition: all var(--transition-fast);
-}
-
-.debug-toggle-btn:hover {
-  color: var(--text-primary);
-  background: rgba(18, 18, 20, 0.05);
-}
-
-.debug-toggle-btn.is-active {
-  color: var(--text-primary);
-  font-weight: 600;
-  background: rgba(18, 18, 20, 0.09);
-  border: 1px solid var(--border-subtle);
 }
 
 /* =========================================================================
@@ -202,13 +208,14 @@
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  transition: opacity 0.32s var(--ease-out), visibility 0.32s var(--ease-out);
+  transition: opacity 0.32s var(--ease-out), visibility 0s linear 0.32s;
 }
 
 .menu-fullscreen-overlay.is-open {
   opacity: 1;
-  visibility: visible;
+  visibility: visible; /* Applied immediately so focus can move into the menu on open */
   pointer-events: auto;
+  transition: opacity 0.32s var(--ease-out), visibility 0s;
 }
 
 .menu-fullscreen-container {
@@ -280,7 +287,7 @@
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-pill);
   background: var(--bg-card);
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .menu-close-btn:hover {
@@ -310,6 +317,7 @@
   display: flex;
   flex-direction: column;
   gap: 18px;
+  scroll-margin-top: 96px; /* Keeps linked sections clear of the sticky header */
 }
 
 .fs-section-tag {
@@ -413,10 +421,10 @@
   max-width: 960px;
 }
 
-/* Verified Telemetry Grid */
+/* Metrics Grid */
 .fs-telemetry-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 12px;
   margin-top: 4px;
 }
@@ -464,10 +472,20 @@
   border-radius: var(--radius-xs);
 }
 
+.fs-card-link {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Connect Grid */
 .fs-connect-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
 }
 
@@ -479,7 +497,7 @@
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .fs-connect-card:hover {
@@ -535,17 +553,12 @@
     font-size: 13px;
   }
 
+  .hero-links a {
+    padding: 6px 10px;
+  }
+
   .bottom-footer {
     font-size: 10px;
-  }
-
-  .footer-debug-toggles {
-    gap: 8px;
-  }
-
-  .debug-toggle-btn {
-    font-size: 10px;
-    padding: 3px 4px;
   }
 
   .menu-header-meta {
